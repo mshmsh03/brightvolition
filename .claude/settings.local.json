@@ -1,0 +1,54 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command node, npx -ErrorAction SilentlyContinue)",
+      "Bash(which python *)",
+      "Read(//tmp/**)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\\(Resolve-Path 'assets/img/logo/logo-navy.png'\\).Path\\); \"$\\($img.Width\\) x $\\($img.Height\\)\")",
+      "Bash(python3 -c ' *)",
+      "PowerShell(Get-Command node -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command python -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command py -ErrorAction SilentlyContinue)",
+      "PowerShell(python --version)",
+      "PowerShell(& \"C:\\\\Users\\\\mshmsh\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-mshmsh-Desktop-Bright-Volition-Website\\\\43c98ff4-3947-4635-9701-6ab6c1af8190\\\\scratchpad\\\\insert_ckb.ps1\" -SiteDir \"c:\\\\Users\\\\mshmsh\\\\Desktop\\\\Bright Volition\\\\Website\" -MapPath \"C:\\\\Users\\\\mshmsh\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-mshmsh-Desktop-Bright-Volition-Website\\\\43c98ff4-3947-4635-9701-6ab6c1af8190\\\\scratchpad\\\\ckb_map.json\")",
+      "Bash(grep -noE '#[0-9a-fA-F]{3,6}|rgba?\\\\\\([^\\)]*\\\\\\)' css/style.css)",
+      "Bash(sort -t: -k2)",
+      "Bash(uniq -c -f1)",
+      "Bash(grep -noE '#[0-9a-fA-F]{3,8}|rgba?\\\\\\([^\\)]*\\\\\\)' css/style.css)",
+      "Bash(grep -n 'linear-gradient\\\\|hero{$\\\\|\\\\.hero{' -A3 css/style.css)",
+      "Bash(grep -no '#[0-9a-fA-F]\\\\{3,6\\\\}' index.html about.html services.html products.html projects.html contact.html)",
+      "Bash(grep -no '#[0-9a-fA-F]\\\\{3,8\\\\}\\\\|rgba\\([^\\)]*\\)' css/style.css)",
+      "Bash(node -e \"1\")",
+      "Bash(python3 -c \"1\")",
+      "Bash(awk 'BEGIN{o=0} {for\\(i=1;i<=length\\($0\\);i++\\){c=substr\\($0,i,1\\); if\\(c==\"{\"\\)o++; if\\(c==\"}\"\\)o--}} END{print \"brace balance:\", o}' css/style.css)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"C:\\\\Users\\\\mshmsh\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\hook.mjs\" ] || node \"C:\\\\Users\\\\mshmsh\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\hook.mjs\"",
+            "timeout": 5,
+            "statusMessage": "Checking UI changes"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"C:\\\\Users\\\\mshmsh\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\hook.mjs\" ] || node \"C:\\\\Users\\\\mshmsh\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\hook.mjs\"",
+            "timeout": 30,
+            "statusMessage": "Design deep pass"
+          }
+        ]
+      }
+    ]
+  },
+  "description": "Impeccable design detector: immediate-tier checks after Edit/Write/MultiEdit on UI files, full-rule deep pass on Stop."
+}

@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | Bright Volition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Reach Bright Volition for inquiries or RFQs — Mardin Street, Sulaymaniyah, Kurdistan Region of Iraq. info@brightvolition.com | +964 771 706 5000">
+  <link rel="canonical" href="https://brightvolition.com/contact.html">
+  <meta name="theme-color" content="#201747">
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo/android-chrome-192.png">
+  <link rel="apple-touch-icon" href="assets/img/logo/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bright Volition">
+  <meta property="og:title" content="Contact Us | Bright Volition">
+  <meta property="og:description"
+    content="Reach Bright Volition for inquiries or RFQs — Mardin Street, Sulaymaniyah, Kurdistan Region of Iraq. info@brightvolition.com | +964 771 706 5000">
+  <meta property="og:url" content="https://brightvolition.com/contact.html">
+  <meta property="og:image" content="https://brightvolition.com/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us | Bright Volition">
+  <meta name="twitter:description"
+    content="Reach Bright Volition for inquiries or RFQs — Mardin Street, Sulaymaniyah, Kurdistan Region of Iraq. info@brightvolition.com | +964 771 706 5000">
+  <meta name="twitter:image" content="https://brightvolition.com/assets/img/og-image.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width:900px) {
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-card {
+      background: var(--cream);
+      border: 1px solid var(--lavender);
+      border-radius: var(--radius);
+      padding: 36px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-top: 1px solid var(--lavender);
+    }
+
+    .contact-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .contact-item .ic {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--lavender);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+
+    .contact-item h4 {
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--navy);
+      margin-bottom: 4px;
+      font-family: var(--font-head);
+      font-weight: var(--wght-bold);
+    }
+
+    .contact-item a,
+    .contact-item span.val {
+      font-family: var(--font-head);
+      font-weight: var(--wght-bold);
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .form-field {
+      margin-bottom: 20px;
+    }
+
+    .form-field label {
+      display: block;
+      font-family: var(--font-head);
+      font-weight: var(--wght-bold);
+      font-size: .88rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--lavender);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: .96rem;
+      color: var(--navy);
+      background: var(--cream);
+      transition: .2s;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width:560px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .map-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--lavender);
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 340px;
+      border: 0;
+      display: block;
+    }
+
+    #form-note {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: var(--lavender);
+      border: 1px solid var(--gold);
+      border-radius: var(--radius-sm);
+      color: var(--navy);
+      font-size: .9rem;
+    }
+  </style>
+  <script>(function () { try { var l = localStorage.getItem('bv-lang'); if (l === 'ar' || l === 'ckb') { var r = document.documentElement; r.classList.add(l === 'ar' ? 'lang-ar' : 'lang-ckb'); r.lang = l; r.dir = 'rtl'; } } catch (e) { } })();</script>
+</head>
+
+<body>
+  <noscript>
+    <style>
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important
+      }
+    </style>
+  </noscript>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand"><img src="assets/img/logo/logo-navy.png" alt="Bright Volition"></a>
+      <nav class="main-nav">
+        <a href="index.html"><span lang="en">Home</span><span lang="ar">الرئيسية</span><span
+            lang="ckb">سەرەکی</span></a>
+        <a href="about.html"><span lang="en">About</span><span lang="ar">من نحن</span><span
+            lang="ckb">دەربارەمان</span></a>
+        <a href="services.html"><span lang="en">Services</span><span lang="ar">خدماتنا</span><span
+            lang="ckb">خزمەتگوزاریەکانمان</span></a>
+        <a href="products.html"><span lang="en">Products</span><span lang="ar">منتجاتنا</span><span
+            lang="ckb">بەرهەمەکانمان</span></a>
+        <a href="projects.html"><span lang="en">Projects</span><span lang="ar">مشاريعنا</span><span
+            lang="ckb">پڕۆژەکانمان</span></a>
+        <a href="contact.html"><span lang="en">Contact</span><span lang="ar">تواصل معنا</span><span
+            lang="ckb">پەیوەندیمان پێوە بکە</span></a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-toggle">
+          <button type="button" data-lang="en" class="active">EN</button>
+          <button type="button" data-lang="ar">AR</button>
+          <button type="button" data-lang="ckb">KU</button>
+        </div>
+        <a href="contact.html" class="btn btn-outline-navy btn-sm header-cta">
+          <span lang="en">Get a Quote</span><span lang="ar">اطلب عرض سعر</span><span lang="ckb">داوای نرخنامە بکە</span>
+        </a>
+        <button class="nav-toggle" aria-label="Menu"
+          aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero page-hero" style="padding-bottom:60px">
+      <div class="hero-bg"><img src="assets/img/photos/engineers-blueprint.jpg" alt=""></div>
+      <div class="container">
+        <div class="hero-inner wide">
+          <div class="breadcrumb">
+            <a href="index.html"><span lang="en">Home</span><span lang="ar">الرئيسية</span><span
+                lang="ckb">سەرەکی</span></a> / <span lang="en">Contact</span><span lang="ar">تواصل معنا</span><span
+              lang="ckb">پەیوەندیمان پێوە بکە</span>
+          </div>
+          <span class="eyebrow"><span lang="en">Your Trusted Partner in Engineering Solutions</span><span
+              lang="ar">شريككم الموثوق في الحلول الهندسية</span><span lang="ckb">هاوبەشی متمانەپێکراوتان لە چارەسەری
+              ئەندازیاریدا</span></span>
+          <h1><span lang="en">Ready to Collaborate?</span><span lang="ar">مستعدون للتعاون؟</span><span
+              lang="ckb">ئامادەن بۆ هاوکاری؟</span></h1>
+          <p class="lede"><span lang="en">Reach out with your inquiries or RFQs — we're here to deliver precision,
+              quality, and trust.</span><span lang="ar">تواصل معنا لأي استفسار أو طلب عرض سعر — نحن هنا لنقدّم لك الدقة
+              والجودة والثقة.</span><span lang="ckb">پەیوەندیمان پێوە بکە بۆ هەر پرسیارێک یان داواکاری نرخنامە — ئێمە
+              لێرەین بۆ پێشکەشکردنی وردی، کوالیتی و متمانە بۆت.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-wrap">
+
+          <!-- CONTACT INFO -->
+          <div class="reveal">
+            <div class="contact-card">
+              <h3 style="margin-bottom:22px"><span lang="en">Contact Details</span><span lang="ar">معلومات
+                  التواصل</span><span lang="ckb">زانیاریی پەیوەندی</span></h3>
+
+              <div class="contact-item">
+                <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="M2 6l10 7 10-7" />
+                  </svg></div>
+                <div>
+                  <h4><span lang="en">Email</span><span lang="ar">البريد الإلكتروني</span><span lang="ckb">ئیمەیل</span>
+                  </h4>
+                  <a href="mailto:info@brightvolition.com" class="ltr-fixed">info@brightvolition.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8">
+                    <path
+                      d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 1H6a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.5 2.1L7 9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c1 .4 2 .6 3 .7a2 2 0 011.7 2.1z" />
+                  </svg></div>
+                <div>
+                  <h4><span lang="en">Phone</span><span lang="ar">الهاتف</span><span lang="ckb">تەلەفۆن</span></h4>
+                  <div><a href="tel:+9647717065000" class="ltr-fixed">+964 771 706 5000</a></div>
+                  <div><a href="tel:+9647500269585" class="ltr-fixed">+964 750 026 9585</a></div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8">
+                    <path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
+                    <circle cx="12" cy="9" r="2.5" />
+                  </svg></div>
+                <div>
+                  <h4><span lang="en">Address</span><span lang="ar">العنوان</span><span lang="ckb">ناونیشان</span></h4>
+                  <span class="val"><span lang="en">Mardin Street, Opposite Dilan City, Sulaymaniyah (46001),
+                      Iraq</span><span lang="ar">شارع ماردين، مقابل مدينة دلان، السليمانية (46001)، العراق</span><span
+                      lang="ckb">شەقامی ماردین، بەرامبەر شاری دیلان، سلێمانی (46001)، عێراق</span></span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8">
+                    <path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
+                    <circle cx="12" cy="9" r="2.5" />
+                  </svg></div>
+                <div>
+                  <h4><span lang="en">Coverage</span><span lang="ar">نطاق العمل</span><span lang="ckb">مەودای کار</span>
+                  </h4>
+                  <span class="val"><span lang="en">Kurdistan Region &amp; Iraq</span><span lang="ar">إقليم كوردستان
+                      والعراق</span><span lang="ckb">هەرێمی کوردستان و عێراق</span></span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20z" />
+                  </svg></div>
+                <div>
+                  <h4><span lang="en">Website</span><span lang="ar">الموقع الإلكتروني</span><span
+                      lang="ckb">ماڵپەڕ</span></h4>
+                  <span class="val ltr-fixed">brightvolition.com</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8">
+                    <rect x="1.5" y="7" width="13" height="10" rx="1.2" />
+                    <path d="M14.5 10h4l3 3v4h-7z" />
+                    <circle cx="6" cy="18.5" r="1.6" />
+                    <circle cx="18" cy="18.5" r="1.6" />
+                  </svg></div>
+                <div>
+                  <h4><span lang="en">Supply Chain Team</span><span lang="ar">فريق سلسلة التوريد</span><span
+                      lang="ckb">تیمی زنجیرەی دابینکردن</span></h4>
+                  <a href="mailto:procurement@brightvolition.com" class="ltr-fixed">procurement@brightvolition.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                      d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 01-4 0v-.09A1.7 1.7 0 009 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 010-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-1.55V3a2 2 0 014 0v.09a1.7 1.7 0 001 1.55c.63.26 1.36.17 1.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9c.26.63.85 1.06 1.55 1H21a2 2 0 010 4h-.09a1.7 1.7 0 00-1.51 1z" />
+                  </svg></div>
+                <div>
+                  <h4><span lang="en">Technical Team</span><span lang="ar">الفريق الفني</span><span lang="ckb">تیمی
+                      تەکنیکی</span></h4>
+                  <a href="mailto:technical@brightvolition.com" class="ltr-fixed">technical@brightvolition.com</a>
+                </div>
+              </div>
+
+              <div class="social-row" style="margin-top:26px">
+                <a href="mailto:info@brightvolition.com" aria-label="Email"
+                  style="border-color:var(--lavender);color:var(--navy)"><svg viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="M2 6l10 7 10-7" />
+                  </svg></a>
+                <a href="tel:+9647717065000" aria-label="Call"
+                  style="border-color:var(--lavender);color:var(--navy)"><svg viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.8">
+                    <path
+                      d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 1H6a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.5 2.1L7 9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c1 .4 2 .6 3 .7a2 2 0 011.7 2.1z" />
+                  </svg></a>
+                <a href="https://www.linkedin.com/company/bright-volition/" target="_blank" rel="noopener"
+                  aria-label="LinkedIn" style="border-color:var(--lavender);color:var(--navy)"><svg viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 8.98h4v12.02H3zM9 8.98h3.8v1.64h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v6.33h-4v-5.61c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96v5.71H9z" />
+                  </svg></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORM -->
+          <div class="reveal">
+            <div class="contact-card">
+              <h3 style="margin-bottom:6px"><span lang="en">Send an Inquiry or RFQ</span><span lang="ar">أرسل استفسارًا
+                  أو طلب عرض سعر</span><span lang="ckb">پرسیارێک یان داواکاری نرخنامە بنێرە</span></h3>
+              <p style="margin-bottom:24px"><span lang="en">Fill in the form and it will open a pre-filled email to our
+                  team.</span><span lang="ar">املأ النموذج وسيتم فتح رسالة بريد إلكتروني معبأة مسبقًا
+                  لفريقنا.</span><span lang="ckb">فۆرمەکە پڕبکەرەوە و نامەیەکی ئیمەیلی پێشپڕکراو بۆ تیمەکەمان
+                  دەکرێتەوە.</span></p>
+              <form id="contact-form">
+                <div class="form-row">
+                  <div class="form-field">
+                    <label><span lang="en">Full Name</span><span lang="ar">الاسم الكامل</span><span lang="ckb">ناوی
+                        تەواو</span></label>
+                    <input type="text" name="name" required>
+                  </div>
+                  <div class="form-field">
+                    <label><span lang="en">Email</span><span lang="ar">البريد الإلكتروني</span><span
+                        lang="ckb">ئیمەیل</span></label>
+                    <input type="email" name="email" required>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label><span lang="en">Subject</span><span lang="ar">الموضوع</span><span
+                      lang="ckb">بابەت</span></label>
+                  <input type="text" name="subject" placeholder="RFQ, project inquiry, partnership...">
+                </div>
+                <div class="form-field">
+                  <label><span lang="en">Message</span><span lang="ar">الرسالة</span><span
+                      lang="ckb">پەیام</span></label>
+                  <textarea name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold">
+                  <span lang="en">Send Message</span><span lang="ar">إرسال الرسالة</span><span lang="ckb">ناردنی
+                    پەیام</span>
+                  <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <div id="form-note">
+                  <span lang="en">Your email app should now be open with your message ready to send. If it didn't open,
+                    please email us directly at info@brightvolition.com.</span>
+                  <span lang="ar">من المفترض أن يكون تطبيق البريد الإلكتروني قد فُتح برسالتك جاهزة للإرسال. إذا لم يفتح،
+                    الرجاء مراسلتنا مباشرة على info@brightvolition.com.</span><span lang="ckb">دەبێت ئەپی ئیمەیل بە
+                    پەیامەکەت ئامادە بۆ ناردن کرابێتەوە. ئەگەر نەکرایەوە، تکایە ڕاستەوخۆ لە info@brightvolition.com
+                    پەیوەندیمان پێوە بکە.</span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="section-sm bg-cream">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow"><span lang="en">Find Us</span><span lang="ar">موقعنا</span><span
+              lang="ckb">شوێنمان</span></span>
+          <h2><span lang="en">Sulaymaniyah, Kurdistan Region of Iraq</span><span lang="ar">السليمانية، إقليم كوردستان
+              العراق</span><span lang="ckb">سلێمانی، هەرێمی کوردستانی عێراق</span></h2>
+        </div>
+        <div class="map-frame reveal">
+          <iframe src="https://maps.google.com/maps?q=35.543082,45.480219&z=16&output=embed" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Bright Volition location map"></iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="assets/img/logo/logo-white.png" alt="Bright Volition">
+          <p><span lang="en">Electrical, Instrumentation &amp; Mechanical engineering, construction, and product supply
+              — headquartered in Sulaymaniyah, Kurdistan Region of Iraq.</span><span lang="ar">هندسة كهربائية وأجهزة
+              قياس وميكانيكية، وتنفيذ وتوريد — ومقرنا الرئيسي في السليمانية، إقليم كوردستان العراق.</span><span
+              lang="ckb">ئەندازیاری کارەبایی، ئامێری پێوانە و میکانیکی، جێبەجێکردن و دابینکردن — ناوەندی سەرەکیمان لە
+              سلێمانی، هەرێمی کوردستانی عێراقە.</span></p>
+          <div class="social-row">
+            <a href="mailto:info@brightvolition.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 6l10 7 10-7" />
+              </svg></a>
+            <a href="tel:+9647717065000" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8">
+                <path
+                  d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 1H6a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.5 2.1L7 9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c1 .4 2 .6 3 .7a2 2 0 011.7 2.1z" />
+              </svg></a>
+            <a href="https://www.linkedin.com/company/bright-volition/" target="_blank" rel="noopener"
+              aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 8.98h4v12.02H3zM9 8.98h3.8v1.64h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v6.33h-4v-5.61c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96v5.71H9z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h4><span lang="en">Company</span><span lang="ar">الشركة</span><span lang="ckb">کۆمپانیا</span></h4>
+          <ul>
+            <li><a href="about.html"><span lang="en">About Us</span><span lang="ar">من نحن</span><span
+                  lang="ckb">دەربارەمان</span></a></li>
+            <li><a href="services.html"><span lang="en">Services</span><span lang="ar">خدماتنا</span><span
+                  lang="ckb">خزمەتگوزاریەکانمان</span></a></li>
+            <li><a href="products.html"><span lang="en">Products</span><span lang="ar">منتجاتنا</span><span
+                  lang="ckb">بەرهەمەکانمان</span></a></li>
+            <li><a href="projects.html"><span lang="en">Projects</span><span lang="ar">مشاريعنا</span><span
+                  lang="ckb">پڕۆژەکانمان</span></a></li>
+            <li><a href="contact.html"><span lang="en">Contact</span><span lang="ar">تواصل معنا</span><span
+                  lang="ckb">پەیوەندیمان پێوە بکە</span></a></li>
+            <li><a href="assets/docs/Bright-Volition-Company-Profile.pdf" download><span lang="en">Company Profile
+                  (PDF)</span><span lang="ar">الملف التعريفي (PDF)</span><span lang="ckb">پرۆفایلی کۆمپانیا
+                  (PDF)</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <h4><span lang="en">Services</span><span lang="ar">الخدمات</span><span lang="ckb">خزمەتگوزاریەکان</span></h4>
+          <ul>
+            <li><span lang="en">Design &amp; Engineering</span><span lang="ar">التصميم والهندسة</span><span
+                lang="ckb">دیزاین و ئەندازیاری</span></li>
+            <li><span lang="en">Construction &amp; Installation</span><span lang="ar">التنفيذ والتركيب</span><span
+                lang="ckb">جێبەجێکردن و دامەزراندن</span></li>
+            <li><span lang="en">Commissioning &amp; Start-Up</span><span lang="ar">التشغيل التجريبي</span><span
+                lang="ckb">کارپێکردنی تاقیکارییانە</span></li>
+            <li><span lang="en">Product Supply</span><span lang="ar">توريد المنتجات</span><span lang="ckb">دابینکردنی
+                بەرهەم</span></li>
+            <li><span lang="en">Troubleshooting</span><span lang="ar">استكشاف الأعطال</span><span lang="ckb">شیکردنەوەی
+                کێشە</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4><span lang="en">Contact</span><span lang="ar">تواصل معنا</span><span lang="ckb">پەیوەندیمان پێوە
+              بکە</span></h4>
+          <ul class="footer-contact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              <span><span lang="en">Mardin Street, Opposite Dilan City, Sulaymaniyah (46001), Iraq</span><span
+                  lang="ar">شارع ماردين، مقابل مدينة دلان، السليمانية (46001)، العراق</span><span lang="ckb">شەقامی
+                  ماردین، بەرامبەر شاری دیلان، سلێمانی (46001)، عێراق</span></span>
+            </li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path
+                  d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 1H6a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.5 2.1L7 9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c1 .4 2 .6 3 .7a2 2 0 011.7 2.1z" />
+              </svg>
+              <span class="ltr-fixed">+964 771 706 5000</span>
+            </li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M2 6l10 7 10-7" />
+              </svg>
+              <span class="ltr-fixed">info@brightvolition.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span><span lang="en">© 2026 Bright Volition. All rights reserved.</span><span lang="ar">© 2026 الإرادة المشرقة.
+            جميع الحقوق محفوظة.</span><span lang="ckb">© 2026 برایت ڤۆلیشن. هەموو مافەکان پارێزراون.</span></span>
+        <span lang="en">Kurdistan Region, Iraq</span><span lang="ar">إقليم كوردستان، العراق</span><span
+          lang="ckb">هەرێمی کوردستان، عێراق</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+{
+  "northStar": "Registered & Reliable — flat, restrained, credibility-first B2B industrial site",
+  "colors": {
+    "navy": { "hex": "#201747", "role": "primary text, headings, dark backgrounds, buttons" },
+    "cream": { "hex": "#F6F2F4", "role": "page background, text-on-navy" },
+    "lavender": { "hex": "#B4B5DF", "role": "secondary text-on-navy, borders, muted fills" },
+    "gold": { "hex": "#F1B434", "role": "single accent — eyebrows, checkmarks, badges, hover, CTAs" }
+  },
+  "colorRule": "oneAccent",
+  "deliberateDeviationFromBrandSheet": {
+    "dropped": ["teal", "coral"],
+    "reason": "Mustafa's 2026-07-24 redesign intentionally flattened the palette to 4 colors. Do not reintroduce."
+  },
+  "typography": {
+    "rule": "oneFontFamilyPerScript",
+    "families": {
+      "en": { "family": "Gotham", "weights": [400, 500, 700, 900], "hosting": "self-hosted woff2" },
+      "ar": { "family": "Somar", "weights": [400, 500, 700, 900], "hosting": "self-hosted woff2" },
+      "ckb": { "family": "Ping", "weights": [400, 500, 700, 900], "hosting": "self-hosted woff2" }
+    },
+    "headingTuning": {
+      "latin": { "lineHeight": 1.15, "letterSpacing": "-.01em" },
+      "arabicKurdish": { "lineHeight": 1.55, "letterSpacing": "0", "reason": "Somar/Ping run taller and more connected than Gotham; Latin-tuned tight leading causes visual collision" }
+    }
+  },
+  "spacing": {
+    "container": "1200px",
+    "sectionPadding": { "default": "88px", "tight": "64px", "small": "56px", "mobile": "64px" },
+    "gridGap": "28px"
+  },
+  "radius": {
+    "sm": "8px",
+    "default": "14px",
+    "lg": "26px"
+  },
+  "shadowPolicy": "none — flat by default, cards use 1px lavender border instead",
+  "knownBugPattern": {
+    "name": "navy-on-navy invisible text",
+    "cause": "Direct color rules on classes like .eyebrow override inherited color; navy-background containers without an explicit scoped override render invisible text",
+    "requiredOverrides": [".bg-navy .eyebrow", ".grad-navy .eyebrow", ".cta-band .eyebrow", ".hero .eyebrow"],
+    "status": "fixed for all known containers as of 2026-07-25; check any new navy-background component against this list"
+  },
+  "languageHandling": {
+    "pattern": "single markup, lang-scoped spans, no duplication",
+    "toggleClasses": ["html.lang-ar", "html.lang-ckb"],
+    "rtl": true,
+    "logicalProperties": "required (padding-inline-start, inset-inline-start, etc.) — not left/right"
+  }
+}
