@@ -1,0 +1,340 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+/* ---------- Bright Volition brand tokens ----------
+   The four brand colours from the pre-Next stylesheet, unchanged. They sit
+   outside shadcn's semantic set on purpose: navy / cream / lavender / gold are
+   what the brand is called, and every component reaches for them by that name.
+   The shadcn semantic variables in :root below are then pointed at the same
+   colours, so a primitive pulled straight from the registry lands on brand
+   without being rewritten. */
+@theme {
+    --color-navy: #201747;
+    --color-cream: #f6f2f4;
+    --color-lavender: #b4b5df;
+    --color-gold: #f1b434;
+    --color-hairline: #b4b5df;
+    /* No shadow tokens on purpose. DESIGN.md's "flat by default" rule means
+       cards are separated by a 1px lavender border and a hover lift, never by
+       a drop shadow — the only shadowed surface on the site is the mobile nav
+       panel, which genuinely floats over the page. */
+}
+
+/* ---------- Motion tokens ----------
+   Shared with the sibling sites in this family: one easing family, exponential
+   deceleration — the curve of something heavy being set down precisely.
+   `static` keeps these emitted so the raw CSS in the motion layer below can
+   reference them by var(). Overriding Tailwind's two transition defaults
+   re-times every transition-* utility on the site at once: 150ms/ease-in-out
+   (twitchy, symmetrical) becomes 200ms of deceleration. */
+@theme static {
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --default-transition-duration: 200ms;
+    --default-transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+:root {
+    --background: #f6f2f4;
+    --foreground: #201747;
+    --card: #f6f2f4;
+    --card-foreground: #201747;
+    --popover: #f6f2f4;
+    --popover-foreground: #201747;
+    --primary: #f1b434;
+    --primary-foreground: #201747;
+    --secondary: #b4b5df;
+    --secondary-foreground: #201747;
+    --muted: #b4b5df;
+    --muted-foreground: #4a4270;
+    --accent: #b4b5df;
+    --accent-foreground: #201747;
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: #b4b5df;
+    --input: #b4b5df;
+    --ring: #f1b434;
+    --radius: 0.875rem;
+    --sidebar: #f6f2f4;
+    --sidebar-foreground: #201747;
+    --sidebar-primary: #201747;
+    --sidebar-primary-foreground: #f6f2f4;
+    --sidebar-accent: #b4b5df;
+    --sidebar-accent-foreground: #201747;
+    --sidebar-border: #b4b5df;
+    --sidebar-ring: #f1b434;
+
+    --font-sans: 'Gotham', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ---------- Self-hosted fonts: Latin (Gotham) ---------- */
+@font-face{font-family:'Gotham';src:url('/assets/fonts/Gotham-Book.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Gotham';src:url('/assets/fonts/Gotham-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Gotham';src:url('/assets/fonts/Gotham-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Gotham';src:url('/assets/fonts/Gotham-Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;}
+
+/* ---------- Self-hosted fonts: Arabic (UniSIRWAN Somar) ---------- */
+@font-face{font-family:'Somar';src:url('/assets/fonts/Somar-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Somar';src:url('/assets/fonts/Somar-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Somar';src:url('/assets/fonts/Somar-SemiBold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Somar';src:url('/assets/fonts/Somar-Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;}
+
+/* ---------- Self-hosted fonts: Kurdish Sorani (UniSIRWAN Ping) ---------- */
+@font-face{font-family:'Ping';src:url('/assets/fonts/Ping-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Ping';src:url('/assets/fonts/Ping-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Ping';src:url('/assets/fonts/Ping-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Ping';src:url('/assets/fonts/Ping-Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    /* Clears the sticky header when an #anchor is jumped to. */
+    scroll-padding-top: 130px;
+  }
+  /* Smooth anchor scrolling is motion — gate it on the visitor's preference. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-cream text-navy;
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  /* Tailwind's preflight strips heading sizes and paragraph margins, and the
+     pre-Next stylesheet set both globally rather than per component — so a
+     card that never named a size still got one. Restoring them here keeps the
+     content files free of typography, and any component that wants something
+     else still wins, because a utility class outranks this base layer. */
+  h1, h2, h3, h4 {
+    @apply text-navy;
+    margin: 0 0 0.5em;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  h1 { font-size: clamp(2.1rem, 4.4vw, 3.6rem); }
+  h2 { font-size: clamp(1.7rem, 3.2vw, 2.5rem); }
+  h3 { font-size: 1.28rem; }
+  p { margin: 0 0 1em; }
+
+  /* Arabic (Somar) and Kurdish (Ping) run taller and more connected than Latin
+     Gotham — the Latin-tuned tight leading and negative tracking above make
+     multi-line headlines look crowded in those scripts, so loosen both.
+     [lang="ckb"] is listed after [dir="rtl"] so Kurdish wins for its own
+     elements while Arabic keeps the generic RTL rule. */
+  [dir="rtl"] {
+    font-family: 'Somar', 'Segoe UI', Tahoma, Arial, sans-serif;
+  }
+  [lang="ckb"] {
+    font-family: 'Ping', 'Segoe UI', Tahoma, Arial, sans-serif;
+  }
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4 {
+    font-family: 'Somar', 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.55;
+    letter-spacing: 0;
+  }
+  [lang="ckb"] h1, [lang="ckb"] h2, [lang="ckb"] h3, [lang="ckb"] h4 {
+    font-family: 'Ping', 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.55;
+    letter-spacing: 0;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-[1200px] px-6;
+  }
+  /* Latin runs — phone numbers, emails, model codes — sitting inside RTL text.
+     Without the isolate the bidi algorithm reorders them and a number like
+     +964 771 706 5000 comes out scrambled. */
+  .ltr-fixed {
+    unicode-bidi: isolate;
+    direction: ltr;
+    display: inline-block;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOTION
+
+   Shared with the sibling sites: one material idea, the datum line. A rule is
+   struck, and content registers to it. Nothing floats, drifts, or bounces.
+   Bright Volition's eyebrow rule is gold, so the struck line is literally the
+   brand mark being drawn before the label lands against it.
+
+   Everything is gated on html[data-motion="on"], set before first paint by the
+   inline script in app/[lang]/layout.jsx only when JS runs AND the visitor has
+   not asked for reduced motion. No JS, stalled hydration, and reduced-motion
+   all resolve to the same safe state: the page fully rendered and legible,
+   with no animation at all.
+
+   Two vars tune every animation below, inheritable so a parent can set them:
+     --m-delay  when it starts
+     --m-dur    how long it runs
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* A rule is struck outward from its anchored edge. */
+@keyframes m-strike {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Content registers to the rule: a short rise into place, never a float. */
+@keyframes m-register {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* The level line passes and the content is there behind it. The end state uses
+   negative insets so descenders, RTL tails, and focus rings are never clipped
+   once the animation has settled. */
+@keyframes m-wipe {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(10px); }
+  to   { opacity: 1; clip-path: inset(-45% -30% -20% -30%); transform: none; }
+}
+
+@keyframes m-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* The photograph settles into its frame rather than arriving already stopped. */
+@keyframes m-settle {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1); }
+}
+
+@layer components {
+  /* ---------- On-load choreography ----------
+     For the focal entrance only: the hero, and the page header that echoes it
+     on every subpage. These run on mount, which means they also run on each
+     client-side navigation — the incoming page setting itself out is the page
+     transition. */
+
+  [data-motion='on'] .m-register,
+  [data-motion='on'] .m-wipe,
+  [data-motion='on'] .m-fade,
+  [data-motion='on'] .m-strike,
+  [data-motion='on'] .m-settle {
+    animation-delay: var(--m-delay, 0ms);
+    animation-duration: var(--m-dur, 560ms);
+    animation-timing-function: var(--ease-out-expo);
+    animation-fill-mode: both;
+  }
+
+  [data-motion='on'] .m-register { animation-name: m-register; }
+  [data-motion='on'] .m-fade     { animation-name: m-fade; }
+  [data-motion='on'] .m-wipe     { animation-name: m-wipe; --m-dur: 820ms; }
+  [data-motion='on'] .m-strike   { animation-name: m-strike; transform-origin: left center; }
+  [data-motion='on'] .m-settle {
+    animation-name: m-settle;
+    animation-timing-function: var(--ease-out-quart);
+    --m-dur: 1800ms;
+  }
+
+  /* The eyebrow's gold rule lives in a ::before, so it gets its own hook. Its
+     label fades in over the same beat, so the pair reads as one gesture: a
+     line drawn, a label set against it. */
+  [data-motion='on'] .m-eyebrow::before {
+    animation: m-strike var(--m-rule-dur, 520ms) var(--ease-out-expo) var(--m-delay, 0ms) both;
+    transform-origin: left center;
+  }
+
+  /* Rules are anchored to the inline start, which flips for Arabic and Kurdish. */
+  [data-motion='on'][dir='rtl'] .m-strike,
+  [data-motion='on'][dir='rtl'] .m-eyebrow::before {
+    transform-origin: right center;
+  }
+
+  /* ---------- Scroll reveals ----------
+     Driven by components/Reveal.jsx, which flips data-reveal to "in" the first
+     time an element crosses into view. The hidden state is scoped to
+     [data-motion='on'] so it can never strand content. */
+
+  [data-motion='on'] [data-reveal]:not([data-reveal='in']),
+  [data-motion='on'] [data-reveal-group]:not([data-reveal-group='in']) > * {
+    opacity: 0;
+  }
+
+  [data-motion='on'] [data-reveal='in'] {
+    animation-delay: var(--m-delay, 0ms);
+    animation-duration: var(--m-dur, 620ms);
+    animation-timing-function: var(--ease-out-quart);
+    animation-fill-mode: both;
+  }
+
+  [data-motion='on'] [data-reveal='in'][data-variant='register'] { animation-name: m-register; }
+  [data-motion='on'] [data-reveal='in'][data-variant='fade']     { animation-name: m-fade; }
+  [data-motion='on'] [data-reveal='in'][data-variant='wipe'] {
+    animation-name: m-wipe;
+    animation-timing-function: var(--ease-out-expo);
+    --m-dur: 900ms;
+  }
+
+  /* A grid of cards genuinely is a list, so it may arrive as one. The cascade
+     is capped at four steps — past that every remaining sibling shares the last
+     delay, so a 12-card grid still finishes in 300ms rather than a second and
+     a half of drip. */
+  [data-motion='on'] [data-reveal-group='in'] > * {
+    animation: m-register var(--m-dur, 620ms) var(--ease-out-quart) both;
+    animation-delay: calc(var(--m-delay, 0ms) + 300ms);
+  }
+  [data-motion='on'] [data-reveal-group='in'] > *:nth-child(1) { animation-delay: calc(var(--m-delay, 0ms) + 0ms); }
+  [data-motion='on'] [data-reveal-group='in'] > *:nth-child(2) { animation-delay: calc(var(--m-delay, 0ms) + 75ms); }
+  [data-motion='on'] [data-reveal-group='in'] > *:nth-child(3) { animation-delay: calc(var(--m-delay, 0ms) + 150ms); }
+  [data-motion='on'] [data-reveal-group='in'] > *:nth-child(4) { animation-delay: calc(var(--m-delay, 0ms) + 225ms); }
+}

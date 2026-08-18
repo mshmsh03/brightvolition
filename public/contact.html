@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bright Volition</title>
+<link rel="canonical" href="https://brightvolition.com/en/contact/">
+<meta name="robots" content="noindex,follow">
+<meta http-equiv="refresh" content="0; url=/en/contact/">
+<script>
+(function () {
+  var seg = 'en';
+  try {
+    var saved = localStorage.getItem('bv-lang');
+    if (saved === 'ar') seg = 'ar';
+    else if (saved === 'ckb' || saved === 'ku') seg = 'ku';
+    else {
+      var nav = (navigator.language || '').toLowerCase();
+      if (nav.indexOf('ar') === 0) seg = 'ar';
+      else if (nav.indexOf('ckb') === 0 || nav.indexOf('ku') === 0) seg = 'ku';
+    }
+  } catch (e) {}
+  location.replace(seg === 'en' ? '/en/contact/' : '/SEG/contact/'.replace('SEG', seg));
+})();
+</script>
+</head>
+<body><p>Redirecting to <a href="/en/contact/">/en/contact/</a>…</p></body>
+</html>
