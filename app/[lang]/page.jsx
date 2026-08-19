@@ -1,10 +1,6 @@
 import { buildMetadata, BASE, OG_IMAGE, pageUrl } from '../../lib/metadata';
 import { SITE, PAGE_META, EMAIL, PHONE_HREF } from '../../lib/site-data';
-import IndexEn from './_content/index.en';
-import IndexAr from './_content/index.ar';
-import IndexKu from './_content/index.ku';
-
-const CONTENT = { en: IndexEn, ar: IndexAr, ku: IndexKu };
+import Home from './_content/index';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -42,14 +38,13 @@ function jsonLd(lang) {
 
 export default async function HomePage({ params }) {
   const { lang } = await params;
-  const Content = CONTENT[lang];
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(lang)) }}
       />
-      <Content />
+      <Home lang={lang} />
     </>
   );
 }

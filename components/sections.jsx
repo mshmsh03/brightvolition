@@ -51,7 +51,7 @@ export function Eyebrow({ tone = 'navy', className = '', style, children }) {
 export function SectionHead({ eyebrow, tone, title, align = 'center', className = '', children }) {
   const centered = align === 'center';
   return (
-    <Reveal as="div" className={`mb-12 max-w-[760px] ${centered ? 'mx-auto text-center' : ''} ${className}`}>
+    <Reveal as="div" className={`mb-12 max-w-measure ${centered ? 'mx-auto text-center' : ''} ${className}`}>
       {eyebrow ? <Eyebrow tone={tone}>{eyebrow}</Eyebrow> : null}
       <h2 className="mb-2 text-[clamp(1.7rem,3.2vw,2.5rem)]">{title}</h2>
       {children ? <Lede className={centered ? 'mx-auto' : ''}>{children}</Lede> : null}
@@ -97,7 +97,7 @@ export function Split({ className = '', children }) {
 // baseline no matter how tall the prose beside it runs.
 export function Media({ src, alt, position, className = '' }) {
   return (
-    <div className={`relative aspect-[4/3] overflow-hidden rounded-[26px] border border-lavender ${className}`}>
+    <div className={`relative aspect-[4/3] overflow-hidden rounded-panel border border-lavender ${className}`}>
       <img src={src} alt={alt} className="size-full object-cover" style={position ? { objectPosition: position } : undefined} />
     </div>
   );
@@ -123,7 +123,7 @@ export function Hero({ image, wide = false, children }) {
     <section className="relative isolate overflow-hidden pt-28 pb-18 text-cream md:pt-32 md:pb-25">
       <HeroBackdrop image={image} />
       <div className="wrap">
-        <div className={wide ? 'max-w-[900px]' : 'max-w-[760px]'}>{children}</div>
+        <div className={wide ? 'max-w-[900px]' : 'max-w-measure'}>{children}</div>
       </div>
     </section>
   );
@@ -153,7 +153,7 @@ export function PageHero({
     >
       <HeroBackdrop image={image} />
       <div className="wrap">
-        <div className={wide ? 'max-w-[900px]' : 'max-w-[760px]'}>
+        <div className={wide ? 'max-w-[900px]' : 'max-w-measure'}>
           <div
             className="m-register mb-4 text-[.85rem] font-medium text-lavender"
             style={{ '--m-delay': '90ms', '--m-dur': '520ms' }}
@@ -225,14 +225,14 @@ export function Card({ icon, title, tone = 'light', className = '', children }) 
   const dark = tone === 'dark';
   return (
     <div
-      className={`h-full rounded-[14px] p-8 transition-[transform,border-color] duration-250 hover:-translate-y-1.5 ${
+      className={`h-full rounded-card p-8 transition-[transform,border-color] duration-250 hover:-translate-y-1.5 ${
         dark
           ? 'border-none bg-navy text-lavender [&_h3]:text-cream'
           : 'border border-lavender bg-cream hover:border-gold'
       } ${className}`}
     >
       {icon ? <CardIcon icon={icon} /> : null}
-      {title ? <h3 className="mb-2.5 text-[1.28rem]">{title}</h3> : null}
+      {title ? <h3 className="mb-2.5 text-card-title">{title}</h3> : null}
       {children}
     </div>
   );
@@ -243,12 +243,12 @@ export function Card({ icon, title, tone = 'light', className = '', children }) 
 export function NumCard({ num, title, className = '', children }) {
   return (
     <div
-      className={`relative h-full rounded-[14px] border border-lavender bg-cream p-8 pt-11 transition-[transform,border-color] duration-250 hover:-translate-y-1.5 hover:border-gold ${className}`}
+      className={`relative h-full rounded-card border border-lavender bg-cream p-8 pt-11 transition-[transform,border-color] duration-250 hover:-translate-y-1.5 hover:border-gold ${className}`}
     >
       <span className="absolute -top-4.5 start-7 flex size-11 items-center justify-center rounded-full bg-navy font-black text-gold">
         {num}
       </span>
-      <h3 className="mb-2.5 text-[1.28rem]">{title}</h3>
+      <h3 className="mb-2.5 text-card-title">{title}</h3>
       {children}
     </div>
   );
@@ -320,7 +320,7 @@ export function Step({ num, title, children }) {
       <div className="mb-4 flex size-13 items-center justify-center rounded-full bg-navy text-[1.1rem] font-black text-gold">
         {num}
       </div>
-      <h3 className="mb-2 text-[1.28rem]">{title}</h3>
+      <h3 className="mb-2 text-card-title">{title}</h3>
       {children}
     </div>
   );
@@ -371,11 +371,11 @@ export function SpecList({ items }) {
   return (
     <Reveal
       as="dl"
-      className="grid grid-cols-1 overflow-hidden rounded-[14px] border border-lavender [&>div:nth-child(even)]:bg-lavender sm:grid-cols-2 sm:[&>div:nth-child(even)]:bg-transparent sm:[&>div:nth-child(4n-1)]:bg-lavender sm:[&>div:nth-child(4n)]:bg-lavender"
+      className="grid grid-cols-1 overflow-hidden rounded-card border border-lavender [&>div:nth-child(even)]:bg-lavender sm:grid-cols-2 sm:[&>div:nth-child(even)]:bg-transparent sm:[&>div:nth-child(4n-1)]:bg-lavender sm:[&>div:nth-child(4n)]:bg-lavender"
     >
       {items.map((item) => (
         <div key={item.label} className="border-b border-lavender px-5.5 py-4.5">
-          <dt className="mb-1 text-[.75rem] font-bold tracking-[.08em] uppercase">{item.label}</dt>
+          <dt className="mb-1 text-[.75rem] font-bold tracking-eyebrow uppercase">{item.label}</dt>
           <dd className="m-0 font-bold">{item.value}</dd>
         </div>
       ))}
@@ -387,7 +387,7 @@ export function SpecList({ items }) {
 // page sideways — several of these are far wider than a phone.
 export function DataTable({ headers, rows }) {
   return (
-    <Reveal as="div" className="overflow-x-auto rounded-[14px] border border-lavender">
+    <Reveal as="div" className="overflow-x-auto rounded-card border border-lavender">
       <table className="w-full min-w-160 border-collapse bg-cream">
         <thead>
           <tr>
@@ -515,7 +515,7 @@ export function CtaBand({ eyebrow, title, text, align = 'center', className = ''
   return (
     <Reveal
       as="div"
-      className={`rounded-[26px] bg-navy px-6 py-9 text-cream sm:px-12 sm:py-14 ${centered ? 'text-center' : ''} ${className}`}
+      className={`rounded-panel bg-navy px-6 py-9 text-cream sm:px-12 sm:py-14 ${centered ? 'text-center' : ''} ${className}`}
     >
       {eyebrow ? (
         <Eyebrow tone="light" className={centered ? 'justify-center' : ''}>
@@ -560,7 +560,7 @@ export function CtaButton({ href, variant = 'gold', download = false, arrow = fa
 // ---------------------------------------------------------------------------
 
 export function ContactCard({ className = '', children }) {
-  return <div className={`rounded-[14px] border border-lavender bg-cream p-7 sm:p-9 ${className}`}>{children}</div>;
+  return <div className={`rounded-card border border-lavender bg-cream p-7 sm:p-9 ${className}`}>{children}</div>;
 }
 
 // One line of the contact block: an icon plate, a small uppercase label, and
@@ -599,7 +599,7 @@ export function SocialButton({ href, label, external = false, children }) {
 
 export function MapFrame({ src, title }) {
   return (
-    <Reveal as="div" className="overflow-hidden rounded-[26px] border border-lavender">
+    <Reveal as="div" className="overflow-hidden rounded-panel border border-lavender">
       <iframe
         src={src}
         title={title}

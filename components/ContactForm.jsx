@@ -29,8 +29,8 @@ export default function ContactForm({ t }) {
   }
 
   return (
-    <Reveal as="div" className="rounded-[14px] border border-lavender bg-cream p-7 sm:p-9">
-      <h3 className="mb-1.5 text-[1.28rem]">{t.heading}</h3>
+    <Reveal as="div" className="rounded-card border border-lavender bg-cream p-7 sm:p-9">
+      <h3 className="mb-1.5 text-card-title">{t.heading}</h3>
       <p className="mb-6">{t.intro}</p>
       <form onSubmit={handleSubmit}>
         <FieldRow>

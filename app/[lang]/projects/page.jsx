@@ -1,9 +1,5 @@
 import { buildMetadata } from '../../../lib/metadata';
-import ProjectsEn from '../_content/projects.en';
-import ProjectsAr from '../_content/projects.ar';
-import ProjectsKu from '../_content/projects.ku';
-
-const CONTENT = { en: ProjectsEn, ar: ProjectsAr, ku: ProjectsKu };
+import Projects from '../_content/projects';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -12,6 +8,5 @@ export async function generateMetadata({ params }) {
 
 export default async function ProjectsPage({ params }) {
   const { lang } = await params;
-  const Content = CONTENT[lang];
-  return <Content />;
+  return <Projects lang={lang} />;
 }

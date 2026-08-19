@@ -50,7 +50,7 @@ export default function Footer({ lang }) {
           </div>
 
           <div>
-            <h4 className="mb-4.5 text-[.9rem] font-bold tracking-[.08em] text-cream uppercase">
+            <h4 className="mb-4.5 text-[.9rem] font-bold tracking-eyebrow text-cream uppercase">
               {t.footerCompanyHeading}
             </h4>
             <ul>
@@ -72,7 +72,7 @@ export default function Footer({ lang }) {
           </div>
 
           <div>
-            <h4 className="mb-4.5 text-[.9rem] font-bold tracking-[.08em] text-cream uppercase">
+            <h4 className="mb-4.5 text-[.9rem] font-bold tracking-eyebrow text-cream uppercase">
               {t.footerServicesHeading}
             </h4>
             <ul>
@@ -85,7 +85,7 @@ export default function Footer({ lang }) {
           </div>
 
           <div>
-            <h4 className="mb-4.5 text-[.9rem] font-bold tracking-[.08em] text-cream uppercase">
+            <h4 className="mb-4.5 text-[.9rem] font-bold tracking-eyebrow text-cream uppercase">
               {t.contactHeading}
             </h4>
             <ul>

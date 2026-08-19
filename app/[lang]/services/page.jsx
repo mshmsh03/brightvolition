@@ -1,9 +1,5 @@
 import { buildMetadata } from '../../../lib/metadata';
-import ServicesEn from '../_content/services.en';
-import ServicesAr from '../_content/services.ar';
-import ServicesKu from '../_content/services.ku';
-
-const CONTENT = { en: ServicesEn, ar: ServicesAr, ku: ServicesKu };
+import Services from '../_content/services';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -12,6 +8,5 @@ export async function generateMetadata({ params }) {
 
 export default async function ServicesPage({ params }) {
   const { lang } = await params;
-  const Content = CONTENT[lang];
-  return <Content />;
+  return <Services lang={lang} />;
 }

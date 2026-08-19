@@ -54,6 +54,16 @@
     --color-lavender: #b4b5df;
     --color-gold: #f1b434;
     --color-hairline: #b4b5df;
+
+    /* Repeated measurements that were arbitrary values in the markup. Naming
+       them is what makes DESIGN.md's radius scale real: it was documented as
+       8/14/26 but written as rounded-[14px] in six places, so nothing stopped
+       a seventh from being 15. */
+    --text-card-title: 1.28rem;   /* every card / panel <h3> */
+    --radius-card: 14px;          /* cards, tables, small panels */
+    --radius-panel: 26px;         /* photos and large surfaces */
+    --tracking-eyebrow: 0.08em;   /* the small caps label above headings */
+    --container-measure: 760px;   /* prose column — a comfortable line length */
     /* No shadow tokens on purpose. DESIGN.md's "flat by default" rule means
        cards are separated by a 1px lavender border and a hover lift, never by
        a drop shadow — the only shadowed surface on the site is the mobile nav
