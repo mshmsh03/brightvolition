@@ -42,6 +42,11 @@ export default function Reveal({
     // Nothing to observe if the page is not animating: the element is already
     // at its final state, so skip the observer entirely.
     if (document.documentElement.dataset.motion !== 'on') {
+      // Only knowable on the client: html[data-motion] is written by the
+      // inline script in the layout, so seeding useState with it would render
+      // something different on the server and break hydration. Runs once, and
+      // the element is already at its final state, so nothing cascades.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setInView(true);
       return;
     }

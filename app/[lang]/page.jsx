@@ -47,7 +47,6 @@ export default async function HomePage({ params }) {
     <>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(lang)) }}
       />
       <Content />

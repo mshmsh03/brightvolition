@@ -24,7 +24,7 @@ const FORM = {
   message: 'Message',
   send: 'Send Message',
   defaultSubject: 'Website enquiry',
-  note: "Your email app should now be open with your message ready to send. If it didn't open, please email us directly at info@brightvolition.com.",
+  note: "Your email app should now be open with your message ready to send. If it didn’t open, please email us directly at info@brightvolition.com.",
 };
 
 export default function ContactEn() {
@@ -37,7 +37,7 @@ export default function ContactEn() {
         crumb="Contact"
         eyebrow="Your Trusted Partner in Engineering Solutions"
         title="Ready to Collaborate?"
-        lede="Reach out with your inquiries or RFQs — we're here to deliver precision, quality, and trust."
+        lede="Reach out with your inquiries or RFQs — we’re here to deliver precision, quality, and trust."
         className="md:pb-15"
       />
 

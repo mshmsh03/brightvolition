@@ -98,7 +98,7 @@ export default function IndexEn() {
             <h2>Engineering-Led. Client-Focused. Built in the Kurdistan Region.</h2>
             <Lede className="mb-5">
               Bright Volition was founded in 2022 as an engineering office specializing in Electrical,
-              Instrumentation, and Mechanical services. Since then we've incorporated, become a registered KRG
+              Instrumentation, and Mechanical services. Since then we’ve incorporated, become a registered KRG
               company, and diversified into new sectors — always guided by a strict quality policy.
             </Lede>
             <Checklist>
@@ -123,7 +123,7 @@ export default function IndexEn() {
             <h2>Reliability & Grid-Impact Study for a 50MW Solar Power Plant</h2>
             <Lede className="mb-6 text-lavender">
               For Sinoma DCC Line 2 / Delta Cement Company in Bazyan, Sulaymaniyah, we delivered a full
-              power-system impact study — coordinated directly with Iraq's Ministry of Electricity.
+              power-system impact study — coordinated directly with Iraq’s Ministry of Electricity.
             </Lede>
             <Stats>
               <Stat value="50MW">DC solar plant studied</Stat>
@@ -195,8 +195,8 @@ export default function IndexEn() {
       <Section>
         <CtaBand
           eyebrow="Ready to Collaborate?"
-          title="Let's Build Something Reliable Together"
-          text="Reach out with your inquiries or RFQs — we're here to deliver precision, quality, and trust."
+          title="Let’s Build Something Reliable Together"
+          text="Reach out with your inquiries or RFQs — we’re here to deliver precision, quality, and trust."
         >
           <CtaButton href="/en/contact/" variant="gold" arrow>
             Contact Us

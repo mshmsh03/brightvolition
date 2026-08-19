@@ -31,7 +31,7 @@ export default function ProductsEn() {
         crumb="Products"
         eyebrow="Product Supply & Sourcing"
         title="A Complete Range of Electrical, Instrument & Mechanical Products"
-        lede="We supply components, systems, and precision instruments — partnering with the world's leading manufacturers to ensure reliability and accuracy from energy source to end-use."
+        lede="We supply components, systems, and precision instruments — partnering with the world’s leading manufacturers to ensure reliability and accuracy from energy source to end-use."
       />
 
       {/* IN-PAGE NAV */}
@@ -99,7 +99,7 @@ export default function ProductsEn() {
         <Reveal as="div" className="mb-8">
           <Lede>
             A complete range of precision instruments for measurement, control, and safety, partnering with the
-            world's leading manufacturers to ensure reliability and accuracy.
+            world’s leading manufacturers to ensure reliability and accuracy.
           </Lede>
         </Reveal>
         <Grid cols={2} className="gap-x-7 gap-y-0">
@@ -219,7 +219,7 @@ export default function ProductsEn() {
       <Section>
         <CtaBand
           title="Looking for a Specific Component?"
-          text="Send us your BOQ or spec sheet and we'll source it — reliably, and at the right price."
+          text="Send us your BOQ or spec sheet and we’ll source it — reliably, and at the right price."
         >
           <CtaButton href="/en/contact/" variant="gold">
             Request a Quote

@@ -19,12 +19,16 @@ import {
 // languages — PSS®E is PSS®E on every drawing and in every ministry submittal.
 const TOOLS = {
   headers: ['Tool / Software', 'Function'],
+  /* eslint-disable react/jsx-key -- these are table cells, not a rendered
+     list. DataTable keys every <tr> and <td> itself, and each element below
+     is the single child of one <td>, so a key here would key nothing. */
   rows: [
     [<strong className="ltr-fixed">PSS®E</strong>, 'Grid modeling, power flow, fault studies'],
     [<strong className="ltr-fixed">ETAP</strong>, 'Protection coordination study'],
     ['Excel / Docs', 'Reports and Ministry submittals'],
     [<strong className="ltr-fixed">PPC</strong>, 'Power Project Control'],
   ],
+  /* eslint-enable react/jsx-key */
 };
 
 export default function ProjectsEn() {
@@ -37,7 +41,7 @@ export default function ProjectsEn() {
         crumb="Projects"
         tag="2025 Model Project"
         title="Engineering: Electrical — 50MW PV Power Plant"
-        lede="Reliability and Impact Study for a 50MW PV Power Plant, delivered in coordination with Iraq's Ministry of Electricity."
+        lede="Reliability and Impact Study for a 50MW PV Power Plant, delivered in coordination with Iraq’s Ministry of Electricity."
       />
 
       {/* SNAPSHOT */}
@@ -108,7 +112,7 @@ export default function ProjectsEn() {
               the grid.
             </ChecklistItem>
             <ChecklistItem>
-              Protection Coordination Review to assess the PV system's safety at the grid connection point.
+              Protection Coordination Review to assess the PV system’s safety at the grid connection point.
             </ChecklistItem>
             <ChecklistItem>
               Technical reports aligned with ministry expectations and local regulatory standards.
@@ -139,7 +143,7 @@ export default function ProjectsEn() {
       <Section>
         <CtaBand
           title="Planning a Power or Industrial Project?"
-          text="Let's talk about feasibility, grid studies, or full EPC-style delivery for your next project."
+          text="Let’s talk about feasibility, grid studies, or full EPC-style delivery for your next project."
         >
           <CtaButton href="/en/contact/" variant="gold">
             Start a Conversation
