@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import { LANGS, SITE } from '../../lib/site-data';
 import { BASE } from '../../lib/metadata';
 import Header from '../../components/Header';
@@ -31,12 +30,6 @@ export const metadata = {
 // state for a frame and then start over. It has to run inline and blocking: a
 // deferred script would paint first and cause exactly that flash.
 //
-// Delivered through next/script at beforeInteractive rather than as a bare
-// <script> tag. A raw script element inside a component is server-rendered but
-// never executed on the client, so React logs a console error for it on every
-// render; beforeInteractive is the supported way to get the same inline code
-// into the initial HTML without that.
-//
 // The timer is the failsafe. Every scroll reveal is hidden by CSS while
 // data-motion is "on", so if the bundle never runs, MotionRoot never sets
 // data-hydrated and motion is switched back off — leaving the page fully
@@ -64,9 +57,13 @@ export default async function LangLayout({ children, params }) {
   return (
     <html lang={t.hreflang} dir={t.dir}>
       <head>
-        <Script id="arm-motion" strategy="beforeInteractive">
-          {ARM_MOTION}
-        </Script>
+        {/* Raw <script> rather than next/script: `beforeInteractive` leaves the
+            tag in the React tree, so any client navigation that re-renders this
+            layout — switching locale, which changes [lang] — recreates the
+            element. React never executes a script it creates on the client and
+            logs a console error for each one. This form is written into the
+            initial HTML and left alone afterwards. */}
+        <script dangerouslySetInnerHTML={{ __html: ARM_MOTION }} />
       </head>
       <body>
         <MotionRoot />

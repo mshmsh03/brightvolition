@@ -73,8 +73,15 @@ export default function Header({ lang }) {
               whose baseline sits higher than Gotham's, so letting the three
               links size themselves left KU riding above EN and AR. */}
           <div className="flex items-stretch overflow-hidden rounded-full border-[1.5px] border-lavender text-[.75rem] leading-none font-bold sm:text-[.8rem]">
+            {/* A plain <a>, not <Link>, so changing language is a full document
+                load. Two reasons. The root layout carries <html lang dir> and
+                the inline motion script; a soft nav re-renders it on the
+                client, and React logs an error for every <script> element it
+                creates there. And swapping ltr/rtl under a live React tree
+                re-flows every mounted component at once — reloading gives the
+                new direction a clean first paint instead. */}
             {langLinks.map((l) => (
-              <Link
+              <a
                 key={l.lang}
                 href={l.href}
                 lang={SITE[l.lang].hreflang}
@@ -87,7 +94,7 @@ export default function Header({ lang }) {
                 }`}
               >
                 {l.label}
-              </Link>
+              </a>
             ))}
           </div>
 
