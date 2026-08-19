@@ -25,7 +25,7 @@ export copies verbatim:
 
 | File | Why it is there |
 | --- | --- |
-| `CNAME` | Tells GitHub Pages which custom domain to answer for. Deleting it unsets the domain. |
+| `CNAME` | Inert. Kept only so a switch back to branch-based publishing would still carry the domain — it is **not** what binds `brightvolition.com` today. See [The custom domain](#the-custom-domain). |
 | `.nojekyll` | Without it, GitHub Pages runs Jekyll, and Jekyll ignores every directory starting with `_` — including `_next`. The site would load with no CSS or JS. |
 | `index.html`, `about.html`, … | Redirect stubs for the pre-Next URLs (see below). |
 | `robots.txt`, `sitemap.xml` | Regenerate with `node scripts/make-stubs.cjs public` if the page list changes. |
@@ -44,6 +44,38 @@ does not deploy.
 The one-time GitHub setting: **Settings → Pages → Build and deployment →
 Source: GitHub Actions**. If it is still set to "Deploy from a branch", the
 workflow will run green and nothing will change on the live site.
+
+After publishing, the workflow loads `/`, `/en/`, `/ar/` and `/ku/` on the real
+domain and fails on anything other than a 200. Building the right files and
+serving them at the right address are separate things (see below), and without
+that step a site that is completely unreachable still finishes green.
+
+## The custom domain
+
+**`brightvolition.com` is bound in Settings → Pages, not by any file in this
+repo.** Under branch-based publishing a `CNAME` file at the published root is
+what sets the domain; under GitHub Actions publishing that stops being true, and
+the setting is the only thing that counts.
+
+This already caused one outage. The migration to Next.js moved `CNAME` from the
+repo root into `public/` and switched publishing to Actions in the same change.
+The file survived, so the build's `Verify export` check for `out/CNAME` passed —
+but nothing read it any more, the domain came unbound, and every URL returned
+GitHub's "Site not found" while the workflow reported success. The artifact was
+correct the whole time; `mshmsh03.github.io/brightvolition/en/` served it
+normally throughout. Re-entering the domain in Settings fixed it with no rebuild.
+
+So there are now two `CNAME` files, and **neither one binds the domain**:
+
+| Path | Where it came from | Effect |
+| --- | --- | --- |
+| `CNAME` | Committed automatically by GitHub when the domain was set in Settings | None while publishing via Actions. Not copied into `out/`. |
+| `public/CNAME` | Ours, copied to `out/CNAME` by the export | None. Served as a plain file at `/CNAME`. |
+
+Neither is safe to treat as the source of truth. If the domain ever drops off
+again — the symptom is "Site not found · GitHub Pages" on every URL, including
+`/` — re-enter it under **Settings → Pages → Custom domain**. Nothing needs to
+be rebuilt or pushed.
 
 ## URLs
 

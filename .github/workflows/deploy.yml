@@ -58,3 +58,35 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      # Publishing an artifact and serving it at the right address are separate
+      # things. The custom domain is a repo setting this workflow cannot see
+      # (DEPLOY.md explains why), and when it is unset every step above still
+      # passes while the live URL returns GitHub's "Site not found". Load the
+      # real domain so that failure is red instead of green. This goes through
+      # Cloudflare, so it checks the whole path a visitor takes, not just Pages.
+      - name: Smoke-check the live site
+        run: |
+          set -euo pipefail
+          failed=0
+          for url in https://brightvolition.com/ \
+                     https://brightvolition.com/en/ \
+                     https://brightvolition.com/ar/ \
+                     https://brightvolition.com/ku/; do
+            ok=0
+            for attempt in 1 2 3 4 5; do
+              code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "$url" || echo 000)
+              if [ "$code" = "200" ]; then
+                echo "ok      $url"
+                ok=1
+                break
+              fi
+              echo "retry $attempt  $url -> $code"
+              sleep 10
+            done
+            if [ "$ok" != "1" ]; then
+              echo "FAILED  $url"
+              failed=1
+            fi
+          done
+          [ "$failed" = "0" ]
