@@ -205,6 +205,13 @@
     unicode-bidi: isolate;
     direction: ltr;
     display: inline-block;
+    /* inline-block makes the run an unbreakable box, so the longest address —
+       procurement@brightvolition.com — pushed the contact page 11px wider than
+       a 390px phone and the whole page scrolled sideways. `anywhere` rather
+       than `break-word` because only `anywhere` also shrinks the box's
+       min-content width, which is what the overflow was measuring. Short runs
+       (PSS®E, ETAP, phone numbers) never reach a break. */
+    overflow-wrap: anywhere;
   }
 }
 
