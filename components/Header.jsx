@@ -37,37 +37,58 @@ export default function Header({ lang }) {
 
   return (
     <header className="sticky top-0 z-200 border-b border-lavender bg-cream supports-[backdrop-filter]:backdrop-blur-[10px]">
-      <div className="wrap flex h-23 items-center justify-between gap-3 sm:h-26 md:h-28">
+      <div className="wrap flex h-23 items-center justify-between gap-2.5 sm:h-26 md:h-28">
         {/* The mark is taller than the bar on purpose — it is the one element
             allowed to break the header's line, which is what makes the bar
             read as a rule the logo sits on rather than a box it sits in. */}
         <Link href={pagePath(lang, 'index')} className="flex items-center">
+          {/* object-contain is a safety net, and it is load-bearing. The source
+              is square (2334×2334) and this is a flex child with the default
+              flex-shrink: 1, so when the row runs out of room the browser
+              narrows this box — and a plain <img> then draws the logo
+              horizontally squashed rather than smaller. That is exactly what
+              used to happen here: 0.93 aspect at desktop, 0.79 at the lg
+              breakpoint, on the client's brand mark.
+
+              The spacing below is now sized so the box never has to shrink at
+              all. This line means that if it ever does again — a longer
+              translation, a seventh nav item — the logo scales down in
+              proportion instead of distorting. Do not remove it because
+              "the header fits fine"; that is the state it protects. */}
           <img
             src="/assets/img/logo/logo-navy.png"
             alt={t.brandAlt}
-            className="h-28 w-auto sm:h-32.5 md:h-37.5"
+            className="h-28 w-auto object-contain sm:h-32.5 md:h-37.5"
           />
         </Link>
 
         {/* Desktop nav */}
-        {/* gap-1 + px-3 rather than gap-1.5 + px-4, and whitespace-nowrap on
-            the links. The three go together and none of them works alone.
+        {/* The spacing here is measured, not chosen. Kurdish
+            "پەیوەندیمان پێوە بکە" is three words where English has one, so at
+            the original gap-1.5 + px-4 it wrapped to two lines and stood 70px
+            tall against its siblings' 45px.
 
-            Kurdish "پەیوەندیمان پێوە بکە" is three words where English has one,
-            so it wrapped to two lines and stood taller than its siblings.
-            nowrap fixes that but widens the nav by 52px, and the row has no
-            slack: every item here has the default flex-shrink: 1, so the extra
-            width is taken out of the logo — which is a square image and simply
-            renders narrower, i.e. visibly squashed. Unwrapping at px-4 drove it
-            to a 0.45 aspect ratio at the lg breakpoint.
+            whitespace-nowrap alone makes that worse rather than better. It
+            widens the nav by 52px, and every item in this row has the default
+            flex-shrink: 1, so the width comes straight out of the logo (see
+            the note on the logo image above). The fix is to keep the nav's
+            natural width low enough that nothing has to shrink at all.
 
-            Tightening the pills pays for the extra width instead. Measured on
-            the built Kurdish page, this is better than the old spacing at every
-            width, not just even: at 1024px the logo goes 0.795 -> 0.838 aspect,
-            at 1100px it reaches a true 1.0, and at 1280px+ 0.932 -> 0.983.
+            Widest case is Kurdish. Budget at the two tight viewports, where
+            .wrap gives 976px and 1152px of content:
 
-            So: keep the nav's natural width at or below ~684px. Widening these
-            pills again, or adding a seventh nav item, brings the squash back. */}
+              1024px  logo 150 + 10 + nav 659 + 10 + switcher 143 = 972  (+4)
+              1280px  logo 150 + 10 + nav 683 + 10 + right    297 = 1150 (+2)
+
+            px-2.5 below xl buys the 24px that 1024px is short; px-3 returns at
+            xl where the room exists. 1100–1279px was never tight — it has
+            100px+ spare — so the tighter pills there are the price of one rule
+            covering the whole band.
+
+            Margins are single digits: adding a seventh nav item, widening
+            these pills, or a longer translation will start shrinking the logo
+            again. object-contain on the logo image keeps that from becoming a
+            distorted brand mark, but re-measure rather than relying on it. */}
         <nav className="hidden items-center gap-1 lg:flex">
           {PAGES.map((p) => {
             const active = p === page;
@@ -76,7 +97,7 @@ export default function Header({ lang }) {
                 key={p}
                 href={pagePath(lang, p)}
                 aria-current={active ? 'page' : undefined}
-                className={`rounded-full px-3 py-2.5 text-[.94rem] font-medium whitespace-nowrap transition-colors ${
+                className={`rounded-full px-2.5 py-2.5 text-[.94rem] font-medium whitespace-nowrap transition-colors xl:px-3 ${
                   active ? 'bg-navy text-cream' : 'text-navy hover:bg-navy hover:text-cream'
                 }`}
               >
