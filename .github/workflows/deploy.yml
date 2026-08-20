@@ -65,6 +65,13 @@ jobs:
       # passes while the live URL returns GitHub's "Site not found". Load the
       # real domain so that failure is red instead of green. This goes through
       # Cloudflare, so it checks the whole path a visitor takes, not just Pages.
+      #
+      # -L is load-bearing. `/` and the six legacy .html paths are 301s served
+      # by Cloudflare Redirect Rules, so without it they report 301 and the job
+      # fails on a perfectly healthy site. Following the chain also turns this
+      # into the only test those rules have: they live in the Cloudflare
+      # dashboard, not in this repo, so nothing else here would notice if one
+      # were deleted or edited.
       - name: Smoke-check the live site
         run: |
           set -euo pipefail
@@ -72,10 +79,16 @@ jobs:
           for url in https://brightvolition.com/ \
                      https://brightvolition.com/en/ \
                      https://brightvolition.com/ar/ \
-                     https://brightvolition.com/ku/; do
+                     https://brightvolition.com/ku/ \
+                     https://brightvolition.com/index.html \
+                     https://brightvolition.com/about.html \
+                     https://brightvolition.com/services.html \
+                     https://brightvolition.com/products.html \
+                     https://brightvolition.com/projects.html \
+                     https://brightvolition.com/contact.html; do
             ok=0
             for attempt in 1 2 3 4 5; do
-              code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "$url" || echo 000)
+              code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 20 "$url" || echo 000)
               if [ "$code" = "200" ]; then
                 echo "ok      $url"
                 ok=1
