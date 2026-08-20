@@ -23,8 +23,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -43,10 +43,19 @@ jobs:
           done
           echo "export looks complete"
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: out
+          # NOT optional. From v4 this action defaults to
+          # `--exclude=.[^/]*` when tarring, which drops every top-level
+          # dotfile — including `.nojekyll`. Without `.nojekyll` GitHub Pages
+          # runs Jekyll, Jekyll skips every directory starting with `_`, and
+          # `_next/` disappears: the site returns 200 everywhere with no CSS
+          # or JS. Neither `Verify export` (which reads `out/`, not the
+          # artifact) nor a status-code smoke check would notice. v3 had no
+          # such exclusion, which is why this line is new alongside the bump.
+          include-hidden-files: true
 
   deploy:
     if: github.event_name != 'pull_request'
@@ -57,7 +66,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       # Publishing an artifact and serving it at the right address are separate
       # things. The custom domain is a repo setting this workflow cannot see
@@ -72,6 +81,13 @@ jobs:
       # into the only test those rules have: they live in the Cloudflare
       # dashboard, not in this repo, so nothing else here would notice if one
       # were deleted or edited.
+      #
+      # `.nojekyll` is in the list for a different reason: it is the one file
+      # whose absence breaks the site without changing any status code. If it
+      # stops being published the site still answers 200 everywhere, just with
+      # `_next/` stripped by Jekyll and no CSS or JS. Asking for it directly is
+      # the cheapest way to prove it survived into the published artifact —
+      # `Verify export` only proves it was in `out/` before upload.
       - name: Smoke-check the live site
         run: |
           set -euo pipefail
@@ -85,7 +101,8 @@ jobs:
                      https://brightvolition.com/services.html \
                      https://brightvolition.com/products.html \
                      https://brightvolition.com/projects.html \
-                     https://brightvolition.com/contact.html; do
+                     https://brightvolition.com/contact.html \
+                     https://brightvolition.com/.nojekyll; do
             ok=0
             for attempt in 1 2 3 4 5; do
               code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 20 "$url" || echo 000)
