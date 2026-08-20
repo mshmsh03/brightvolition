@@ -50,7 +50,25 @@ export default function Header({ lang }) {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-1.5 lg:flex">
+        {/* gap-1 + px-3 rather than gap-1.5 + px-4, and whitespace-nowrap on
+            the links. The three go together and none of them works alone.
+
+            Kurdish "پەیوەندیمان پێوە بکە" is three words where English has one,
+            so it wrapped to two lines and stood taller than its siblings.
+            nowrap fixes that but widens the nav by 52px, and the row has no
+            slack: every item here has the default flex-shrink: 1, so the extra
+            width is taken out of the logo — which is a square image and simply
+            renders narrower, i.e. visibly squashed. Unwrapping at px-4 drove it
+            to a 0.45 aspect ratio at the lg breakpoint.
+
+            Tightening the pills pays for the extra width instead. Measured on
+            the built Kurdish page, this is better than the old spacing at every
+            width, not just even: at 1024px the logo goes 0.795 -> 0.838 aspect,
+            at 1100px it reaches a true 1.0, and at 1280px+ 0.932 -> 0.983.
+
+            So: keep the nav's natural width at or below ~684px. Widening these
+            pills again, or adding a seventh nav item, brings the squash back. */}
+        <nav className="hidden items-center gap-1 lg:flex">
           {PAGES.map((p) => {
             const active = p === page;
             return (
@@ -58,7 +76,7 @@ export default function Header({ lang }) {
                 key={p}
                 href={pagePath(lang, p)}
                 aria-current={active ? 'page' : undefined}
-                className={`rounded-full px-4 py-2.5 text-[.94rem] font-medium transition-colors ${
+                className={`rounded-full px-3 py-2.5 text-[.94rem] font-medium whitespace-nowrap transition-colors ${
                   active ? 'bg-navy text-cream' : 'text-navy hover:bg-navy hover:text-cream'
                 }`}
               >
