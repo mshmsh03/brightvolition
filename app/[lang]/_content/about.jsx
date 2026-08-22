@@ -49,7 +49,7 @@ export default function About({ lang }) {
       </Section>
 
       {/* MILESTONES */}
-      <Section>
+      <Section size="tight">
         <SectionHead eyebrow={t.companyOverview} title={t.foundingVisionMilestonesFutureOutlook} />
         <Timeline>
           <TimelineItem title={t.foundingVision}>
@@ -76,7 +76,7 @@ export default function About({ lang }) {
       </Section>
 
       {/* POLICY */}
-      <Section>
+      <Section size="tight">
         <Split className="items-start">
           <div>
             <Eyebrow>{t.ourPolicy}</Eyebrow>

@@ -86,8 +86,8 @@ Given the audience (industrial B2B procurement, not consumer/portfolio viewers),
 |---|---|
 | Colour, type, motion tokens; base element styles | `app/globals.css` |
 | Section/card/list/table vocabulary | `components/sections.jsx` |
-| Header, Footer, BackToTop, ContactForm | `components/*.jsx` |
-| shadcn primitives (button, input, label, textarea, sheet) | `components/ui/` |
+| Header, Footer, BackToTop | `components/*.jsx` |
+| shadcn primitives (button, card, input, label, textarea, sheet) | `components/ui/` |
 | Nav labels, footer text, contact details, page titles | `lib/site-data.js` |
 | Page content, one file per page per language | `app/[lang]/_content/` |
 | Deployment, URLs, Cloudflare rules | `DEPLOY.md` |

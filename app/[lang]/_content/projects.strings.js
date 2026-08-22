@@ -8,7 +8,7 @@
 export const STRINGS = {
   en: {
     home: "Home",
-    projects: "Projects",
+    projects: "Our Project",
     n2025ModelProject: "2025 Model Project",
     engineeringElectrical50mwPvPower: "Engineering: Electrical — 50MW PV Power Plant",
     reliabilityAndImpactStudyFor: "Reliability and Impact Study for a 50MW PV Power Plant, delivered in coordination with Iraq’s Ministry of Electricity.",
@@ -51,7 +51,7 @@ export const STRINGS = {
   },
   ar: {
     home: "الرئيسية",
-    projects: "مشاريعنا",
+    projects: "مشروعنا",
     n2025ModelProject: "مشروع نموذجي 2025",
     engineeringElectrical50mwPvPower: "الهندسة الكهربائية — محطة كهروضوئية بقدرة 50 ميغاواط",
     reliabilityAndImpactStudyFor: "دراسة الموثوقية والتأثير لمحطة طاقة كهروضوئية بقدرة 50 ميغاواط، نُفّذت بالتنسيق مع وزارة الكهرباء العراقية.",
@@ -94,7 +94,7 @@ export const STRINGS = {
   },
   ku: {
     home: "سەرەکی",
-    projects: "پڕۆژەکانمان",
+    projects: "پڕۆژەکەمان",
     n2025ModelProject: "پڕۆژەی نموونەیی 2025",
     engineeringElectrical50mwPvPower: "ئەندازیاری کارەبایی — وێستگەی خۆرەکی بە توانای 50 مێگاوات",
     reliabilityAndImpactStudyFor: "خوێندنەوەی متمانەپێکراوی و کاریگەری بۆ وێستگەی وزەی خۆرەکی بە توانای 50 مێگاوات، بە هاوکاریی لەگەڵ وەزارەتی کارەبای عێراق جێبەجێ کراوە.",

@@ -10,6 +10,8 @@ import {
   DataTable,
   Grid,
   PageHero,
+  ProductNav,
+  ProductNavLink,
   Section,
   SectionHead,
   Step,
@@ -47,8 +49,15 @@ export default function Services({ lang }) {
       {/* ENGINEERING DISCIPLINES */}
       <Section id="engineering">
         <SectionHead eyebrow={t.ourEngineeringServicesInclude} title={t.fiveEngineeringDisciplines} />
+        <ProductNav>
+          <ProductNavLink href="#feasibility">{t.feasibilityStudies}</ProductNavLink>
+          <ProductNavLink href="#electrical-eng">{t.electricalEngineering}</ProductNavLink>
+          <ProductNavLink href="#mechanical-eng">{t.mechanicalEngineering}</ProductNavLink>
+          <ProductNavLink href="#instrumentation-eng">{t.instrumentationEngineering}</ProductNavLink>
+          <ProductNavLink href="#automation">{t.automationControl}</ProductNavLink>
+        </ProductNav>
         <Grid cols={2}>
-          <Card>
+          <Card id="feasibility">
             <Tag tone="gold">01</Tag>
             <h3 className="mt-3.5 mb-2.5 text-card-title">{t.feasibilityStudies}</h3>
             <CardList>
@@ -57,7 +66,7 @@ export default function Services({ lang }) {
               <CardListItem>{t.siteSurveysAndDataCollection}</CardListItem>
             </CardList>
           </Card>
-          <Card>
+          <Card id="electrical-eng">
             <Tag tone="gold">02</Tag>
             <h3 className="mt-3.5 mb-2.5 text-card-title">{t.electricalEngineering}</h3>
             <CardList>
@@ -70,7 +79,7 @@ export default function Services({ lang }) {
               <CardListItem>{t.scadaAndAutomationIntegration}</CardListItem>
             </CardList>
           </Card>
-          <Card>
+          <Card id="mechanical-eng">
             <Tag tone="gold">03</Tag>
             <h3 className="mt-3.5 mb-2.5 text-card-title">{t.mechanicalEngineering}</h3>
             <CardList>
@@ -85,7 +94,7 @@ export default function Services({ lang }) {
               <CardListItem>{t.structuralSteelInstallation}</CardListItem>
             </CardList>
           </Card>
-          <Card>
+          <Card id="instrumentation-eng">
             <Tag tone="gold">04</Tag>
             <h3 className="mt-3.5 mb-2.5 text-card-title">{t.instrumentationEngineering}</h3>
             <CardList>
@@ -98,7 +107,7 @@ export default function Services({ lang }) {
               <CardListItem>{t.fireGasFGDetection}</CardListItem>
             </CardList>
           </Card>
-          <Card className="sm:col-span-full">
+          <Card id="automation" className="sm:col-span-full">
             <Tag tone="gold">05</Tag>
             <h3 className="mt-3.5 mb-2.5 text-card-title">{t.automationControl}</h3>
             <CardList columns>

@@ -225,10 +225,11 @@ function CardIcon({ icon: Icon }) {
   );
 }
 
-export function Card({ icon, title, tone = 'light', className = '', children }) {
+export function Card({ id, icon, title, tone = 'light', className = '', children }) {
   const dark = tone === 'dark';
   return (
     <div
+      id={id}
       className={`h-full rounded-card p-8 transition-[transform,border-color] duration-250 hover:-translate-y-1.5 ${
         dark
           ? 'border-none bg-navy text-lavender [&_h3]:text-cream'
