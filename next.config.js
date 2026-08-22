@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Next 16 auto-writes AGENTS.md/CLAUDE.md on every dev/build run; this repo
-  // doesn't want those generated files.
+  // Next 16 auto-writes AI coding-agent instruction files on every dev/build
+  // run; this repo doesn't want those generated.
   agentRules: false,
 
   // The site is served by GitHub Pages, which only hands back files that are
