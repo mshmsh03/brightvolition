@@ -2,9 +2,9 @@ node_modules/
 .next/
 out/
 
-# Per-machine Claude Code permission grants — despite living in the repo,
-# these are personal to whoever is running the tool, not project config.
-.claude/settings.local.json
+# AI-assistant tooling — local to whoever's machine is running it, not
+# part of the shipped site or something the repo's history should carry.
+.claude/
 
 # Design-hook scan cache — per-machine, regenerated on demand.
 .impeccable/hook.cache.json
@@ -21,5 +21,4 @@ out/
 # personal dev tooling for whoever is working in this checkout, not part
 # of the site itself.
 .agents/
-.claude/skills/
 skills-lock.json
