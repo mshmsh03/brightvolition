@@ -8,3 +8,18 @@ out/
 
 # Design-hook scan cache — per-machine, regenerated on demand.
 .impeccable/hook.cache.json
+.impeccable/config.local.json
+
+# Per-run design-critique archives and the live-preview server's local
+# state — personal working notes for whoever is running Impeccable here,
+# not part of the shipped site. (.impeccable/design.json IS tracked — it's
+# the project's own design-system sidecar, not per-machine state.)
+.impeccable/critique/
+.impeccable/live/
+
+# Skill packages installed via the `skills` CLI (npx skills add ...) —
+# personal dev tooling for whoever is working in this checkout, not part
+# of the site itself.
+.agents/
+.claude/skills/
+skills-lock.json
