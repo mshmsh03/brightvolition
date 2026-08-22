@@ -559,10 +559,6 @@ export function CtaButton({ href, variant = 'gold', download = false, arrow = fa
 // Contact page
 // ---------------------------------------------------------------------------
 
-export function ContactCard({ className = '', children }) {
-  return <div className={`rounded-card border border-lavender bg-cream p-7 sm:p-9 ${className}`}>{children}</div>;
-}
-
 // One line of the contact block: an icon plate, a small uppercase label, and
 // the value. Rule-separated rather than boxed — there are seven of these and a
 // card each would bury the information under its own chrome.

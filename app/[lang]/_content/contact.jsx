@@ -1,9 +1,9 @@
 import { STRINGS } from './contact.strings';
-import { GlobeIcon, MailIcon, MapPinIcon, PhoneIcon, SettingsIcon, TruckIcon } from 'lucide-react';
+import { MailIcon, MapPinIcon, PhoneIcon, SettingsIcon, TruckIcon } from 'lucide-react';
 import { LinkedinIcon } from '../../../components/icons';
 import { EMAIL, LINKEDIN, PHONE_HREF, pagePath } from '../../../lib/site-data';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
 import {
-  ContactCard,
   ContactItem,
   MapFrame,
   PageHero,
@@ -32,60 +32,62 @@ export default function Contact({ lang }) {
       />
 
       <Section>
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-3xl">
           <Reveal as="div">
-            <ContactCard>
-              <h3 className="mb-5.5 text-card-title">{t.contactDetails}</h3>
-              <ContactItem icon={MailIcon} label={t.email2}>
-                {/* .ltr-fixed keeps Latin addresses and numbers from being
-                    reordered by the bidi algorithm in the RTL translations. */}
-                <a href={`mailto:${EMAIL}`} className="ltr-fixed">
-                  {EMAIL}
-                </a>
-              </ContactItem>
-              <ContactItem icon={PhoneIcon} label={t.phone}>
+            <Card>
+              <CardHeader>
+                <CardTitle>{t.contactDetails}</CardTitle>
+              </CardHeader>
+              <CardContent className="grid grid-cols-1 gap-x-10 sm:grid-cols-2">
                 <div>
-                  <a href={PHONE_HREF} className="ltr-fixed">
-                    +964 771 706 5000
-                  </a>
+                  <ContactItem icon={MailIcon} label={t.email2}>
+                    {/* .ltr-fixed keeps Latin addresses and numbers from being
+                        reordered by the bidi algorithm in the RTL translations. */}
+                    <a href={`mailto:${EMAIL}`} className="ltr-fixed">
+                      {EMAIL}
+                    </a>
+                  </ContactItem>
+                  <ContactItem icon={PhoneIcon} label={t.phone}>
+                    <div>
+                      <a href={PHONE_HREF} className="ltr-fixed">
+                        +964 771 706 5000
+                      </a>
+                    </div>
+                    <div>
+                      <a href="tel:+9647500269585" className="ltr-fixed">
+                        +964 750 026 9585
+                      </a>
+                    </div>
+                  </ContactItem>
+                  <ContactItem icon={MapPinIcon} label={t.address}>
+                    {t.mardinStreetOppositeDilanCity}
+                  </ContactItem>
                 </div>
-                <div>
-                  <a href="tel:+9647500269585" className="ltr-fixed">
-                    +964 750 026 9585
-                  </a>
+                <div className="mt-4 border-t border-lavender pt-4 sm:mt-0 sm:border-t-0 sm:border-s sm:ps-10 sm:pt-0">
+                  <ContactItem icon={TruckIcon} label={t.supplyChainTeam}>
+                    <a href="mailto:procurement@brightvolition.com" className="ltr-fixed">
+                      procurement@brightvolition.com
+                    </a>
+                  </ContactItem>
+                  <ContactItem icon={SettingsIcon} label={t.technicalTeam}>
+                    <a href="mailto:technical@brightvolition.com" className="ltr-fixed">
+                      technical@brightvolition.com
+                    </a>
+                  </ContactItem>
+                  <SocialRow>
+                    <SocialButton href={`mailto:${EMAIL}`} label={t.email3}>
+                      <MailIcon className="size-4" strokeWidth={1.8} />
+                    </SocialButton>
+                    <SocialButton href={PHONE_HREF} label="Call">
+                      <PhoneIcon className="size-4" strokeWidth={1.8} />
+                    </SocialButton>
+                    <SocialButton href={LINKEDIN} label="LinkedIn" external>
+                      <LinkedinIcon className="size-4" strokeWidth={1.8} />
+                    </SocialButton>
+                  </SocialRow>
                 </div>
-              </ContactItem>
-              <ContactItem icon={MapPinIcon} label={t.address}>
-                {t.mardinStreetOppositeDilanCity}
-              </ContactItem>
-              <ContactItem icon={MapPinIcon} label={t.coverage}>
-                {t.kurdistanRegionIraq}
-              </ContactItem>
-              <ContactItem icon={GlobeIcon} label={t.website}>
-                <span className="ltr-fixed">brightvolition.com</span>
-              </ContactItem>
-              <ContactItem icon={TruckIcon} label={t.supplyChainTeam}>
-                <a href="mailto:procurement@brightvolition.com" className="ltr-fixed">
-                  procurement@brightvolition.com
-                </a>
-              </ContactItem>
-              <ContactItem icon={SettingsIcon} label={t.technicalTeam}>
-                <a href="mailto:technical@brightvolition.com" className="ltr-fixed">
-                  technical@brightvolition.com
-                </a>
-              </ContactItem>
-              <SocialRow>
-                <SocialButton href={`mailto:${EMAIL}`} label={t.email3}>
-                  <MailIcon className="size-4" strokeWidth={1.8} />
-                </SocialButton>
-                <SocialButton href={PHONE_HREF} label="Call">
-                  <PhoneIcon className="size-4" strokeWidth={1.8} />
-                </SocialButton>
-                <SocialButton href={LINKEDIN} label="LinkedIn" external>
-                  <LinkedinIcon className="size-4" strokeWidth={1.8} />
-                </SocialButton>
-              </SocialRow>
-            </ContactCard>
+              </CardContent>
+            </Card>
           </Reveal>
         </div>
       </Section>
