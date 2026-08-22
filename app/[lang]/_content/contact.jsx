@@ -32,13 +32,13 @@ export default function Contact({ lang }) {
       />
 
       <Section>
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-4xl">
           <Reveal as="div">
             <Card>
               <CardHeader>
                 <CardTitle>{t.contactDetails}</CardTitle>
               </CardHeader>
-              <CardContent className="grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+              <CardContent className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
                 <div>
                   <ContactItem icon={MailIcon} label={t.email2}>
                     {/* .ltr-fixed keeps Latin addresses and numbers from being
@@ -63,7 +63,7 @@ export default function Contact({ lang }) {
                     {t.mardinStreetOppositeDilanCity}
                   </ContactItem>
                 </div>
-                <div className="mt-4 border-t border-lavender pt-4 sm:mt-0 sm:border-t-0 sm:border-s sm:ps-10 sm:pt-0">
+                <div className="mt-4 border-t border-lavender pt-4 sm:mt-0 sm:border-t-0 sm:border-s sm:ps-8 sm:pt-0">
                   <ContactItem icon={TruckIcon} label={t.supplyChainTeam}>
                     <a href="mailto:procurement@brightvolition.com" className="ltr-fixed">
                       procurement@brightvolition.com
