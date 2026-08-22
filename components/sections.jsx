@@ -75,10 +75,11 @@ const GRID_COLS = {
   3: 'sm:grid-cols-2 lg:grid-cols-3',
   4: 'sm:grid-cols-2 lg:grid-cols-4',
   // An extra lg:3 step before 5 keeps each card wide enough to read
-  // comfortably between 1024px and 1280px — jumping straight from 2 to 5
-  // columns left titles like "Operations Support & Troubleshooting" wrapping
-  // onto three cramped lines.
-  5: 'sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5',
+  // comfortably between 1024px and 1536px — jumping to 5 as early as xl
+  // (1280px) still left "Troubleshooting" overflowing its own padding at
+  // the narrow end of that range, so the 5-up layout now waits for 2xl,
+  // where each card has real room.
+  5: 'sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5',
 };
 
 export function Grid({ cols = 3, className = '', children }) {
@@ -237,7 +238,7 @@ export function Card({ id, icon, title, tone = 'light', className = '', children
       } ${className}`}
     >
       {icon ? <CardIcon icon={icon} /> : null}
-      {title ? <h3 className="mb-3 text-card-title leading-snug">{title}</h3> : null}
+      {title ? <h3 className="mb-3 text-card-title leading-snug break-words hyphens-auto">{title}</h3> : null}
       {children}
     </div>
   );
