@@ -2,7 +2,6 @@ import { STRINGS } from './contact.strings';
 import { GlobeIcon, MailIcon, MapPinIcon, PhoneIcon, SettingsIcon, TruckIcon } from 'lucide-react';
 import { LinkedinIcon } from '../../../components/icons';
 import { EMAIL, LINKEDIN, PHONE_HREF, pagePath } from '../../../lib/site-data';
-import ContactForm from '../../../components/ContactForm';
 import {
   ContactCard,
   ContactItem,
@@ -33,7 +32,7 @@ export default function Contact({ lang }) {
       />
 
       <Section>
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1fr_1.3fr]">
+        <div className="mx-auto max-w-2xl">
           <Reveal as="div">
             <ContactCard>
               <h3 className="mb-5.5 text-card-title">{t.contactDetails}</h3>
@@ -88,8 +87,6 @@ export default function Contact({ lang }) {
               </SocialRow>
             </ContactCard>
           </Reveal>
-
-          <ContactForm t={t.form} />
         </div>
       </Section>
 
