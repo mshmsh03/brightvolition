@@ -1,4 +1,4 @@
-import { buildMetadata } from '../../../lib/metadata';
+import { buildMetadata, breadcrumbJsonLd } from '../../../lib/metadata';
 import Services from '../_content/services';
 
 export async function generateMetadata({ params }) {
@@ -8,5 +8,13 @@ export async function generateMetadata({ params }) {
 
 export default async function ServicesPage({ params }) {
   const { lang } = await params;
-  return <Services lang={lang} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(lang, 'services')) }}
+      />
+      <Services lang={lang} />
+    </>
+  );
 }
