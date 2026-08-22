@@ -97,7 +97,7 @@ export default function Contact({ lang }) {
       <Section size="sm">
         <SectionHead eyebrow={t.findUs} title={t.sulaymaniyahKurdistanRegionOfIraq} />
         <MapFrame
-          src="https://maps.google.com/maps?q=35.5431746,45.4795484&z=16&output=embed"
+          src="https://maps.google.com/maps?q=Bright+Volition,+Sulaymaniyah&z=16&output=embed"
           title="Bright Volition location map"
         />
       </Section>
