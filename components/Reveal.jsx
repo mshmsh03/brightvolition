@@ -39,31 +39,47 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    // Nothing to observe if the page is not animating: the element is already
-    // at its final state, so skip the observer entirely.
-    if (document.documentElement.dataset.motion !== 'on') {
-      // Only knowable on the client: html[data-motion] is written by the
-      // inline script in the layout, so seeding useState with it would render
-      // something different on the server and break hydration. Runs once, and
-      // the element is already at its final state, so nothing cascades.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setInView(true);
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
+    // Deferred one frame so this always reads html[data-motion] after every
+    // effect from the same hydration pass has committed, MotionRoot's
+    // included — otherwise, on a slow-hydration page where the layout's
+    // failsafe timer and MotionRoot's own sync() land close together, a
+    // Reveal could read a transient "off" a moment before MotionRoot flips
+    // it back to "on", locking that one element out of the entrance
+    // animation while its siblings still play theirs. One frame is well
+    // under perceptible and costs nothing in the common case.
+    let io;
+    const frame = requestAnimationFrame(() => {
+      // Nothing to observe if the page is not animating: the element is
+      // already at its final state, so skip the observer entirely.
+      if (document.documentElement.dataset.motion !== 'on') {
+        // Only knowable on the client: html[data-motion] is written by the
+        // inline script in the layout, so seeding useState with it would
+        // render something different on the server and break hydration.
+        // Runs once, and the element is already at its final state, so
+        // nothing cascades.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setInView(true);
-        io.disconnect();
-      },
-      // Fires a touch before the element is properly on screen, so the
-      // entrance is already underway by the time it is worth looking at
-      // rather than starting under the reader's eye.
-      { threshold: 0, rootMargin: '0px 0px -12% 0px' },
-    );
-    io.observe(el);
-    return () => io.disconnect();
+        return;
+      }
+
+      io = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+          setInView(true);
+          io.disconnect();
+        },
+        // Fires a touch before the element is properly on screen, so the
+        // entrance is already underway by the time it is worth looking at
+        // rather than starting under the reader's eye.
+        { threshold: 0, rootMargin: '0px 0px -12% 0px' },
+      );
+      io.observe(el);
+    });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      io?.disconnect();
+    };
   }, []);
 
   const attr = stagger ? 'data-reveal-group' : 'data-reveal';
