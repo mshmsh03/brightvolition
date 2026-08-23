@@ -137,10 +137,6 @@ export default function Header({ lang }) {
             ))}
           </div>
 
-          <Button asChild variant="outlineNavy" size="sm" className="hidden whitespace-nowrap xl:inline-flex">
-            <Link href={pagePath(lang, 'contact')}>{t.headerCta}</Link>
-          </Button>
-
           {/* Mobile nav */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -170,17 +166,6 @@ export default function Header({ lang }) {
                     {t.nav[p]}
                   </Link>
                 ))}
-                <Button
-                  asChild
-                  variant="gold"
-                  size="sm"
-                  className="m-register mt-6 self-start"
-                  style={{ '--m-delay': `${140 + PAGES.length * 45}ms`, '--m-dur': '440ms' }}
-                >
-                  <Link href={pagePath(lang, 'contact')} onClick={() => setOpen(false)}>
-                    {t.headerCta}
-                  </Link>
-                </Button>
               </nav>
             </SheetContent>
           </Sheet>
