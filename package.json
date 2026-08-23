@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && node scripts/postbuild.mjs",
-    "start": "npx serve out",
+    "start": "serve out",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "eslint": "^9.39.5",
-    "eslint-config-next": "^16.3.1"
+    "eslint-config-next": "^16.3.1",
+    "serve": "^14.2.6"
   }
 }
