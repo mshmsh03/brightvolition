@@ -1,7 +1,7 @@
 import { STRINGS } from './contact.strings';
 import { MailIcon, MapPinIcon, PhoneIcon, SettingsIcon, TruckIcon } from 'lucide-react';
 import { LinkedinIcon } from '../../../components/icons';
-import { EMAIL, LINKEDIN, PHONE_HREF, pagePath } from '../../../lib/site-data';
+import { EMAIL, LINKEDIN, PHONE_DISPLAY, PHONE_HREF, pagePath } from '../../../lib/site-data';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
 import {
   ContactItem,
@@ -50,7 +50,7 @@ export default function Contact({ lang }) {
                   <ContactItem icon={PhoneIcon} label={t.phone}>
                     <div>
                       <a href={PHONE_HREF} className="ltr-fixed">
-                        +964 771 706 5000
+                        {PHONE_DISPLAY}
                       </a>
                     </div>
                     <div>

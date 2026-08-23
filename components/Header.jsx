@@ -123,7 +123,7 @@ export default function Header({ lang }) {
               <a
                 key={l.lang}
                 href={l.href}
-                lang={SITE[l.lang].hreflang}
+                hrefLang={SITE[l.lang].hreflang}
                 aria-current={l.active ? 'true' : undefined}
                 // font-sans overrides the [lang="ckb"] font rule: the labels are
                 // Latin ("EN"/"AR"/"KU"), and letting the Kurdish one render in

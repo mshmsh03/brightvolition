@@ -12,7 +12,7 @@ import {
   WrenchIcon,
   ZapIcon,
 } from 'lucide-react';
-import { CLIENT_LOGOS, PARTNER_LOGOS, pagePath } from '../../../lib/site-data';
+import { CLIENT_LOGOS, EMAIL, PARTNER_LOGOS, pagePath } from '../../../lib/site-data';
 import {
   Card,
   CardText,
@@ -198,8 +198,8 @@ export default function Home({ lang }) {
           <CtaButton href={pagePath(lang, 'contact')} variant="gold" arrow>
             {t.contactUs}
           </CtaButton>
-          <CtaButton href="mailto:info@brightvolition.com" variant="outline">
-            info@brightvolition.com
+          <CtaButton href={`mailto:${EMAIL}`} variant="outline">
+            {EMAIL}
           </CtaButton>
         </CtaBand>
       </Section>
