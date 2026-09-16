@@ -80,6 +80,7 @@ const GRID_COLS = {
   // the narrow end of that range, so the 5-up layout now waits for 2xl,
   // where each card has real room.
   5: 'sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5',
+  6: 'sm:grid-cols-2 lg:grid-cols-3',
 };
 
 export function Grid({ cols = 3, className = '', children }) {

@@ -4,6 +4,7 @@ import {
   Building2Icon,
   ClipboardCheckIcon,
   HandshakeIcon,
+  HardHatIcon,
   LightbulbIcon,
   LockIcon,
   SettingsIcon,
@@ -57,10 +58,10 @@ export default function Home({ lang }) {
 
       {/* WHAT WE DO */}
       <Section id="what-we-do">
-        <SectionHead eyebrow={t.whatWeDo} title={t.fiveWaysWeDeliverEngineering}>
+        <SectionHead eyebrow={t.whatWeDo} title={t.sixWaysWeDeliverEngineering}>
           {t.deliveringSpecializedEngineeringServices}
         </SectionHead>
-        <Grid cols={5}>
+        <Grid cols={6}>
           <Card icon={SettingsIcon} title={t.designEngineering}>
             <CardText>
               {t.feasibilityStudiesConceptualDesignAnd}
@@ -84,6 +85,11 @@ export default function Home({ lang }) {
           <Card icon={WrenchIcon} title={t.operationsSupportTroubleshooting}>
             <CardText>
               {t.rootCauseAnalysisAndRapid}
+            </CardText>
+          </Card>
+          <Card icon={HardHatIcon} title={t.contractingServices}>
+            <CardText>
+              {t.contractingServicesSummary}
             </CardText>
           </Card>
         </Grid>

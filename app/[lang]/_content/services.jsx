@@ -1,14 +1,16 @@
 import { STRINGS } from './services.strings';
-import { Building2Icon, ClipboardCheckIcon, SettingsIcon, TruckIcon, WrenchIcon } from 'lucide-react';
+import { Building2Icon, ClipboardCheckIcon, HardHatIcon, SettingsIcon, TruckIcon, WrenchIcon } from 'lucide-react';
 import { CONSTRUCTION_TABLE, pagePath } from '../../../lib/site-data';
 import {
   Card,
   CardList,
   CardListItem,
+  CardText,
   CtaBand,
   CtaButton,
   DataTable,
   Grid,
+  Lede,
   PageHero,
   ProductNav,
   ProductNavLink,
@@ -34,15 +36,16 @@ export default function Services({ lang }) {
         lede={t.deliveringSpecializedEngineeringServices}
       />
 
-      {/* THE FIVE PILLARS */}
+      {/* THE SIX PILLARS */}
       <Section>
-        <SectionHead eyebrow={t.whatWeDo} title={t.fiveServicePillars} />
-        <Grid cols={5}>
+        <SectionHead eyebrow={t.whatWeDo} title={t.sixServicePillars} />
+        <Grid cols={6}>
           <Card icon={SettingsIcon} title={t.designEngineering} />
           <Card icon={Building2Icon} title={t.constructionInstallation} />
           <Card icon={ClipboardCheckIcon} title={t.systemCommissioningStartUp} />
           <Card icon={TruckIcon} title={t.productSupplySourcing} />
           <Card icon={WrenchIcon} title={t.operationsSupportTroubleshooting} />
+          <Card icon={HardHatIcon} title={t.contractingServices} />
         </Grid>
       </Section>
 
@@ -128,6 +131,41 @@ export default function Services({ lang }) {
           {t.aSingleFieldTeamExecuting}
         </SectionHead>
         <DataTable headers={CONSTRUCTION_TABLE.headers} rows={CONSTRUCTION_TABLE.rows} />
+      </Section>
+
+      {/* CONTRACTING SERVICES */}
+      <Section id="contracting">
+        <SectionHead eyebrow={t.contractingEyebrow} title={t.comprehensiveEpcContracting}>
+          {t.brightVolitionProvidesEndToEnd}
+        </SectionHead>
+        <Lede className="mx-auto mb-10 text-center">{t.whetherActingAsAPrime}</Lede>
+        <Grid cols={2}>
+          <Card>
+            <h3 className="mb-3 text-card-title">{t.coreCapabilities}</h3>
+            <CardList>
+              <CardListItem>{t.electroMechanicalContracting}</CardListItem>
+              <CardListItem>{t.procurementLogistics}</CardListItem>
+              <CardListItem>{t.projectManagementBullet}</CardListItem>
+            </CardList>
+          </Card>
+          <Card>
+            <h3 className="mb-3 text-card-title">{t.whyBrightVolitionContracting}</h3>
+            <CardList>
+              <CardListItem>{t.singlePointAccountability}</CardListItem>
+              <CardListItem>{t.fullCompliance}</CardListItem>
+              <CardListItem>{t.precisionExecution}</CardListItem>
+            </CardList>
+          </Card>
+        </Grid>
+        <Card className="mt-7">
+          <h3 className="mb-2.5 text-card-title">{t.contractsManagement}</h3>
+          <CardText className="mb-1">{t.fullLifecycleCommercialLegal}</CardText>
+          <CardList columns>
+            <CardListItem>{t.biddingAdministration}</CardListItem>
+            <CardListItem>{t.variationsClaims}</CardListItem>
+            <CardListItem>{t.subcontractsCloseout}</CardListItem>
+          </CardList>
+        </Card>
       </Section>
 
       {/* TROUBLESHOOTING */}
