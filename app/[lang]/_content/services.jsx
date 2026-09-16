@@ -1,5 +1,5 @@
 import { STRINGS } from './services.strings';
-import { Building2Icon, ClipboardCheckIcon, HardHatIcon, SettingsIcon, TruckIcon, WrenchIcon } from 'lucide-react';
+import { Building2Icon, ClipboardCheckIcon, FileSignatureIcon, SettingsIcon, TruckIcon, WrenchIcon } from 'lucide-react';
 import { CONSTRUCTION_TABLE, pagePath } from '../../../lib/site-data';
 import {
   Card,
@@ -45,7 +45,7 @@ export default function Services({ lang }) {
           <Card icon={ClipboardCheckIcon} title={t.systemCommissioningStartUp} />
           <Card icon={TruckIcon} title={t.productSupplySourcing} />
           <Card icon={WrenchIcon} title={t.operationsSupportTroubleshooting} />
-          <Card icon={HardHatIcon} title={t.contractingServices} />
+          <Card icon={FileSignatureIcon} title={t.contractingServices} />
         </Grid>
       </Section>
 

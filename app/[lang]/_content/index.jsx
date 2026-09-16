@@ -3,8 +3,8 @@ import {
   AwardIcon,
   Building2Icon,
   ClipboardCheckIcon,
+  FileSignatureIcon,
   HandshakeIcon,
-  HardHatIcon,
   LightbulbIcon,
   LockIcon,
   SettingsIcon,
@@ -87,7 +87,7 @@ export default function Home({ lang }) {
               {t.rootCauseAnalysisAndRapid}
             </CardText>
           </Card>
-          <Card icon={HardHatIcon} title={t.contractingServices}>
+          <Card icon={FileSignatureIcon} title={t.contractingServices}>
             <CardText>
               {t.contractingServicesSummary}
             </CardText>
