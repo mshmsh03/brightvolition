@@ -8,14 +8,13 @@ import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 
-// Gives the site's one "reach out" CTA the structure its own hero copy
-// already promises ("include the scope, timeline, and budget") but never
-// collected — every inquiry used to land as a blank compose window. Still no
-// backend: submitting composes a mailto: link from the filled fields and
-// hands off to the visitor's own mail client, so nothing leaves this page
-// until they choose to send it.
+// Gives the site's one "reach out" CTA some structure instead of a blank
+// compose window: name, company, and what they need. Still no backend —
+// submitting composes a mailto: link from the filled fields and hands off to
+// the visitor's own mail client, so nothing leaves this page until they
+// choose to send it.
 export default function QuoteForm({ id, toEmail, t }) {
-  const [fields, setFields] = useState({ name: '', company: '', scope: '', timeline: '', budget: '' });
+  const [fields, setFields] = useState({ name: '', company: '', scope: '' });
 
   const set = (key) => (event) => setFields((prev) => ({ ...prev, [key]: event.target.value }));
 
@@ -25,8 +24,6 @@ export default function QuoteForm({ id, toEmail, t }) {
     const lines = [
       `${t.quoteFormName}: ${fields.name}`,
       fields.company ? `${t.quoteFormCompany}: ${fields.company}` : null,
-      fields.timeline ? `${t.quoteFormTimeline}: ${fields.timeline}` : null,
-      fields.budget ? `${t.quoteFormBudget}: ${fields.budget}` : null,
       '',
       `${t.quoteFormScope}:`,
       fields.scope,
@@ -62,18 +59,6 @@ export default function QuoteForm({ id, toEmail, t }) {
               value={fields.scope}
               onChange={set('scope')}
             />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <Label htmlFor="quote-timeline">
-              {t.quoteFormTimeline} <span className="font-normal text-muted-foreground">({t.quoteFormOptional})</span>
-            </Label>
-            <Input id="quote-timeline" placeholder={t.quoteFormTimelinePlaceholder} value={fields.timeline} onChange={set('timeline')} />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <Label htmlFor="quote-budget">
-              {t.quoteFormBudget} <span className="font-normal text-muted-foreground">({t.quoteFormOptional})</span>
-            </Label>
-            <Input id="quote-budget" placeholder={t.quoteFormBudgetPlaceholder} value={fields.budget} onChange={set('budget')} />
           </div>
           <div className="sm:col-span-2">
             <Button type="submit">
