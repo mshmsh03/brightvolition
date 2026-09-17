@@ -3,6 +3,7 @@ import { MailIcon, MapPinIcon, PhoneIcon, SettingsIcon, TruckIcon } from 'lucide
 import { LinkedinIcon } from '../../../components/icons';
 import { EMAIL, LINKEDIN, PHONE_DISPLAY, PHONE_HREF, pagePath } from '../../../lib/site-data';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
+import QuoteForm from '../../../components/QuoteForm';
 import {
   ContactItem,
   MapFrame,
@@ -31,7 +32,15 @@ export default function Contact({ lang }) {
         className="md:pb-15"
       />
 
-      <Section>
+      <Section size="tight">
+        <div className="mx-auto max-w-4xl">
+          <Reveal as="div">
+            <QuoteForm id="quote" toEmail={EMAIL} t={t} />
+          </Reveal>
+        </div>
+      </Section>
+
+      <Section size="tight">
         <div className="mx-auto max-w-4xl">
           <Reveal as="div">
             <Card>
