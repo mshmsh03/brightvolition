@@ -143,11 +143,18 @@
     /* Clears the sticky header when an #anchor is jumped to. */
     scroll-padding-top: 130px;
   }
-  /* Smooth anchor scrolling is motion — gate it on the visitor's preference. */
+  /* Smooth anchor scrolling is motion — gate it on the visitor's preference.
+     This is the no-JS/pre-hydration fallback; once SmoothScroll's Lenis
+     instance takes over it fights the browser's own smooth-scroll animation
+     for control of the scroll position, so html.lenis (added the moment
+     Lenis mounts) turns this back off in its favour. */
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;
     }
+  }
+  html.lenis {
+    scroll-behavior: auto !important;
   }
   body {
     @apply bg-cream text-navy;

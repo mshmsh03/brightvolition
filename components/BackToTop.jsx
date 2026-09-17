@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ArrowUpIcon } from 'lucide-react';
+import { getLenis } from '../lib/smooth-scroll';
 
 // Appears once the visitor is far enough down that scrolling back is a chore.
 // Rendered from the layout so it survives client-side navigation, and hidden
@@ -36,13 +37,15 @@ export default function BackToTop({ label }) {
       aria-label={label}
       aria-hidden={!show}
       tabIndex={show ? 0 : -1}
-      onClick={() =>
-        window.scrollTo({
-          top: 0,
-          // Honour the same preference the rest of the motion layer honours.
-          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-        })
-      }
+      onClick={() => {
+        // Route through the shared Lenis instance so this doesn't fight its
+        // rAF loop with a competing native scroll animation. No instance
+        // means motion is off (reduced-motion, or before hydration), so a
+        // plain jump is both correct and the only option.
+        const lenis = getLenis();
+        if (lenis) lenis.scrollTo(0);
+        else window.scrollTo({ top: 0, behavior: 'auto' });
+      }}
       className={/* unslop-ignore: pill button is the documented brand system, see DESIGN.md */ `fixed bottom-6 end-6 z-150 flex size-12 items-center justify-center rounded-full bg-navy text-gold transition-opacity duration-250 ${
         show ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}

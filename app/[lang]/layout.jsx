@@ -4,6 +4,7 @@ import { BASE } from '../../lib/metadata';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import MotionRoot from '../../components/MotionRoot';
+import SmoothScroll from '../../components/SmoothScroll';
 import BackToTop from '../../components/BackToTop';
 import '../globals.css';
 
@@ -67,6 +68,7 @@ export default async function LangLayout({ children, params }) {
       </head>
       <body>
         <MotionRoot />
+        <SmoothScroll />
         {/* Header and footer sit in the layout, not in the pages, so the router
             swaps only the page body between routes. The chrome stays mounted:
             no flash, no re-entrance, no scroll state lost. */}
