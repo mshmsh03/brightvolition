@@ -40,12 +40,24 @@ export default function Services({ lang }) {
       <Section>
         <SectionHead eyebrow={t.whatWeDo} title={t.sixServicePillars} />
         <Grid cols={6}>
-          <Card icon={SettingsIcon} title={t.designEngineering} />
-          <Card icon={Building2Icon} title={t.constructionInstallation} />
-          <Card icon={ClipboardCheckIcon} title={t.systemCommissioningStartUp} />
-          <Card icon={TruckIcon} title={t.productSupplySourcing} />
-          <Card icon={WrenchIcon} title={t.operationsSupportTroubleshooting} />
-          <Card icon={FileSignatureIcon} title={t.contractingServices} />
+          <Card icon={SettingsIcon} title={t.designEngineering}>
+            <CardText>{t.feasibilityStudiesConceptualDesignAnd}</CardText>
+          </Card>
+          <Card icon={Building2Icon} title={t.constructionInstallation}>
+            <CardText>{t.fullFieldExecutionAcrossElectrical}</CardText>
+          </Card>
+          <Card icon={ClipboardCheckIcon} title={t.systemCommissioningStartUp}>
+            <CardText>{t.structuredPreCommissioningTestingAnd}</CardText>
+          </Card>
+          <Card icon={TruckIcon} title={t.productSupplySourcing}>
+            <CardText>{t.electricalInstrumentationMechanicalCompo}</CardText>
+          </Card>
+          <Card icon={WrenchIcon} title={t.operationsSupportTroubleshooting}>
+            <CardText>{t.rootCauseAnalysisAndRapid}</CardText>
+          </Card>
+          <Card icon={FileSignatureIcon} title={t.contractingServices}>
+            <CardText>{t.contractingServicesSummary}</CardText>
+          </Card>
         </Grid>
       </Section>
 
