@@ -76,7 +76,7 @@ export default function About({ lang }) {
       </Section>
 
       {/* POLICY */}
-      <Section size="tight">
+      <Section size="tight" className="border-t border-lavender">
         <Split className="items-start">
           <div>
             <Eyebrow>{t.ourPolicy}</Eyebrow>
@@ -107,7 +107,7 @@ export default function About({ lang }) {
       </Section>
 
       {/* HOW WE WORK */}
-      <Section>
+      <Section className="border-t border-lavender">
         <SectionHead eyebrow={t.howBvServesItsCustomers} title={t.howWeWork} />
         <Grid cols={3} className="pt-5">
           <NumCard num="1" title={t.confidentialityFirst}>
