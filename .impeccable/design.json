@@ -1,49 +1,182 @@
 {
-  "northStar": "Registered & Reliable — flat, restrained, credibility-first B2B industrial site",
-  "colors": {
-    "navy": { "hex": "#201747", "role": "primary text, headings, dark backgrounds, buttons" },
-    "cream": { "hex": "#F6F2F4", "role": "page background, text-on-navy" },
-    "lavender": { "hex": "#B4B5DF", "role": "secondary text-on-navy, borders, muted fills" },
-    "gold": { "hex": "#F1B434", "role": "single accent — eyebrows, checkmarks, badges, hover, CTAs" }
-  },
-  "colorRule": "oneAccent",
-  "deliberateDeviationFromBrandSheet": {
-    "dropped": ["teal", "coral"],
-    "reason": "Mustafa's 2026-07-24 redesign intentionally flattened the palette to 4 colors. Do not reintroduce."
-  },
-  "typography": {
-    "rule": "oneFontFamilyPerScript",
-    "families": {
-      "en": { "family": "Gotham", "weights": [400, 500, 700, 900], "hosting": "self-hosted woff2" },
-      "ar": { "family": "Somar", "weights": [400, 500, 700, 900], "hosting": "self-hosted woff2" },
-      "ckb": { "family": "Ping", "weights": [400, 500, 700, 900], "hosting": "self-hosted woff2" }
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T00:00:00Z",
+  "title": "Design System: Bright Volition",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "primary",
+        "displayName": "Deep Registrar Navy",
+        "canonical": "#201747",
+        "tonalRamp": ["#1a133a", "#2f2268", "#443196", "#5a42c2", "#8370d1", "#ab9fe0", "#d3cdef", "#eeecf9"]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Warm Paper Cream",
+        "canonical": "#F6F2F4",
+        "tonalRamp": ["#2d1f26", "#513845", "#765163", "#996b82", "#b28fa1", "#cbb4bf", "#e4d8de", "#f5f0f2"]
+      },
+      "lavender": {
+        "role": "neutral",
+        "displayName": "Muted Structural Lavender",
+        "canonical": "#B4B5DF",
+        "tonalRamp": ["#171836", "#292a61", "#3b3d8b", "#5052b4", "#7b7cc7", "#a6a7d9", "#d1d1eb", "#ededf7"]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Signal Gold",
+        "canonical": "#F1B434",
+        "tonalRamp": ["#483205", "#815a09", "#ba820d", "#efa915", "#f3be4e", "#f7d388", "#fbe8c1", "#fdf6e7"]
+      }
     },
-    "headingTuning": {
-      "latin": { "lineHeight": 1.15, "letterSpacing": "-.01em" },
-      "arabicKurdish": { "lineHeight": 1.55, "letterSpacing": "0", "reason": "Somar/Ping run taller and more connected than Gotham; Latin-tuned tight leading causes visual collision" }
+    "typographyMeta": {
+      "latin-heading": {
+        "displayName": "Gotham Heading (Latin)",
+        "purpose": "Headings and UI text for English content. Tight, standard Latin headline tracking."
+      },
+      "rtl-heading": {
+        "displayName": "Somar / Ping Heading (Arabic, Kurdish Sorani)",
+        "purpose": "Headings for Arabic and Kurdish content. Looser leading and neutral tracking because both scripts run taller and more connected than Latin Gotham."
+      }
+    },
+    "shadows": [
+      {
+        "name": "mobile-nav-panel",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "The one deliberate exception to the no-shadow rule: the mobile nav sheet genuinely floats over the page content."
+      },
+      {
+        "name": "timeline-node-ring",
+        "value": "0 0 0 2px #201747",
+        "purpose": "A solid ring (not a blurred drop shadow) that separates the About page's gold timeline node from the rule it sits on."
+      }
+    ],
+    "motion": [
+      {
+        "name": "reveal-on-scroll",
+        "value": "gated on html[data-motion=\"on\"]",
+        "purpose": "Content registers to a struck datum line as it enters the viewport. Only active when JS has run and the visitor has not requested reduced motion; no-JS, failed hydration, and reduced-motion all resolve to the fully rendered page."
+      },
+      {
+        "name": "button-hover",
+        "value": "180ms, transition: color, background-color, border-color, box-shadow, transform",
+        "purpose": "Hover reads as acknowledgement, not hesitation — named properties only, never transition-all, so the focus ring is never animated into view."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (gold)",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "The one call-to-action style used everywhere on the site — gold fill, navy text, inverts to navy fill on hover.",
+      "html": "<button class=\"ds-btn ds-btn-gold\">Request a Quote<svg class=\"ds-btn-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 9999px; border: 2px solid transparent; font-size: 15px; font-weight: 700; padding: 14px 28px; cursor: pointer; transition: color 180ms, background-color 180ms, border-color 180ms, transform 180ms; } .ds-btn-arrow { transition: transform 180ms; } .ds-btn-gold { background: #F1B434; color: #201747; } .ds-btn-gold:hover { background: #201747; color: #F6F2F4; transform: translateY(-2px); } .ds-btn-gold:hover .ds-btn-arrow { transform: translateX(4px); } .ds-btn-gold:focus-visible { outline: 3px solid rgba(32,23,71,0.5); outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button (on cream)",
+      "kind": "button",
+      "refersTo": "button-outlineNavy",
+      "description": "Secondary action on a cream section — navy outline that fills navy on hover.",
+      "html": "<button class=\"ds-btn ds-btn-outline-navy\">More About Us</button>",
+      "css": ".ds-btn-outline-navy { background: transparent; color: #201747; border: 2px solid #201747; } .ds-btn-outline-navy:hover { background: #201747; color: #F6F2F4; }"
+    },
+    {
+      "name": "Outline Button (on navy)",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action on the navy hero or a CTA band, where a navy outline would disappear — cream instead.",
+      "html": "<div style=\"background:#201747;padding:24px;border-radius:14px;display:inline-block;\"><button class=\"ds-btn ds-btn-outline-cream\">Talk to Our Team</button></div>",
+      "css": ".ds-btn-outline-cream { background: transparent; color: #F6F2F4; border: 2px solid #F6F2F4; } .ds-btn-outline-cream:hover { background: #F6F2F4; color: #201747; }"
+    },
+    {
+      "name": "Card (light)",
+      "kind": "card",
+      "refersTo": "card-light",
+      "description": "The default content card — flat, bordered, lifts and turns its border gold on hover. No box-shadow anywhere.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-icon\">&#9881;</div><h3 class=\"ds-card-title\">Design &amp; Engineering</h3><p class=\"ds-card-text\">Feasibility studies, conceptual design, and detailed electrical, mechanical &amp; instrumentation engineering.</p></div>",
+      "css": ".ds-card { border-radius: 14px; padding: 32px; background: #F6F2F4; border: 1px solid #B4B5DF; transition: transform 250ms, border-color 250ms; } .ds-card:hover { transform: translateY(-6px); border-color: #F1B434; } .ds-card-icon { width: 56px; height: 56px; border-radius: 16px; background: #B4B5DF; color: #201747; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 22px; } .ds-card-title { margin: 0 0 12px; font-size: 1.15rem; font-weight: 700; color: #201747; } .ds-card-text { margin: 0; font-size: 0.95rem; color: #201747; }"
+    },
+    {
+      "name": "Card (dark)",
+      "kind": "card",
+      "refersTo": "card-dark",
+      "description": "The same card shape on a navy section — no border (navy-on-navy would be invisible), lavender body text, cream heading.",
+      "html": "<div class=\"ds-card ds-card-dark\"><h3 class=\"ds-card-title-dark\">Customer Focus</h3><p class=\"ds-card-text-dark\">We place a high value on comprehending the specific requirements of each client.</p></div>",
+      "css": ".ds-card-dark { background: #201747; border: none; color: #B4B5DF; } .ds-card-title-dark { margin: 0 0 12px; font-size: 1.15rem; font-weight: 700; color: #F6F2F4; }"
+    },
+    {
+      "name": "Desktop Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Pill-shaped nav item; the active page and hover state both read as a solid navy pill rather than an underline.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-link ds-nav-link-active\">Services</a><a href=\"#\" class=\"ds-nav-link\">Products</a><a href=\"#\" class=\"ds-nav-link\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; } .ds-nav-link { border-radius: 9999px; padding: 10px 12px; font-size: 0.94rem; font-weight: 500; color: #201747; text-decoration: none; transition: color 180ms, background-color 180ms; } .ds-nav-link:hover, .ds-nav-link-active { background: #201747; color: #F6F2F4; }"
+    },
+    {
+      "name": "Tag / Chip",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Small rounded label used for numbered badges (engineering discipline cards) and table headers on dark grounds.",
+      "html": "<span class=\"ds-tag ds-tag-gold\">01</span> <span class=\"ds-tag ds-tag-navy\">EPC</span> <span class=\"ds-tag ds-tag-outline\">New</span>",
+      "css": ".ds-tag { display: inline-block; border-radius: 9999px; padding: 6px 14px; font-size: 0.78rem; font-weight: 700; } .ds-tag-lavender { background: #B4B5DF; color: #201747; } .ds-tag-gold { background: #F1B434; color: #201747; } .ds-tag-navy { background: #201747; color: #F6F2F4; } .ds-tag-outline { background: transparent; border: 1.5px solid #B4B5DF; color: #201747; }"
+    },
+    {
+      "name": "Eyebrow",
+      "kind": "custom",
+      "refersTo": "eyebrow",
+      "description": "The site's signature kicker label: a small gold uppercase tag preceded by a struck gold rule. Always gold, on any background — the rule is what the Reveal entrance animation strikes first.",
+      "html": "<div class=\"ds-eyebrow\">What We Do</div>",
+      "css": ".ds-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #201747; } .ds-eyebrow::before { content: \"\"; display: block; width: 22px; height: 3px; border-radius: 2px; background: #F1B434; } .ds-eyebrow-light { color: #F1B434; }"
     }
-  },
-  "spacing": {
-    "container": "1200px",
-    "sectionPadding": { "default": "88px", "tight": "64px", "small": "56px", "mobile": "64px" },
-    "gridGap": "28px"
-  },
-  "radius": {
-    "sm": "8px",
-    "default": "14px",
-    "lg": "26px"
-  },
-  "shadowPolicy": "none — flat by default, cards use 1px lavender border instead",
-  "knownBugPattern": {
-    "name": "navy-on-navy invisible text",
-    "cause": "Direct color rules on classes like .eyebrow override inherited color; navy-background containers without an explicit scoped override render invisible text",
-    "requiredOverrides": [".bg-navy .eyebrow", ".grad-navy .eyebrow", ".cta-band .eyebrow", ".hero .eyebrow"],
-    "status": "fixed for all known containers as of 2026-07-25; check any new navy-background component against this list"
-  },
-  "languageHandling": {
-    "pattern": "single markup, lang-scoped spans, no duplication",
-    "toggleClasses": ["html.lang-ar", "html.lang-ckb"],
-    "rtl": true,
-    "logicalProperties": "required (padding-inline-start, inset-inline-start, etc.) — not left/right"
+  ],
+  "narrative": {
+    "northStar": "Registered & Reliable",
+    "overview": "A flat, restrained, credibility-first B2B industrial site. No drop shadows, no gradients beyond the navy overlay on hero photos, no more than one accent color doing work at a time (gold). Every design decision should read as \"established engineering firm,\" not \"startup\" or \"agency portfolio.\" The audience is industrial B2B procurement, not consumer or portfolio viewers, so credibility and restraint outrank expression at every decision point.",
+    "keyCharacteristics": [
+      "Four-color system only: navy, cream, lavender, gold — no exceptions without a conscious edit",
+      "Flat by default: 1px lavender borders instead of box-shadow, with two named, deliberate exceptions",
+      "One script, one type family per document: Gotham (Latin), Somar (Arabic), Ping (Kurdish Sorani), never mixed",
+      "Gold is the only accent color and is reserved for eyebrows, checkmarks, badges, hover states, and CTAs"
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Gold is the only \"pop\" color on the site. If a new component needs to draw attention, reach for gold — not a new color. Navy and lavender are structural (backgrounds/text), not accents.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Font Family Per Script Rule",
+        "body": "One type family is active per document, selected by the dir/lang attributes the layout sets from the route. Never mixed within a single language's content.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "No box-shadow. Cards use a 1px lavender border for definition; hover is a small lift plus a border-color change to gold. There are deliberately no shadow tokens in the theme so reaching for one takes a conscious edit. The only exceptions are the mobile nav panel, which genuinely floats over the page, and the timeline node's ring, which is a ring, not a drop shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Explicit Tone Rule",
+        "body": "Colour on a dark ground is never inherited implicitly. Eyebrow, Checklist, Section, CtaBand, and PageHero each take an explicit tone/dark choice at the call site — there is no cascade to audit, which is exactly why a missed tone stays a review checklist item.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do reach for gold when a new component needs to draw attention, never a new color.",
+      "Do pass tone=\"light\" to Eyebrow or Checklist whenever it sits on a navy ground.",
+      "Do use logical properties (ps-/pe-, ms-/me-, start-/end-, border-s/border-e) instead of left/right, so RTL flips correctly.",
+      "Do keep each language on its own URL and its own document (/en/, /ar/, /ku/) rather than toggling markup with a CSS class."
+    ],
+    "donts": [
+      "Don't reintroduce the teal and coral accent colors from the official brand sheet — Mustafa deliberately dropped them in the 2026-07-24 redesign.",
+      "Don't add a box-shadow outside the two named exceptions (mobile nav panel, timeline node ring).",
+      "Don't mix Gotham with Somar or Ping within a single language's content.",
+      "Don't use physical left/right utilities in RTL-sensitive markup; use the logical equivalents."
+    ]
   }
 }
