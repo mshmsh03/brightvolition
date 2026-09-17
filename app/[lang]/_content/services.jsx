@@ -1,12 +1,11 @@
 import { STRINGS } from './services.strings';
+import { Building2Icon, ClipboardCheckIcon, FileSignatureIcon, SettingsIcon, TruckIcon, WrenchIcon } from 'lucide-react';
 import { CONSTRUCTION_TABLE, pagePath } from '../../../lib/site-data';
 import {
   Card,
   CardList,
   CardListItem,
   CardText,
-  ClauseItem,
-  ClauseList,
   CtaBand,
   CtaButton,
   DataTable,
@@ -40,26 +39,14 @@ export default function Services({ lang }) {
       {/* THE SIX PILLARS */}
       <Section>
         <SectionHead eyebrow={t.whatWeDo} title={t.sixServicePillars} />
-        <ClauseList className="mx-auto max-w-[46rem]">
-          <ClauseItem num="01" title={t.designEngineering}>
-            {t.designEngineeringPillarDesc}
-          </ClauseItem>
-          <ClauseItem num="02" title={t.constructionInstallation}>
-            {t.constructionInstallationPillarDesc}
-          </ClauseItem>
-          <ClauseItem num="03" title={t.systemCommissioningStartUp}>
-            {t.systemCommissioningPillarDesc}
-          </ClauseItem>
-          <ClauseItem num="04" title={t.productSupplySourcing}>
-            {t.productSupplyPillarDesc}
-          </ClauseItem>
-          <ClauseItem num="05" title={t.operationsSupportTroubleshooting}>
-            {t.operationsSupportPillarDesc}
-          </ClauseItem>
-          <ClauseItem num="06" title={t.contractingServices}>
-            {t.contractingServicesPillarDesc}
-          </ClauseItem>
-        </ClauseList>
+        <Grid cols={6}>
+          <Card icon={SettingsIcon} title={t.designEngineering} />
+          <Card icon={Building2Icon} title={t.constructionInstallation} />
+          <Card icon={ClipboardCheckIcon} title={t.systemCommissioningStartUp} />
+          <Card icon={TruckIcon} title={t.productSupplySourcing} />
+          <Card icon={WrenchIcon} title={t.operationsSupportTroubleshooting} />
+          <Card icon={FileSignatureIcon} title={t.contractingServices} />
+        </Grid>
       </Section>
 
       {/* ENGINEERING DISCIPLINES */}

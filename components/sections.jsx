@@ -369,37 +369,6 @@ export function TimelineEntry({ children }) {
   );
 }
 
-// A vertical sibling of Timeline: same rule-and-node grammar, turned
-// downward. Each row's gold node registers to one continuous spine running
-// down the start edge, built from a border on each row rather than a single
-// absolutely-positioned line, so it holds up under any number of rows of any
-// height instead of needing to know the list's total height in advance.
-export function ClauseList({ className = '', children }) {
-  return (
-    <Reveal as="div" stagger className={`flex flex-col ${className}`}>
-      {children}
-    </Reveal>
-  );
-}
-
-export function ClauseItem({ num, title, className = '', children }) {
-  return (
-    <div className={`flex gap-6 border-b border-lavender/40 py-6 last:border-none ${className}`}>
-      <div className="relative w-10 shrink-0 border-s-2 border-lavender">
-        <span
-          aria-hidden="true"
-          className="absolute start-[-9px] top-6 size-3.5 rounded-full border-[3px] border-cream bg-gold shadow-[0_0_0_2px_var(--color-navy)]"
-        />
-      </div>
-      <span className="w-8 shrink-0 pt-0.5 text-[.95rem] font-black tabular-nums text-gold">{num}</span>
-      <div className="min-w-0">
-        <h3 className="mb-1.5 text-card-title">{title}</h3>
-        <CardText>{children}</CardText>
-      </div>
-    </div>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // Data
 // ---------------------------------------------------------------------------
