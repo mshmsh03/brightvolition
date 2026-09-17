@@ -21,12 +21,22 @@ export default function SmoothScroll() {
     let lenis;
 
     const onAnchorClick = (event) => {
+      // A modifier key or a non-primary button means the visitor wants the
+      // browser's own handling (new tab, new window) — never intercept that.
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = event.target.closest('a[href^="#"]');
       if (!link || link.hash.length < 2) return;
       const targetEl = document.getElementById(decodeURIComponent(link.hash.slice(1)));
       if (!targetEl) return;
       event.preventDefault();
-      lenis.scrollTo(targetEl);
+      lenis.scrollTo(targetEl, {
+        onComplete: () => {
+          // Native anchor jumps move keyboard/screen-reader focus to the
+          // target; replicate that so this doesn't regress for those visitors.
+          targetEl.setAttribute('tabindex', '-1');
+          targetEl.focus({ preventScroll: true });
+        },
+      });
     };
 
     const start = () => {
