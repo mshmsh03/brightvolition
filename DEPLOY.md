@@ -14,7 +14,7 @@ GitHub Pages  ──  Cloudflare (DNS + redirect rules)  ──  brightvolition.
 
 `npm run build` runs `next build` and then `scripts/postbuild.mjs`. Because
 `next.config.js` sets `output: 'export'`, the build writes a complete static
-site to `out/` — no Node server runs in production.
+site to `out/`. No Node server runs in production.
 
 `trailingSlash: true` is what decides the shape of the output: every route
 becomes a directory with an `index.html` inside it (`out/en/about/index.html`),
@@ -25,14 +25,14 @@ export copies verbatim:
 
 | File | Why it is there |
 | --- | --- |
-| `CNAME` | Inert. Kept only so a switch back to branch-based publishing would still carry the domain — it is **not** what binds `brightvolition.com` today. See [The custom domain](#the-custom-domain). |
-| `.nojekyll` | Without it, GitHub Pages runs Jekyll, and Jekyll ignores every directory starting with `_` — including `_next`. The site would load with no CSS or JS. |
+| `CNAME` | Inert. Kept only so a switch back to branch-based publishing would still carry the domain. It is **not** what binds `brightvolition.com` today. See [The custom domain](#the-custom-domain). |
+| `.nojekyll` | Without it, GitHub Pages runs Jekyll, and Jekyll ignores every directory starting with `_`, including `_next`. The site would load with no CSS or JS. |
 | `index.html`, `about.html`, … | Redirect stubs for the pre-Next URLs (see below). |
 | `robots.txt`, `sitemap.xml` | Regenerate with `node scripts/make-stubs.cjs public` if the page list changes. |
 
 `scripts/postbuild.mjs` then replaces `out/404.html`. Next writes its own
 unstyled 404 there from the framework's not-found route, and a file in
-`public/` cannot win that race — the export copies `public/` first and writes
+`public/` cannot win that race. The export copies `public/` first and writes
 route output over the top.
 
 ## Deploying
@@ -59,7 +59,7 @@ the setting is the only thing that counts.
 
 This already caused one outage. The migration to Next.js moved `CNAME` from the
 repo root into `public/` and switched publishing to Actions in the same change.
-The file survived, so the build's `Verify export` check for `out/CNAME` passed —
+The file survived, so the build's `Verify export` check for `out/CNAME` passed,
 but nothing read it any more, the domain came unbound, and every URL returned
 GitHub's "Site not found" while the workflow reported success. The artifact was
 correct the whole time; `mshmsh03.github.io/brightvolition/en/` served it
@@ -73,8 +73,8 @@ So there are now two `CNAME` files, and **neither one binds the domain**:
 | `public/CNAME` | Ours, copied to `out/CNAME` by the export | None. Served as a plain file at `/CNAME`. |
 
 Neither is safe to treat as the source of truth. If the domain ever drops off
-again — the symptom is "Site not found · GitHub Pages" on every URL, including
-`/` — re-enter it under **Settings → Pages → Custom domain**. Nothing needs to
+again, the symptom is "Site not found · GitHub Pages" on every URL, including
+`/`. Re-enter it under **Settings → Pages → Custom domain**. Nothing needs to
 be rebuilt or pushed.
 
 ## URLs
@@ -89,7 +89,7 @@ Every page lives under a language segment:
 `/` and the six old flat URLs (`/about.html`, `/services.html`, …) are served by
 redirect stubs in `public/`. Each one carries `<link rel="canonical">` to the
 English page, `noindex,follow`, a `<meta http-equiv="refresh">`, and a script
-that reads the **`bv-lang`** key the pre-Next site wrote to `localStorage` — so
+that reads the **`bv-lang`** key the pre-Next site wrote to `localStorage`, so
 a returning visitor who had chosen Kurdish still lands on Kurdish rather than
 being reset to English by the move to per-language URLs.
 
@@ -107,7 +107,7 @@ path (status 301, preserve query string):
 | `/projects.html` | `/en/projects/` |
 | `/contact.html` | `/en/contact/` |
 
-Leave the stubs in place anyway — they are the fallback if a rule is ever
+Leave the stubs in place anyway. They are the fallback if a rule is ever
 removed, and they are what makes `mshmsh03.github.io/brightvolition/` behave.
 
 ### Cloudflare notes
@@ -116,7 +116,7 @@ removed, and they are what makes `mshmsh03.github.io/brightvolition/` behave.
   (`185.199.108.153`, `.109.153`, `.110.153`, `.111.153`) and a `CNAME` for
   `www` → `mshmsh03.github.io`.
 - Proxy status can stay **Proxied** (orange cloud). If HTTPS ever errors after
-  switching, set SSL/TLS mode to **Full** — *Flexible* makes GitHub Pages
+  switching, set SSL/TLS mode to **Full**. *Flexible* makes GitHub Pages
   redirect-loop.
 - Cloudflare caches HTML. After a deploy that changes a page, purge the cache
   (or purge just that URL) if the old version is still being served.
@@ -128,7 +128,7 @@ npm install
 npm run dev          # http://localhost:3000/en/
 ```
 
-`next dev` serves the app normally — redirect stubs in `public/` are not
+`next dev` serves the app normally. Redirect stubs in `public/` are not
 exercised, so `/` will 404 in dev. To check the real published artefact:
 
 ```bash
@@ -138,7 +138,7 @@ npx serve out -l 4321   # http://localhost:4321/
 
 ## Changing content
 
-Content lives in `app/[lang]/_content/<page>.<lang>.jsx` — one file per page per
+Content lives in `app/[lang]/_content/<page>.<lang>.jsx`, one file per page per
 language. Chrome (nav labels, footer, contact block, page titles and
 descriptions) lives in `lib/site-data.js`.
 

@@ -288,7 +288,8 @@ export function CardListItem({ children }) {
 // Lists
 // ---------------------------------------------------------------------------
 
-// The gold ✓ list. `tone="light"` is for the navy sections, where the text
+// The gold check-mark list (unslop-ignore: functional icon glyph, not a
+// decorative emoji). `tone="light"` is for the navy sections, where the text
 // needs to be cream rather than navy.
 export function Checklist({ tone = 'navy', className = '', children }) {
   return <ul className={`${tone === 'light' ? 'text-cream' : 'text-navy'} ${className}`}>{children}</ul>;
@@ -301,7 +302,7 @@ export function ChecklistItem({ children }) {
         aria-hidden="true"
         className="absolute -top-px flex size-5.5 items-center justify-center rounded-[7px] bg-gold start-0 text-[.75rem] font-black text-navy"
       >
-        ✓
+        {/* unslop-ignore: functional checkmark icon, not decorative emoji */}✓
       </span>
       {children}
     </li>

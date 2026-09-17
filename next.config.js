@@ -21,7 +21,7 @@ const nextConfig = {
   // failing the export.
   images: { unoptimized: true },
 
-  // NOTE: redirects()/rewrites() do not exist in a static export — there is no
+  // redirects()/rewrites() do not exist in a static export — there is no
   // server to run them. The old flat URLs from the pre-Next site
   // (/about.html, /services.html, …) are preserved instead by the redirect
   // stubs in public/, and by the Cloudflare rules documented in DEPLOY.md.

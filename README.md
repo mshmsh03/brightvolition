@@ -9,7 +9,7 @@ product supply.
 
 ## Stack
 
-- [Next.js](https://nextjs.org) (App Router), exported as static HTML — no
+- [Next.js](https://nextjs.org) (App Router), exported as static HTML. No
   Node server runs in production
 - [Tailwind CSS v4](https://tailwindcss.com) + [shadcn](https://ui.shadcn.com)
   primitives
@@ -32,8 +32,8 @@ npm run lint     # eslint .
 
 ## Languages
 
-Every page is built once and rendered for three languages — English,
-Arabic, and Kurdish Sorani (`ckb`) — each on its own route (`/en/`, `/ar/`,
+Every page is built once and rendered for three languages: English,
+Arabic, and Kurdish Sorani (`ckb`). Each has its own route (`/en/`, `/ar/`,
 `/ku/`) with proper `dir`/`lang` and hreflang tags, not toggled client-side.
 See [`DESIGN.md`](./DESIGN.md#rtl--language-handling) for how RTL and
 per-script typography are handled.
@@ -45,16 +45,16 @@ per-script typography are handled.
 | `app/[lang]/_content/` | Page content, one file per page + a matching `.strings.js` per language |
 | `components/sections.jsx` | The shared section/card/list vocabulary the content files are built from |
 | `components/ui/` | shadcn primitives |
-| `lib/site-data.js` | Nav labels, footer text, contact details — the site's chrome |
+| `lib/site-data.js` | The site's chrome: nav labels, footer text, contact details |
 | `app/globals.css` | Colour, type, spacing, and motion tokens |
 
 ## Docs
 
-- [`PRODUCT.md`](./PRODUCT.md) — what this site is, who it's for, and what's deliberately out of scope
-- [`DESIGN.md`](./DESIGN.md) — the design system: colour, type, spacing, and the "why" behind each rule
-- [`DEPLOY.md`](./DEPLOY.md) — how the build works and how a deploy actually reaches brightvolition.com
+- [`PRODUCT.md`](./PRODUCT.md): what this site is, who it's for, and what's deliberately out of scope
+- [`DESIGN.md`](./DESIGN.md): the design system, colour, type, spacing, and the "why" behind each rule
+- [`DEPLOY.md`](./DEPLOY.md): how the build works and how a deploy actually reaches brightvolition.com
 
 ## Deploying
 
 Push to `main`. `.github/workflows/deploy.yml` builds and publishes
-automatically — see [`DEPLOY.md`](./DEPLOY.md) for the full pipeline.
+automatically. See [`DEPLOY.md`](./DEPLOY.md) for the full pipeline.
