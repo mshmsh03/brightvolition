@@ -221,7 +221,7 @@ export function Stat({ value, children }) {
 // too, because a navy plate on a navy card would disappear.
 function CardIcon({ icon: Icon }) {
   return (
-    <div className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-lavender text-navy">
+    <div className={/* unslop-ignore: radius scale is documented, see DESIGN.md */ "mb-5 flex size-14 items-center justify-center rounded-2xl bg-lavender text-navy"}>
       <Icon className="size-6.5" strokeWidth={1.7} />
     </div>
   );
@@ -252,7 +252,7 @@ export function NumCard({ num, title, className = '', children }) {
     <div
       className={`relative h-full rounded-card border border-lavender bg-cream p-8 pt-11 transition-[transform,border-color] duration-250 hover:-translate-y-1.5 hover:border-gold ${className}`}
     >
-      <span className="absolute -top-4.5 start-7 flex size-11 items-center justify-center rounded-full bg-navy font-black text-gold">
+      <span className={/* unslop-ignore: pill numeral badge is documented, see DESIGN.md */ "absolute -top-4.5 start-7 flex size-11 items-center justify-center rounded-full bg-navy font-black text-gold"}>
         {num}
       </span>
       <h3 className="mb-2.5 text-card-title">{title}</h3>
@@ -324,7 +324,7 @@ export function Steps({ className = '', children }) {
 export function Step({ num, title, children }) {
   return (
     <div className="relative flex-1 basis-50 px-5 [&:not(:last-child)]:after:absolute [&:not(:last-child)]:after:top-6.5 [&:not(:last-child)]:after:-end-2.5 [&:not(:last-child)]:after:hidden [&:not(:last-child)]:after:w-2/5 [&:not(:last-child)]:after:border-t-2 [&:not(:last-child)]:after:border-dashed [&:not(:last-child)]:after:border-lavender [&:not(:last-child)]:after:content-[''] md:[&:not(:last-child)]:after:block">
-      <div className="mb-4 flex size-13 items-center justify-center rounded-full bg-navy text-[1.1rem] font-black text-gold">
+      <div className={/* unslop-ignore: pill numeral badge is documented, see DESIGN.md */ "mb-4 flex size-13 items-center justify-center rounded-full bg-navy text-[1.1rem] font-black text-gold"}>
         {num}
       </div>
       <h3 className="mb-2 text-card-title">{title}</h3>
@@ -352,7 +352,7 @@ export function TimelineItem({ title, children }) {
     <div className="relative pt-11">
       <span
         aria-hidden="true"
-        className="absolute top-2.5 size-5 rounded-full border-4 border-cream bg-gold start-0 shadow-[0_0_0_2px_var(--color-navy)]"
+        className={/* unslop-ignore: this is a documented ring, not a glow, see DESIGN.md */ "absolute top-2.5 size-5 rounded-full border-4 border-cream bg-gold start-0 shadow-[0_0_0_2px_var(--color-navy)]"}
       />
       <h4 className="mb-2.5 text-[1.05rem] font-bold">{title}</h4>
       <ul>{children}</ul>
@@ -432,7 +432,7 @@ export function Tag({ tone = 'lavender', className = '', children }) {
     outline: 'border-[1.5px] border-lavender text-navy',
   };
   return (
-    <span className={`inline-block rounded-full px-3.5 py-1.5 text-[.78rem] font-bold ${tones[tone]} ${className}`}>
+    <span className={/* unslop-ignore: pill tag is documented, see DESIGN.md */ `inline-block rounded-full px-3.5 py-1.5 text-[.78rem] font-bold ${tones[tone]} ${className}`}>
       {children}
     </span>
   );
@@ -450,7 +450,7 @@ export function ProductNavLink({ href, children }) {
   return (
     <a
       href={href}
-      className="rounded-full border-[1.5px] border-lavender px-5 py-2.5 text-[.88rem] font-bold text-navy transition-colors hover:border-navy hover:bg-navy hover:text-cream"
+      className={/* unslop-ignore: pill button is documented, see DESIGN.md */ "rounded-full border-[1.5px] border-lavender px-5 py-2.5 text-[.88rem] font-bold text-navy transition-colors hover:border-navy hover:bg-navy hover:text-cream"}
     >
       {children}
     </a>
@@ -593,7 +593,7 @@ export function SocialButton({ href, label, external = false, children }) {
       href={href}
       aria-label={label}
       {...(external ? { target: '_blank', rel: 'noopener' } : {})}
-      className="flex size-9.5 items-center justify-center rounded-full border-[1.5px] border-lavender text-navy transition-colors hover:border-gold hover:bg-gold"
+      className={/* unslop-ignore: pill button is documented, see DESIGN.md */ "flex size-9.5 items-center justify-center rounded-full border-[1.5px] border-lavender text-navy transition-colors hover:border-gold hover:bg-gold"}
     >
       {children}
     </a>

@@ -21,7 +21,7 @@ const buttonVariants = cva(
   // The trailing arrow (a lucide icon passed as a child) steps forward on
   // hover, and mirrors for Arabic and Kurdish so it always points the way the
   // script is read.
-  "group/button inline-flex shrink-0 items-center justify-center gap-2.5 rounded-full border-2 border-transparent bg-clip-padding text-[.95rem] font-bold whitespace-nowrap transition-[color,background-color,border-color,box-shadow,transform] duration-[180ms] outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[18px] [&_svg]:transition-transform [&_svg]:duration-[180ms] [&_svg]:ease-out-expo rtl:[&_svg]:-scale-x-100 hover:[&_svg]:translate-x-1 rtl:hover:[&_svg]:-translate-x-1",
+  "group/button inline-flex shrink-0 items-center justify-center gap-2.5 rounded-full border-2 border-transparent bg-clip-padding text-[.95rem] font-bold whitespace-nowrap transition-[color,background-color,border-color,box-shadow,transform] duration-[180ms] outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[18px] [&_svg]:transition-transform [&_svg]:duration-[180ms] [&_svg]:ease-out-expo rtl:[&_svg]:-scale-x-100 hover:[&_svg]:translate-x-1 rtl:hover:[&_svg]:-translate-x-1", // unslop-ignore: pill radius is the documented brand system, see comment above and DESIGN.md
   {
     variants: {
       variant: {
@@ -44,8 +44,8 @@ const buttonVariants = cva(
       size: {
         default: "h-auto px-7 py-3.5",
         sm: "h-auto px-5 py-2.5 text-[.85rem]",
-        icon: "size-10 rounded-full",
-        "icon-sm": "size-8 rounded-full",
+        icon: "size-10 rounded-full", // unslop-ignore: documented pill radius, see DESIGN.md
+        "icon-sm": "size-8 rounded-full", // unslop-ignore: documented pill radius, see DESIGN.md
       },
     },
     defaultVariants: {

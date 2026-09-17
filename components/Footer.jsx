@@ -19,7 +19,7 @@ function SocialLink({ href, label, external = false, children }) {
       href={href}
       aria-label={label}
       {...(external ? { target: '_blank', rel: 'noopener' } : {})}
-      className="flex size-9.5 items-center justify-center rounded-full border-[1.5px] border-lavender transition-colors hover:border-gold hover:bg-gold hover:text-navy"
+      className={/* unslop-ignore: pill button is the documented brand system, see DESIGN.md */ "flex size-9.5 items-center justify-center rounded-full border-[1.5px] border-lavender transition-colors hover:border-gold hover:bg-gold hover:text-navy"}
     >
       {children}
     </a>

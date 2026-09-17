@@ -97,7 +97,7 @@ export default function Header({ lang }) {
                 key={p}
                 href={pagePath(lang, p)}
                 aria-current={active ? 'page' : undefined}
-                className={`rounded-full px-2.5 py-2.5 text-[.94rem] font-medium whitespace-nowrap transition-colors xl:px-3 ${
+                className={/* unslop-ignore: pill nav link is the documented brand system, see DESIGN.md */ `rounded-full px-2.5 py-2.5 text-[.94rem] font-medium whitespace-nowrap transition-colors xl:px-3 ${
                   active ? 'bg-navy text-cream' : 'text-navy hover:bg-navy hover:text-cream'
                 }`}
               >
@@ -111,7 +111,7 @@ export default function Header({ lang }) {
           {/* items-stretch + leading-none: the Kurdish label renders in Ping,
               whose baseline sits higher than Gotham's, so letting the three
               links size themselves left KU riding above EN and AR. */}
-          <div className="flex items-stretch overflow-hidden rounded-full border-[1.5px] border-lavender text-[.75rem] leading-none font-bold sm:text-[.8rem]">
+          <div className={/* unslop-ignore: pill shape is the documented brand system, see DESIGN.md */ "flex items-stretch overflow-hidden rounded-full border-[1.5px] border-lavender text-[.75rem] leading-none font-bold sm:text-[.8rem]"}>
             {/* A plain <a>, not <Link>, so changing language is a full document
                 load. Two reasons. The root layout carries <html lang dir> and
                 the inline motion script; a soft nav re-renders it on the

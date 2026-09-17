@@ -43,7 +43,7 @@ export default function BackToTop({ label }) {
           behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
         })
       }
-      className={`fixed bottom-6 end-6 z-150 flex size-12 items-center justify-center rounded-full bg-navy text-gold transition-opacity duration-250 ${
+      className={/* unslop-ignore: pill button is the documented brand system, see DESIGN.md */ `fixed bottom-6 end-6 z-150 flex size-12 items-center justify-center rounded-full bg-navy text-gold transition-opacity duration-250 ${
         show ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
