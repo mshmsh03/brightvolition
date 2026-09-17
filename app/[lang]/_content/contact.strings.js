@@ -11,7 +11,7 @@ export const STRINGS = {
     contact: "Contact",
     yourTrustedPartnerInEngineering: "Your Trusted Partner in Engineering Solutions",
     readyToCollaborate: "Ready to Collaborate?",
-    reachOutWithYourInquiries: "Reach out with your inquiries or RFQs — include the scope, timeline, and budget, and we’ll respond with the right team.",
+    reachOutWithYourInquiries: "Reach out with your inquiries or RFQs. Include the scope, timeline, and budget, and we’ll respond with the right team.",
     contactDetails: "Contact Details",
     email2: "Email",
     phone: "Phone",
