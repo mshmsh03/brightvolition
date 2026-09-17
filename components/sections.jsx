@@ -232,7 +232,7 @@ export function Card({ id, icon, title, tone = 'light', className = '', children
   return (
     <div
       id={id}
-      className={`h-full rounded-card p-8 transition-[transform,border-color] duration-250 hover:-translate-y-1.5 ${
+      className={`h-full rounded-card p-8 transition-colors duration-250 ${
         dark
           ? 'border-none bg-navy text-lavender [&_h3]:text-cream'
           : 'border border-lavender bg-cream hover:border-gold'
@@ -250,7 +250,7 @@ export function Card({ id, icon, title, tone = 'light', className = '', children
 export function NumCard({ num, title, className = '', children }) {
   return (
     <div
-      className={`relative h-full rounded-card border border-lavender bg-cream p-8 pt-11 transition-[transform,border-color] duration-250 hover:-translate-y-1.5 hover:border-gold ${className}`}
+      className={`relative h-full rounded-card border border-lavender bg-cream p-8 pt-11 transition-colors duration-250 hover:border-gold ${className}`}
     >
       <span className={/* unslop-ignore: pill numeral badge is documented, see DESIGN.md */ "absolute -top-4.5 start-7 flex size-11 items-center justify-center rounded-full bg-navy font-black text-gold"}>
         {num}

@@ -41,7 +41,7 @@ Script-specific type tuning (documented so it isn't "fixed" back to the Latin de
 - Grid gap: `28px` default
 
 ## Components — Flat by Default
-- **No box-shadow.** Cards use a 1px lavender border for definition; hover is a small lift plus a border-color change to gold. There are deliberately no shadow tokens in `@theme` so reaching for one takes a conscious edit. The two exceptions are the mobile nav panel, which genuinely floats over the page, and the timeline node's `shadow-[0_0_0_2px]` ring. It's a ring, not a drop shadow.
+- **No box-shadow.** Cards use a 1px lavender border for definition; hover is a border-color change to gold, no movement. There are deliberately no shadow tokens in `@theme` so reaching for one takes a conscious edit. The two exceptions are the mobile nav panel, which genuinely floats over the page, and the timeline node's `shadow-[0_0_0_2px]` ring. It's a ring, not a drop shadow.
 - Buttons: fully rounded (`border-radius:100px`), gold-fill or outline variants only
 - `.eyebrow`: small gold uppercase label with a 3px gold rule, used as a section kicker, always gold, regardless of background (has explicit overrides for `.bg-navy`, `.grad-navy`, `.cta-band`, `.hero` contexts, see "Context-scoped color overrides" below)
 

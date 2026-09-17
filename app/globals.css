@@ -65,9 +65,9 @@
     --tracking-eyebrow: 0.08em;   /* the small caps label above headings */
     --container-measure: 760px;   /* prose column — a comfortable line length */
     /* No shadow tokens on purpose. DESIGN.md's "flat by default" rule means
-       cards are separated by a 1px lavender border and a hover lift, never by
-       a drop shadow — the only shadowed surface on the site is the mobile nav
-       panel, which genuinely floats over the page. */
+       cards are separated by a 1px lavender border and a hover border-color
+       change, never by a drop shadow or lift — the only shadowed surface on
+       the site is the mobile nav panel, which genuinely floats over the page. */
 }
 
 /* ---------- Motion tokens ----------
