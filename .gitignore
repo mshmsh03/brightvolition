@@ -22,3 +22,10 @@ out/
 # of the site itself.
 .agents/
 skills-lock.json
+
+# Secrets and per-machine files
+.env*
+.vercel
+.DS_Store
+Thumbs.db
+*.log
