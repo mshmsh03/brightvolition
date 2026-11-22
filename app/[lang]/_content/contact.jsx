@@ -1,7 +1,7 @@
 import { STRINGS } from './contact.strings';
 import { MailIcon, MapPinIcon, PhoneIcon, SettingsIcon, TruckIcon } from 'lucide-react';
 import { LinkedinIcon } from '../../../components/icons';
-import { EMAIL, LINKEDIN, PHONE_DISPLAY, PHONE_HREF, pagePath } from '../../../lib/site-data';
+import { EMAIL, LINKEDIN, PHONE_DISPLAY, PHONE_HREF, QUOTE_FORM_ID, pagePath } from '../../../lib/site-data';
 import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
 import QuoteForm from '../../../components/QuoteForm';
 import {
@@ -35,7 +35,7 @@ export default function Contact({ lang }) {
       <Section size="tight">
         <div className="mx-auto max-w-4xl">
           <Reveal as="div">
-            <QuoteForm id="quote" toEmail={EMAIL} t={t} />
+            <QuoteForm id="quote" toEmail={EMAIL} formId={QUOTE_FORM_ID} lang={lang} t={t} />
           </Reveal>
         </div>
       </Section>

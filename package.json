@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build && node scripts/postbuild.mjs",
     "start": "serve out",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "node --test \"lib/**/*.test.mjs\""
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
