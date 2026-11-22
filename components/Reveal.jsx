@@ -57,7 +57,6 @@ export default function Reveal({
         // render something different on the server and break hydration.
         // Runs once, and the element is already at its final state, so
         // nothing cascades.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setInView(true);
         return;
       }
