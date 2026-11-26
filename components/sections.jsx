@@ -135,6 +135,14 @@ export function Hero({ image, wide = false, children }) {
   );
 }
 
+// A blog article's headline is a full sentence, so it is set smaller than the
+// two- or three-word titles of the main pages; at their size it ran to five
+// lines and pushed the article itself off the first screen.
+const HERO_TITLE = {
+  page: 'text-[clamp(2.1rem,4.4vw,3.6rem)]',
+  article: 'text-[clamp(1.6rem,3.1vw,2.5rem)]',
+};
+
 // Every subpage opens with this, and it runs the same entrance as the home
 // hero at a shorter scale: the photograph settles, then the crumb, title, and
 // lede register to it. Because it animates on mount and the router swaps only
@@ -148,6 +156,7 @@ export function PageHero({
   eyebrow,
   tag,
   title,
+  titleSize = 'page',
   lede,
   wide = true,
   className = '',
@@ -179,7 +188,7 @@ export function PageHero({
               {eyebrow}
             </Eyebrow>
           ) : null}
-          <h1 className="m-wipe text-[clamp(2.1rem,4.4vw,3.6rem)] text-cream" style={{ '--m-delay': '190ms' }}>
+          <h1 className={`m-wipe ${HERO_TITLE[titleSize]} text-cream`} style={{ '--m-delay': '190ms' }}>
             {title}
           </h1>
           {lede ? (

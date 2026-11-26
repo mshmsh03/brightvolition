@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { MenuIcon } from 'lucide-react';
 import { LANGS, PAGES, SITE, pagePath } from '../lib/site-data';
+import { localizePath, sectionFromPath } from '../lib/paths.mjs';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
 
@@ -12,25 +13,24 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
 // navigation leaves it mounted: no re-paint and no scroll state lost. That
 // means it reads the active page from the URL instead of taking it as a prop.
 //
-// Routes are /<lang>/ and /<lang>/<page>/ — see pagePath() in lib/site-data.js
-// and the trailingSlash note in next.config.js.
-function pageFromPathname(pathname) {
-  const match = /^\/[a-z]{2}\/([a-z]+)\/?$/.exec(pathname);
-  return match && PAGES.includes(match[1]) ? match[1] : 'index';
-}
-
+// Routes are /<lang>/, /<lang>/<page>/ and /<lang>/blog/<article>/. The rules
+// for reading them live in lib/paths.mjs, where `npm test` covers them — and
+// deliberately not in lib/blog.mjs, which would pull every article into this
+// client bundle.
 export default function Header({ lang }) {
   const t = SITE[lang];
   const pathname = usePathname();
-  const page = pageFromPathname(pathname);
+  // An article lights up "Blog": that is the menu item it sits under.
+  const page = sectionFromPath(pathname, PAGES);
   const [open, setOpen] = useState(false);
 
-  // The language switcher points at the *same* page in the other language.
-  // The pre-Next site toggled a CSS class and wrote localStorage instead, so
-  // all three languages shared one URL and only English was ever indexed.
+  // The language switcher points at the *same* page in the other language —
+  // the same article, when the visitor is reading one. The pre-Next site
+  // toggled a CSS class and wrote localStorage instead, so all three languages
+  // shared one URL and only English was ever indexed.
   const langLinks = LANGS.map((l) => ({
     lang: l,
-    href: pagePath(l, page),
+    href: localizePath(pathname, l),
     label: SITE[l].langName,
     active: l === lang,
   }));
@@ -74,22 +74,25 @@ export default function Header({ lang }) {
             the note on the logo image above). The fix is to keep the nav's
             natural width low enough that nothing has to shrink at all.
 
-            Widest case is Kurdish. Budget at the two tight viewports, where
-            .wrap gives 976px and 1152px of content:
+            Widest case is Kurdish. Budget with seven items (Blog was added in
+            November 2026), measured in Chrome with a classic 15px scrollbar,
+            which is the narrowest the content area gets:
 
-              1024px  logo 150 + 10 + nav 659 + 10 + switcher 143 = 972  (+4)
-              1280px  logo 150 + 10 + nav 683 + 10 + right    297 = 1150 (+2)
+              1024px  logo 150 + 10 + nav 638 + 10 + switcher 143 = 951 of 961   (+10)
+              1280px  logo 150 + 10 + nav 741 + 10 + switcher 143 = 1054 of 1152 (+98)
 
-            px-2.5 below xl buys the 24px that 1024px is short; px-3 returns at
-            xl where the room exists. 1100–1279px was never tight — it has
-            100px+ spare — so the tighter pills there are the price of one rule
-            covering the whole band.
+            Below xl the pills are px-2 with .88rem type and a 2px gap. At the
+            previous px-2.5 / .94rem / 4px, the seventh item made the Kurdish
+            nav 713px — 50px more than 1024px has — and the logo shrank from
+            150px to 100px. Full size returns at xl where the room exists.
+            1100–1279px was never tight, so the smaller pills there are the
+            price of one rule covering the whole band.
 
-            Margins are single digits: adding a seventh nav item, widening
-            these pills, or a longer translation will start shrinking the logo
-            again. object-contain on the logo image keeps that from becoming a
+            The 1024px margin is still small: an eighth nav item, wider pills,
+            or a longer translation will start shrinking the logo again.
+            object-contain on the logo image keeps that from becoming a
             distorted brand mark, but re-measure rather than relying on it. */}
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-0.5 lg:flex xl:gap-1">
           {PAGES.map((p) => {
             const active = p === page;
             return (
@@ -97,7 +100,7 @@ export default function Header({ lang }) {
                 key={p}
                 href={pagePath(lang, p)}
                 aria-current={active ? 'page' : undefined}
-                className={/* unslop-ignore: pill nav link is the documented brand system, see DESIGN.md */ `rounded-full px-2.5 py-2.5 text-[.94rem] font-medium whitespace-nowrap transition-colors xl:px-3 ${
+                className={/* unslop-ignore: pill nav link is the documented brand system, see DESIGN.md */ `rounded-full px-2 py-2.5 text-[.88rem] font-medium whitespace-nowrap transition-colors xl:px-3 xl:text-[.94rem] ${
                   active ? 'bg-navy text-cream' : 'text-navy hover:bg-navy hover:text-cream'
                 }`}
               >

@@ -1,4 +1,5 @@
 import { STRINGS } from './index.strings';
+import { STRINGS as BLOG } from './blog.strings';
 import {
   AwardIcon,
   Building2Icon,
@@ -14,6 +15,9 @@ import {
   ZapIcon,
 } from 'lucide-react';
 import { CLIENT_LOGOS, EMAIL, PARTNER_LOGOS, pagePath } from '../../../lib/site-data';
+import { getPosts } from '../../../lib/blog.mjs';
+import { postPath } from '../../../lib/paths.mjs';
+import { LatestPost } from '../../../components/blog';
 import {
   Card,
   CardText,
@@ -36,6 +40,9 @@ import {
 
 export default function Home({ lang }) {
   const t = STRINGS[lang];
+  const blog = BLOG[lang];
+  // getPosts() is newest first, so this is always the latest article.
+  const [latest] = getPosts();
 
   return (
     <>
@@ -177,6 +184,19 @@ export default function Home({ lang }) {
           </Card>
         </Grid>
       </Section>
+
+      {/* FROM THE BLOG */}
+      {latest ? (
+        <Section size="tight" className="pt-0 md:pt-0">
+          <LatestPost
+            href={postPath(lang, latest.slug)}
+            eyebrow={blog.fromOurBlog}
+            title={latest[lang].title}
+            summary={latest[lang].summary}
+            readLabel={blog.readArticle}
+          />
+        </Section>
+      ) : null}
 
       {/* PARTNERS */}
       <Section size="sm">

@@ -11,7 +11,7 @@ import {
   pagePath,
 } from '../lib/site-data';
 
-const FOOTER_NAV = ['about', 'services', 'products', 'projects', 'contact'];
+const FOOTER_NAV = ['about', 'services', 'products', 'projects', 'blog', 'contact'];
 
 function SocialLink({ href, label, external = false, children }) {
   return (
