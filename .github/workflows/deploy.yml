@@ -30,6 +30,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      # The script that turns the company's Word files into blog articles. It
+      # is not part of the build, but a fault in it would put wrong text on the
+      # site, so its tests run here too. Python 3 ships with the runner.
+      - run: python3 -m unittest discover -s scripts/blog -p "test_*.py"
       - run: npm run build
 
       # Fail here rather than after publishing if the export did not actually
@@ -42,6 +46,12 @@ jobs:
                    out/en/services/index.html out/en/blog/index.html \
                    out/sitemap.xml out/index.html out/CNAME out/.nojekyll; do
             [ -f "$f" ] || { echo "missing $f"; exit 1; }
+          done
+          # Articles are the one route built from a list rather than a file, so
+          # make sure the list produced pages in every language.
+          for lang in en ar ku; do
+            ls out/$lang/blog/*/index.html >/dev/null 2>&1 \
+              || { echo "no article pages under out/$lang/blog/"; exit 1; }
           done
           echo "export looks complete"
 
@@ -99,6 +109,7 @@ jobs:
                      https://brightvolition.com/ar/ \
                      https://brightvolition.com/ku/ \
                      https://brightvolition.com/en/blog/ \
+                     https://brightvolition.com/ar/blog/solar-grid-connection/ \
                      https://brightvolition.com/sitemap.xml \
                      https://brightvolition.com/index.html \
                      https://brightvolition.com/about.html \

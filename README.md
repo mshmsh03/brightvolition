@@ -26,7 +26,7 @@ Other scripts:
 
 ```bash
 npm run build    # next build, then postbuild — writes the static site to out/
-npm run start    # next start, on :3000
+npm run start    # serves the built out/ folder (run npm run build first)
 npm run lint     # eslint .
 npm test         # node --test: the quote form's logic and every blog article
 ```
@@ -66,17 +66,18 @@ automatically. See [`DEPLOY.md`](./DEPLOY.md) for the full pipeline.
 ## Blog
 
 Articles live in `content/blog/`, one file per article with all three
-languages inside it. The blog page (`/en/blog/`), the article pages, the
-teaser on the home page and the sitemap are all built from that folder, so
-there is nothing else to keep in step.
+languages inside it, and are listed in `lib/blog.mjs`. The blog page
+(`/en/blog/`), the article pages, the teaser on the home page and the sitemap
+are all built from that list, so those never need updating by hand.
 
 To add an article the company has sent as a Word file:
 
 1. Copy any PDF guide into `public/assets/docs/blog/` and its cover picture
    into `public/assets/img/blog/`.
-2. Write `content/blog/<slug>.recipe.json` (copy the existing one). It holds
-   everything that is not article text: the slug, the date, the cover photo,
-   the guide's files and titles, and where the guide card and page links go.
+2. Write `content/blog/<slug>.recipe.json` (copy the existing one and change
+   the date). It holds everything that is not article text: the slug, the
+   date, the cover photo, the guide's files and titles, and where the guide
+   card and page links go.
 3. Run the converter. It copies the text out of the Word file, so the Arabic
    and Kurdish are never retyped:
 
@@ -85,12 +86,27 @@ To add an article the company has sent as a Word file:
    ```
 
    The Word file has to follow the layout described at the top of that
-   script. It needs Python 3 and nothing else.
+   script. It needs Python 3 and nothing else. It stops with a message if the
+   file has something it cannot carry over (a table, a picture, a link, a
+   footnote, tracked changes). When it finishes it prints which section went
+   to which language and the summary it picked for each: read those lines.
 4. Import the new `content/blog/<slug>.mjs` in `lib/blog.mjs` and add it to
    the list there.
 5. Run `npm test`. It fails if one language is missing a heading, paragraph
-   or list item the others have, or if a file the article points to is not
-   in `public/`.
+   or list item the others have, if Arabic and Kurdish have ended up in each
+   other's place, if a file the article points to is not in `public/`, or if
+   step 4 was forgotten.
+
+An article can point to another page of the site with a button (the first one
+points to Projects). Each page it may point to needs a button label in all
+three languages: `linkTo` in `app/[lang]/_content/blog.strings.js`, and the
+page's name in `LINK_PAGES` in `lib/blog.mjs`.
+
+The converter has tests of its own, which the deploy also runs:
+
+```bash
+python -m unittest discover -s scripts/blog -p "test_*.py"
+```
 
 The slug is the same in every language (`/en/blog/<slug>/`,
 `/ar/blog/<slug>/`, `/ku/blog/<slug>/`), which is what lets the language
