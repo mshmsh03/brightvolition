@@ -1,0 +1,48 @@
+{
+  "slug": "solar-grid-connection",
+  "date": "2026-11-27",
+  "languages": [
+    "en",
+    "ar",
+    "ku"
+  ],
+  "cover": {
+    "src": "/assets/img/photos/solar-panels.jpg",
+    "position": "center 30%"
+  },
+  "guide": {
+    "en": {
+      "file": "/assets/docs/blog/Bright-Volition-Solar-Grid-Connection-Guide-EN.pdf",
+      "cover": "/assets/img/blog/solar-grid-connection-guide-en.jpg",
+      "title": "Connecting a solar plant to the national grid",
+      "pages": 7
+    },
+    "ar": {
+      "file": "/assets/docs/blog/Bright-Volition-Solar-Grid-Connection-Guide-AR.pdf",
+      "cover": "/assets/img/blog/solar-grid-connection-guide-ar.jpg",
+      "title": "دليل ربط محطة الطاقة الشمسية بالشبكة الوطنية",
+      "pages": 7
+    },
+    "ku": {
+      "file": "/assets/docs/blog/Bright-Volition-Solar-Grid-Connection-Guide-KU.pdf",
+      "cover": "/assets/img/blog/solar-grid-connection-guide-ku.jpg",
+      "title": "ڕێبەری بەستنەوەی وێستگەی وزەی خۆر بە تۆڕی نیشتیمانیەوە",
+      "pages": 7
+    }
+  },
+  "inserts": [
+    {
+      "endOfSection": 0,
+      "block": {
+        "type": "guide"
+      }
+    },
+    {
+      "endOfSection": 5,
+      "block": {
+        "type": "link",
+        "page": "projects"
+      }
+    }
+  ]
+}
