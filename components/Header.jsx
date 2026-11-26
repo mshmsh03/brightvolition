@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { MenuIcon } from 'lucide-react';
 import { LANGS, PAGES, SITE, pagePath } from '../lib/site-data';
-import { localizePath, sectionFromPath } from '../lib/paths.mjs';
+import { isSectionRoot, localizePath, sectionFromPath } from '../lib/paths.mjs';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
 
@@ -22,6 +22,11 @@ export default function Header({ lang }) {
   const pathname = usePathname();
   // An article lights up "Blog": that is the menu item it sits under.
   const page = sectionFromPath(pathname, PAGES);
+  // What a screen reader is told about the lit item. "page" means "this link
+  // is the page you are on", which is only true on the menu page itself; on an
+  // article the Blog link leads somewhere else, so it is marked as current
+  // without that claim.
+  const current = isSectionRoot(pathname) ? 'page' : 'true';
   const [open, setOpen] = useState(false);
 
   // The language switcher points at the *same* page in the other language —
@@ -99,7 +104,7 @@ export default function Header({ lang }) {
               <Link
                 key={p}
                 href={pagePath(lang, p)}
-                aria-current={active ? 'page' : undefined}
+                aria-current={active ? current : undefined}
                 className={/* unslop-ignore: pill nav link is the documented brand system, see DESIGN.md */ `rounded-full px-2 py-2.5 text-[.88rem] font-medium whitespace-nowrap transition-colors xl:px-3 xl:text-[.94rem] ${
                   active ? 'bg-navy text-cream' : 'text-navy hover:bg-navy hover:text-cream'
                 }`}
@@ -160,7 +165,7 @@ export default function Header({ lang }) {
                     key={p}
                     href={pagePath(lang, p)}
                     onClick={() => setOpen(false)}
-                    aria-current={p === page ? 'page' : undefined}
+                    aria-current={p === page ? current : undefined}
                     className={`m-register border-b border-lavender py-3.5 text-[1.05rem] font-medium transition-colors ${
                       p === page ? 'text-gold' : 'hover:text-gold'
                     }`}

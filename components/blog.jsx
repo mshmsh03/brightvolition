@@ -62,13 +62,16 @@ export function ArticleList({ items }) {
 
 // A sequence that has to be done in order: the same navy-and-gold numeral the
 // "How We Work" cards use, so a step reads as a step anywhere on the site.
+//
+// The numeral is real text, not hidden from screen readers: with the browser's
+// own list numbers switched off by the reset, it is the only place the step
+// number exists, and some screen readers read nothing else for it.
 export function ArticleSteps({ items }) {
   return (
     <ol role="list" className="mb-6 flex flex-col gap-4">
       {items.map((item, i) => (
         <li key={i} className="grid grid-cols-[auto_1fr] items-start gap-4">
           <span
-            aria-hidden="true"
             className={/* unslop-ignore: pill numeral badge is documented, see DESIGN.md */ "flex size-9 items-center justify-center rounded-full bg-navy text-[.95rem] leading-none font-black text-gold"}
           >
             {i + 1}
@@ -132,9 +135,24 @@ export function BackLink({ href, children }) {
 // Lists of articles
 // ---------------------------------------------------------------------------
 
+// The button under an article's title. Every row's button says the same thing
+// on screen, so the article's title is added for screen readers only; in a
+// list of links they are then told apart instead of reading "Read the
+// Article" once per post.
+function ReadButton({ href, label, title }) {
+  return (
+    <CtaButton href={href} variant="outlineNavy" arrow>
+      <span>
+        {label}
+        <span className="sr-only">: {title}</span>
+      </span>
+    </CtaButton>
+  );
+}
+
 // One article on the blog page: photo beside title, summary and a button. The
-// photo is not a link, so a keyboard or screen-reader user meets the article's
-// link once (the title) rather than three times.
+// photo is not a link, so the article is linked twice (title and button), not
+// three times.
 export function PostRow({ href, cover, dateLabel, title, summary, readLabel }) {
   return (
     <Reveal as="article" className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-14">
@@ -147,9 +165,7 @@ export function PostRow({ href, cover, dateLabel, title, summary, readLabel }) {
           </Link>
         </h2>
         <p className="mb-6 max-w-[64ch] text-[1.05rem]">{summary}</p>
-        <CtaButton href={href} variant="outlineNavy" arrow>
-          {readLabel}
-        </CtaButton>
+        <ReadButton href={href} label={readLabel} title={title} />
       </div>
     </Reveal>
   );
@@ -173,9 +189,7 @@ export function LatestPost({ href, eyebrow, title, summary, readLabel }) {
         <p className="mb-0 max-w-[64ch]">{summary}</p>
       </div>
       <div className="shrink-0">
-        <CtaButton href={href} variant="outlineNavy" arrow>
-          {readLabel}
-        </CtaButton>
+        <ReadButton href={href} label={readLabel} title={title} />
       </div>
     </Reveal>
   );
