@@ -1,15 +1,15 @@
-// Writes the redirect stubs and sitemap that a static export cannot produce
+// Writes the redirect stubs and robots.txt that a static export cannot produce
 // for itself. Run once; the output is committed under public/.
+//
+// The sitemap is no longer written here: app/sitemap.js builds it on every
+// build, from the live list of pages and blog articles.
 const fs = require('fs');
 const path = require('path');
 
 const OUT = process.argv[2];
 const BASE = 'https://brightvolition.com';
-const LANGS = [
-  { seg: 'en', hreflang: 'en' },
-  { seg: 'ar', hreflang: 'ar' },
-  { seg: 'ku', hreflang: 'ckb' },
-];
+// The pages that existed as flat .html files before the move to Next. Newer
+// pages (the blog) never had an old URL, so they need no stub.
 const PAGES = ['index', 'about', 'services', 'products', 'projects', 'contact'];
 
 const url = (seg, page) => (page === 'index' ? `${BASE}/${seg}/` : `${BASE}/${seg}/${page}/`);
@@ -86,32 +86,4 @@ fs.writeFileSync(
   `User-agent: *\nAllow: /\n\nSitemap: ${BASE}/sitemap.xml\n`,
 );
 
-const today = new Date().toISOString().slice(0, 10);
-const entries = [];
-for (const { seg } of LANGS) {
-  for (const page of PAGES) {
-    const alts = LANGS.map(
-      (l) => `    <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${url(l.seg, page)}"/>`,
-    ).join('\n');
-    entries.push(`  <url>
-    <loc>${url(seg, page)}</loc>
-${alts}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${url('en', page)}"/>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>${page === 'index' ? '1.0' : '0.8'}</priority>
-  </url>`);
-  }
-}
-
-fs.writeFileSync(
-  path.join(OUT, 'sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${entries.join('\n')}
-</urlset>
-`,
-);
-
-console.log(`wrote ${PAGES.length} stubs + scripts/404.html + robots.txt + sitemap.xml (${entries.length} urls)`);
+console.log(`wrote ${PAGES.length} stubs + scripts/404.html + robots.txt`);
