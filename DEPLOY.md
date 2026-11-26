@@ -28,7 +28,11 @@ export copies verbatim:
 | `CNAME` | Inert. Kept only so a switch back to branch-based publishing would still carry the domain. It is **not** what binds `brightvolition.com` today. See [The custom domain](#the-custom-domain). |
 | `.nojekyll` | Without it, GitHub Pages runs Jekyll, and Jekyll ignores every directory starting with `_`, including `_next`. The site would load with no CSS or JS. |
 | `index.html`, `about.html`, … | Redirect stubs for the pre-Next URLs (see below). |
-| `robots.txt`, `sitemap.xml` | Regenerate with `node scripts/make-stubs.cjs public` if the page list changes. |
+| `robots.txt` | Written once by `node scripts/make-stubs.cjs public`. It only points at the sitemap. |
+
+`sitemap.xml` is not in `public/`. `app/sitemap.js` writes it into `out/` on
+every build, from the same lists the pages and blog articles are built from,
+so it cannot fall behind when one is added.
 
 `scripts/postbuild.mjs` then replaces `out/404.html`. Next writes its own
 unstyled 404 there from the framework's not-found route, and a file in
@@ -82,9 +86,13 @@ be rebuilt or pushed.
 Every page lives under a language segment:
 
 ```
-/en/  /en/about/  /en/services/  /en/products/  /en/projects/  /en/contact/
+/en/  /en/about/  /en/services/  /en/products/  /en/projects/  /en/blog/  /en/contact/
+/en/blog/<article>/
 /ar/  …   /ku/  …
 ```
+
+An article has the same address in every language apart from the first
+segment, so the language switcher can stay on it.
 
 `/` and the six old flat URLs (`/about.html`, `/services.html`, …) are served by
 redirect stubs in `public/`. Each one carries `<link rel="canonical">` to the

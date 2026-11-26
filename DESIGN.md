@@ -90,7 +90,30 @@ Given the audience (industrial B2B procurement, not consumer/portfolio viewers),
 | shadcn primitives (button, card, input, label, textarea, sheet) | `components/ui/` |
 | Nav labels, footer text, contact details, page titles | `lib/site-data.js` |
 | Page content, one file per page per language | `app/[lang]/_content/` |
+| Blog articles (text in all three languages) | `content/blog/` |
+| Blog building blocks: article text, steps, guide card, article rows | `components/blog.jsx` |
 | Deployment, URLs, Cloudflare rules | `DEPLOY.md` |
+
+## Blog articles
+An article is long-form reading, so it has a few rules of its own. They are
+in `components/blog.jsx`; this is why they are what they are.
+
+- **One reading column**, 760px (`max-w-measure`), body at 1.05rem with
+  1.75 leading for Latin and 1.95 for Arabic and Kurdish, for the same reason
+  the headings differ by script.
+- **The headline is smaller than a page title** (`titleSize="article"` on
+  `PageHero`). An article headline is a sentence; at page-title size it ran
+  to five lines.
+- **Steps use the navy-and-gold numeral** from the "How We Work" cards, and
+  plain lists use the gold square from the cards' bullet lists. No new marks.
+- **Links on cream underline in gold on hover** instead of turning gold. Gold
+  text on cream is too faint at heading size.
+- **No italics anywhere.** The three brand fonts are loaded upright only, so
+  an italic would be faked by the browser, and Arabic script has no italic
+  tradition to fake. A byline or a sources note is set apart by size, colour
+  or a rule instead.
+- **The PDF guide card is the only image inside an article.** Its cover is a
+  picture of the PDF's first page, so it stays in the language of the page.
 
 The motion layer (the datum-line grammar: a rule is struck, content registers
 to it) is shared verbatim with the Ellin Company site, as are `Reveal.jsx`,

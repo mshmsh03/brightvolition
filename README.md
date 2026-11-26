@@ -28,6 +28,7 @@ Other scripts:
 npm run build    # next build, then postbuild — writes the static site to out/
 npm run start    # next start, on :3000
 npm run lint     # eslint .
+npm test         # node --test: the quote form's logic and every blog article
 ```
 
 ## Languages
@@ -43,7 +44,10 @@ per-script typography are handled.
 | Path | What's there |
 | --- | --- |
 | `app/[lang]/_content/` | Page content, one file per page + a matching `.strings.js` per language |
+| `content/blog/` | Blog articles, one file per article with all three languages in it |
+| `lib/blog.mjs` | The list of articles and the checks `npm test` runs on them |
 | `components/sections.jsx` | The shared section/card/list vocabulary the content files are built from |
+| `components/blog.jsx` | The same, for the blog: article text, steps, the PDF guide card |
 | `components/ui/` | shadcn primitives |
 | `lib/site-data.js` | The site's chrome: nav labels, footer text, contact details |
 | `app/globals.css` | Colour, type, spacing, and motion tokens |
@@ -58,6 +62,51 @@ per-script typography are handled.
 
 Push to `main`. `.github/workflows/deploy.yml` builds and publishes
 automatically. See [`DEPLOY.md`](./DEPLOY.md) for the full pipeline.
+
+## Blog
+
+Articles live in `content/blog/`, one file per article with all three
+languages inside it. The blog page (`/en/blog/`), the article pages, the
+teaser on the home page and the sitemap are all built from that folder, so
+there is nothing else to keep in step.
+
+To add an article the company has sent as a Word file:
+
+1. Copy any PDF guide into `public/assets/docs/blog/` and its cover picture
+   into `public/assets/img/blog/`.
+2. Write `content/blog/<slug>.recipe.json` (copy the existing one). It holds
+   everything that is not article text: the slug, the date, the cover photo,
+   the guide's files and titles, and where the guide card and page links go.
+3. Run the converter. It copies the text out of the Word file, so the Arabic
+   and Kurdish are never retyped:
+
+   ```bash
+   python scripts/blog/docx-to-post.py "<article>.docx" content/blog/<slug>.recipe.json
+   ```
+
+   The Word file has to follow the layout described at the top of that
+   script. It needs Python 3 and nothing else.
+4. Import the new `content/blog/<slug>.mjs` in `lib/blog.mjs` and add it to
+   the list there.
+5. Run `npm test`. It fails if one language is missing a heading, paragraph
+   or list item the others have, or if a file the article points to is not
+   in `public/`.
+
+The slug is the same in every language (`/en/blog/<slug>/`,
+`/ar/blog/<slug>/`, `/ku/blog/<slug>/`), which is what lets the language
+switcher stay on the article. Do not change a slug once it is live: the old
+address would stop working.
+
+The blog's own labels ("Read the Article", "Download the Guide") are in
+`app/[lang]/_content/blog.strings.js`.
+
+Why a blog section (decided 2026-11-27). The other options were one
+stand-alone guide page, or only offering the PDFs for download. The company
+sends these as blog articles and more are expected, and article text on a
+page of its own is what a search engine can find in each language. Embedding
+the LinkedIn post itself was ruled out: an embed shows one language, loads
+LinkedIn's scripts for every visitor, and its text does not count as this
+site's content.
 
 ## Quote form (Contact page)
 

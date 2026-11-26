@@ -1,9 +1,9 @@
 # Bright Volition — Company Website
 
 ## What this is
-A 6-page marketing/lead-gen website for Bright Volition, a registered KRG (Kurdistan Regional Government) engineering company in Sulaymaniyah, Iraq, founded 2022. They provide Electrical, Instrumentation, and Mechanical (EIM) engineering services plus industrial product supply (representing brands like Siemens, Schneider, ABB, Honeywell, Emerson, Yokogawa, Ashcroft).
+A marketing/lead-gen website for Bright Volition, a registered KRG (Kurdistan Regional Government) engineering company in Sulaymaniyah, Iraq, founded 2022. They provide Electrical, Instrumentation, and Mechanical (EIM) engineering services plus industrial product supply (representing brands like Siemens, Schneider, ABB, Honeywell, Emerson, Yokogawa, Ashcroft).
 
-Pages: Home, About, Services, Products, Projects, Contact.
+Pages: Home, About, Services, Products, Projects, Blog, Contact. The Blog (added November 2026) carries the articles the company also posts on LinkedIn, one page per article in each language.
 
 ## Audience
 B2B, not consumer. Visitors are procurement leads, industrial/construction project managers, and potential partners evaluating Bright Volition as an EIM contractor or product supplier. They are mostly regional (Kurdistan Region / Iraq), reading in Arabic, Kurdish Sorani, or English. Decisions here are relationship- and credibility-driven: "is this a registered, capable, trustworthy engineering firm," not "is this website delightful."
@@ -21,5 +21,6 @@ Real brand typography: Gotham (English), UniSIRWAN Somar (Arabic), UniSIRWAN Pin
 
 ## Non-goals
 - Not a portfolio/demo site: every claim on it must be traceable to the client's real company profile PDF or live production site (brightvolition.com)
+- Blog articles are the company's own text, supplied by them in all three languages. They are copied in by script, not rewritten, summarised or translated here; a wording problem is raised with the company rather than fixed quietly
 - Not meant to look playful or experimental: audience is industrial/engineering B2B, tone should stay credible and restrained
 - Language toggle, mobile nav, and reveal-on-scroll are the only interactive/JS behaviors. No other animation is expected or wanted

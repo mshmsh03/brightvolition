@@ -39,7 +39,8 @@ jobs:
         run: |
           set -euo pipefail
           for f in out/en/index.html out/ar/index.html out/ku/index.html \
-                   out/en/services/index.html out/index.html out/CNAME out/.nojekyll; do
+                   out/en/services/index.html out/en/blog/index.html \
+                   out/sitemap.xml out/index.html out/CNAME out/.nojekyll; do
             [ -f "$f" ] || { echo "missing $f"; exit 1; }
           done
           echo "export looks complete"
@@ -97,6 +98,8 @@ jobs:
                      https://brightvolition.com/en/ \
                      https://brightvolition.com/ar/ \
                      https://brightvolition.com/ku/ \
+                     https://brightvolition.com/en/blog/ \
+                     https://brightvolition.com/sitemap.xml \
                      https://brightvolition.com/index.html \
                      https://brightvolition.com/about.html \
                      https://brightvolition.com/services.html \
