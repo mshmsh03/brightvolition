@@ -61,7 +61,10 @@ export function SectionHead({ eyebrow, tone, title, align = 'center', className 
 
 export function Lede({ className = '', style, children }) {
   return (
-    <p style={style} className={`max-w-[64ch] text-[1.15rem] ${className}`}>
+    // 43rem is about 72 characters a line at this size. It was 64ch, but `ch`
+    // is the width of the font's zero, and Gotham's zero is far wider than its
+    // average letter: 64ch came out at 842px, some 87 characters a line.
+    <p style={style} className={`max-w-[43rem] text-[1.15rem] ${className}`}>
       {children}
     </p>
   );

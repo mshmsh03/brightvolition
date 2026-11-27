@@ -166,7 +166,7 @@ export function PostRow({ href, cover, dateLabel, title, summary, readLabel }) {
             {title}
           </Link>
         </h2>
-        <p className="mb-6 max-w-[64ch] text-[1.05rem]">{summary}</p>
+        <p className="mb-6 max-w-[40rem] text-[1.05rem]">{summary}</p>
         <ReadButton href={href} label={readLabel} title={title} />
       </div>
     </Reveal>
@@ -188,7 +188,7 @@ export function LatestPost({ href, eyebrow, title, summary, readLabel }) {
             {title}
           </Link>
         </h2>
-        <p className="mb-0 max-w-[64ch]">{summary}</p>
+        <p className="mb-0 max-w-[38rem]">{summary}</p>
       </div>
       <div className="shrink-0">
         <ReadButton href={href} label={readLabel} title={title} />

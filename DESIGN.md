@@ -39,6 +39,7 @@ Script-specific type tuning (documented so it isn't "fixed" back to the Latin de
 - Headings use `text-wrap: balance` and body text `text-wrap: pretty` (set once in `app/globals.css`), so a heading does not end on one short line and a paragraph does not end on one word
 - Heading levels never skip: page title `h1`, sections `h2`, items inside a section `h3`
 - Buttons may wrap onto two lines below 640px; a long label used to run off a 360px screen
+- Paragraph widths are set in `rem`, not `ch`. `ch` is the width of the font's zero, and Gotham's zero is much wider than its average letter: `64ch` came out at about 87 characters a line. The lede is `43rem`, about 72
 - Container max-width: `1200px`
 - Section padding: `88px` (default), `64px` (tight), `56px` (small). Collapses to `64px` under 640px viewport
 - Radius scale: `8px` (sm, tags, small elements), `14px` (default, cards), `26px` (lg, CTA bands, split-media images)
