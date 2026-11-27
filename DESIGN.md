@@ -35,6 +35,10 @@ Script-specific type tuning (documented so it isn't "fixed" back to the Latin de
 - Arabic/Kurdish (Somar/Ping) headings: `line-height:1.55`, `letter-spacing:0`, looser leading, neutral tracking, because both scripts run taller and more connected than Latin and collide under Latin-tuned settings
 
 ## Spacing & Shape
+- Smallest text anywhere: `13px` (`.8125rem`). Smallest tap area on phones: `44px` (the language switch, the social icons)
+- Headings use `text-wrap: balance` and body text `text-wrap: pretty` (set once in `app/globals.css`), so a heading does not end on one short line and a paragraph does not end on one word
+- Heading levels never skip: page title `h1`, sections `h2`, items inside a section `h3`
+- Buttons may wrap onto two lines below 640px; a long label used to run off a 360px screen
 - Container max-width: `1200px`
 - Section padding: `88px` (default), `64px` (tight), `56px` (small). Collapses to `64px` under 640px viewport
 - Radius scale: `8px` (sm, tags, small elements), `14px` (default, cards), `26px` (lg, CTA bands, split-media images)
@@ -43,7 +47,10 @@ Script-specific type tuning (documented so it isn't "fixed" back to the Latin de
 ## Components — Flat by Default
 - **No box-shadow.** Cards use a 1px lavender border for definition; hover is a border-color change to gold, no movement. There are deliberately no shadow tokens in `@theme` so reaching for one takes a conscious edit. The two exceptions are the mobile nav panel, which genuinely floats over the page, and the timeline node's `shadow-[0_0_0_2px]` ring. It's a ring, not a drop shadow.
 - Buttons: fully rounded (`border-radius:100px`), gold-fill or outline variants only
-- `.eyebrow`: small gold uppercase label with a 3px gold rule, used as a section kicker, always gold, regardless of background (has explicit overrides for `.bg-navy`, `.grad-navy`, `.cta-band`, `.hero` contexts, see "Context-scoped color overrides" below)
+- `Eyebrow`: small uppercase label with a 3px gold rule. **Not a section kicker.** It was above almost every heading (36 of them) until November 2026, which made every section open the same way. It now appears only where it says something the heading does not: a date, a content type ("2025 Model Project", "From Our Blog", "Our Mission", "PDF Guide"), or as the only label a block has (the logo strips). If the label just restates the heading under it, leave it out
+- **No icon cards.** Short "name + one line" items go in `Entries` / `Entry` (a rule, a name, a line of text), not in a box each with an icon in a tinted square. The site had 21 of those boxes; they read as a template and made phone pages much longer. `Card` is for content that is a real unit with its own list
+- **No stat rows.** A fact is written as a fact. The Home page used to show "3" and "4" as giant gold numerals
+- **No decorative numbering.** Numbers appear only on real sequences (the troubleshooting steps, the article's connection steps)
 
 ## Navy-on-navy text (was a recurring bug, now structural)
 Invisible navy-on-navy text recurred twice on the pre-Next site, because colour
@@ -98,9 +105,9 @@ Given the audience (industrial B2B procurement, not consumer/portfolio viewers),
 An article is long-form reading, so it has a few rules of its own. They are
 in `components/blog.jsx`; this is why they are what they are.
 
-- **One reading column**, 760px (`max-w-measure`), body at 1.05rem with
-  1.75 leading for Latin and 1.95 for Arabic and Kurdish, for the same reason
-  the headings differ by script.
+- **One reading column**, 39rem (about 75 characters a line; at 760px it
+  ran to 90), body at 1.05rem with 1.75 leading for Latin and 1.95 for Arabic
+  and Kurdish, for the same reason the headings differ by script.
 - **The headline is smaller than a page title** (`titleSize="article"` on
   `PageHero`). An article headline is a sentence; at page-title size it ran
   to five lines.
