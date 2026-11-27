@@ -6,7 +6,6 @@ import {
   CtaBand,
   CtaButton,
   DataTable,
-  Eyebrow,
   Lede,
   Media,
   PageHero,
@@ -52,7 +51,6 @@ export default function Projects({ lang }) {
       <Section>
         <SectionHead
           align="start"
-          eyebrow={t.projectSnapshot}
           title={t.reliabilityImpactStudyFor50mw}
         />
         <SpecList
@@ -71,7 +69,6 @@ export default function Projects({ lang }) {
       <Section>
         <Split>
           <div>
-            <Eyebrow>{t.scopeOfEngineeringServices}</Eyebrow>
             <h2>{t.whatWeDelivered}</h2>
             <Checklist>
               <ChecklistItem>{t.powerSystemImpactStudyUsing}</ChecklistItem>
@@ -88,7 +85,7 @@ export default function Projects({ lang }) {
 
       {/* TOOLS */}
       <Section>
-        <SectionHead eyebrow={t.technicalToolsExpertiseApplied} title={t.toolsSoftwareUsed} />
+        <SectionHead title={t.toolsSoftwareUsed} />
         <DataTable headers={TOOLS.headers} rows={TOOLS.rows} />
       </Section>
 
@@ -96,7 +93,6 @@ export default function Projects({ lang }) {
       <Section tone="navy">
         <Split className="items-start">
           <div>
-            <Eyebrow tone="light">{t.regulatoryTechnicalExecution}</Eyebrow>
             <h2>{t.teamExpertiseInRegulatoryTechnical}</h2>
             <Lede className="text-lavender">
               {t.ourTeamBringsSpecializedKnowledge}
@@ -127,7 +123,6 @@ export default function Projects({ lang }) {
         <Split>
           <Media src="/assets/img/photos/engineers-blueprint.jpg" alt="Engineers reviewing P&ID diagrams" />
           <div>
-            <Eyebrow>{t.beyondThisProject}</Eyebrow>
             <h2>{t.everyProjectBackedByRoot}</h2>
             <Lede className="mb-6">
               {t.whicheverSystemWeDesignBuild}

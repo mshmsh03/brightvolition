@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRightIcon } from 'lucide-react';
+import { ArrowRightIcon, CheckIcon } from 'lucide-react';
 import { Button } from './ui/button';
 import Reveal from './Reveal';
 
@@ -41,7 +41,7 @@ export function Eyebrow({ tone = 'navy', className = '', style, children }) {
   return (
     <div
       style={style}
-      className={`mb-3.5 inline-flex items-center gap-2 text-[.78rem] font-bold tracking-[.14em] uppercase before:block before:h-[3px] before:w-[22px] before:rounded-sm before:bg-gold before:content-[''] rtl:tracking-normal ${color} ${className}`}
+      className={`mb-3.5 inline-flex items-center gap-2 text-[.8125rem] font-bold tracking-[.14em] uppercase before:block before:h-[3px] before:w-[22px] before:rounded-sm before:bg-gold before:content-[''] rtl:tracking-normal ${color} ${className}`}
     >
       {children}
     </div>
@@ -153,7 +153,6 @@ export function PageHero({
   homeHref,
   homeLabel,
   crumb,
-  eyebrow,
   tag,
   title,
   titleSize = 'page',
@@ -183,11 +182,6 @@ export function PageHero({
               <Tag tone="gold">{tag}</Tag>
             </div>
           ) : null}
-          {eyebrow ? (
-            <Eyebrow tone="light" className="m-eyebrow m-register" style={{ '--m-delay': '130ms' }}>
-              {eyebrow}
-            </Eyebrow>
-          ) : null}
           <h1 className={`m-wipe ${HERO_TITLE[titleSize]} text-cream`} style={{ '--m-delay': '190ms' }}>
             {title}
           </h1>
@@ -207,17 +201,38 @@ export function PageHero({
   );
 }
 
-// The row of headline figures under the home hero and beside the featured
-// project. Gold numerals, lavender captions.
-export function Stats({ className = '', children }) {
-  return <div className={`flex flex-wrap gap-9 ${className}`}>{children}</div>;
+// ---------------------------------------------------------------------------
+// Entries
+// ---------------------------------------------------------------------------
+
+const ENTRY_COLS = {
+  1: '',
+  2: 'sm:grid-cols-2',
+  3: 'sm:grid-cols-2 lg:grid-cols-3',
+};
+
+// A ruled list of named things: a rule, a name, and what it covers. The same
+// idea as ProductBlock, set in columns.
+//
+// These were icon cards until November 2026: 21 identical boxes, each with a
+// stock icon in a tinted square above the title. The icons said nothing the
+// titles did not, the boxes made a page read as a template, and on a phone
+// six of them ran to two and a half screens. Do not bring the icon plate back.
+export function Entries({ cols = 3, className = '', children }) {
+  return (
+    // -mb-8 cancels the last row's own bottom padding, so the list ends where
+    // its text ends and the section's spacing below it stays the standard one.
+    <Reveal as="div" stagger className={`-mb-8 grid grid-cols-1 gap-x-10 ${ENTRY_COLS[cols]} ${className}`}>
+      {children}
+    </Reveal>
+  );
 }
 
-export function Stat({ value, children }) {
+export function Entry({ title, children }) {
   return (
-    <div>
-      <strong className="block text-[1.9rem] leading-tight font-black text-gold">{value}</strong>
-      <span className="text-[.85rem] text-lavender">{children}</span>
+    <div className="border-t border-lavender pt-5 pb-8">
+      <h3 className="mb-2 text-card-title leading-snug break-words hyphens-auto">{title}</h3>
+      {children}
     </div>
   );
 }
@@ -226,28 +241,15 @@ export function Stat({ value, children }) {
 // Cards
 // ---------------------------------------------------------------------------
 
-// The icon plate: lavender by default, and it stays lavender on the dark card
-// too, because a navy plate on a navy card would disappear.
-function CardIcon({ icon: Icon }) {
-  return (
-    <div className={/* unslop-ignore: radius scale is documented, see DESIGN.md */ "mb-5 flex size-14 items-center justify-center rounded-2xl bg-lavender text-navy"}>
-      <Icon className="size-6.5" strokeWidth={1.7} />
-    </div>
-  );
-}
-
-export function Card({ id, icon, title, tone = 'light', className = '', children }) {
-  const dark = tone === 'dark';
+// A bordered box, for content that really is a self-contained unit: a
+// discipline with its own list, a contract scope. Short "name + one line"
+// items belong in Entries above, not in a card each.
+export function Card({ id, title, className = '', children }) {
   return (
     <div
       id={id}
-      className={`h-full rounded-card p-8 transition-colors duration-250 ${
-        dark
-          ? 'border-none bg-navy text-lavender [&_h3]:text-cream'
-          : 'border border-lavender bg-cream hover:border-gold'
-      } ${className}`}
+      className={`h-full rounded-card border border-lavender bg-cream p-8 transition-colors duration-250 hover:border-gold ${className}`}
     >
-      {icon ? <CardIcon icon={icon} /> : null}
       {title ? <h3 className="mb-3 text-card-title leading-snug break-words hyphens-auto">{title}</h3> : null}
       {children}
     </div>
@@ -297,9 +299,8 @@ export function CardListItem({ children }) {
 // Lists
 // ---------------------------------------------------------------------------
 
-// The gold check-mark list (unslop-ignore: functional icon glyph, not a
-// decorative emoji). `tone="light"` is for the navy sections, where the text
-// needs to be cream rather than navy.
+// The gold check-mark list. `tone="light"` is for the navy sections, where
+// the text needs to be cream rather than navy.
 export function Checklist({ tone = 'navy', className = '', children }) {
   return <ul className={`${tone === 'light' ? 'text-cream' : 'text-navy'} ${className}`}>{children}</ul>;
 }
@@ -309,9 +310,11 @@ export function ChecklistItem({ children }) {
     <li className="relative mb-3.5 ps-8 text-[.98rem] font-medium">
       <span
         aria-hidden="true"
-        className="absolute -top-px flex size-5.5 items-center justify-center rounded-[7px] bg-gold start-0 text-[.75rem] font-black text-navy"
+        className="absolute -top-px flex size-5.5 items-center justify-center rounded-[7px] bg-gold start-0 text-navy"
       >
-        {/* unslop-ignore: functional checkmark icon, not decorative emoji */}✓
+        {/* A drawn icon, not the ✓ character: none of the three brand fonts has
+            that glyph, so each phone drew it from whatever fallback it had. */}
+        <CheckIcon className="size-3.5" strokeWidth={3.5} />
       </span>
       {children}
     </li>
@@ -364,7 +367,7 @@ export function TimelineItem({ title, children }) {
         aria-hidden="true"
         className={/* unslop-ignore: this is a documented ring, not a glow, see DESIGN.md */ "absolute top-2.5 size-5 rounded-full border-4 border-cream bg-gold start-0 shadow-[0_0_0_2px_var(--color-navy)]"}
       />
-      <h4 className="mb-2.5 text-[1.05rem] font-bold">{title}</h4>
+      <h3 className="mb-2.5 text-[1.05rem] font-bold">{title}</h3>
       <ul>{children}</ul>
     </div>
   );
@@ -392,7 +395,7 @@ export function SpecList({ items }) {
     >
       {items.map((item) => (
         <div key={item.label} className="border-b border-lavender px-5.5 py-4.5">
-          <dt className="mb-1 text-[.75rem] font-bold tracking-eyebrow uppercase">{item.label}</dt>
+          <dt className="mb-1 text-[.8125rem] font-bold tracking-eyebrow uppercase">{item.label}</dt>
           <dd className="m-0 font-bold">{item.value}</dd>
         </div>
       ))}
@@ -442,7 +445,7 @@ export function Tag({ tone = 'lavender', className = '', children }) {
     outline: 'border-[1.5px] border-lavender text-navy',
   };
   return (
-    <span className={/* unslop-ignore: pill tag is documented, see DESIGN.md */ `inline-block rounded-full px-3.5 py-1.5 text-[.78rem] font-bold ${tones[tone]} ${className}`}>
+    <span className={/* unslop-ignore: pill tag is documented, see DESIGN.md */ `inline-block rounded-full px-3.5 py-1.5 text-[.8125rem] font-bold ${tones[tone]} ${className}`}>
       {children}
     </span>
   );
@@ -470,7 +473,7 @@ export function ProductNavLink({ href, children }) {
 // The banner that opens each of the three product families. The plate colour
 // is what distinguishes them — navy, gold, lavender — so the three sections
 // are told apart at a glance while scrolling.
-export function PillarHead({ icon: Icon, tone = 'navy', eyebrow, title }) {
+export function PillarHead({ icon: Icon, tone = 'navy', title }) {
   const tones = {
     navy: 'bg-navy text-cream',
     gold: 'bg-gold text-navy',
@@ -481,10 +484,7 @@ export function PillarHead({ icon: Icon, tone = 'navy', eyebrow, title }) {
       <div className={`flex size-16 shrink-0 items-center justify-center rounded-[18px] ${tones[tone]}`}>
         <Icon className="size-7.5" strokeWidth={1.8} />
       </div>
-      <div>
-        <Eyebrow className="mb-0.5">{eyebrow}</Eyebrow>
-        <h2 className="m-0 text-[clamp(1.7rem,3.2vw,2.5rem)]">{title}</h2>
-      </div>
+      <h2 className="m-0 text-[clamp(1.7rem,3.2vw,2.5rem)]">{title}</h2>
     </Reveal>
   );
 }
@@ -494,10 +494,10 @@ export function PillarHead({ icon: Icon, tone = 'navy', eyebrow, title }) {
 // wall of bordered boxes would read as noise.
 export function ProductBlock({ title, children }) {
   return (
-    <div className="border-t border-lavender py-5.5 first:border-t-0 first:pt-0">
-      <h4 className="mb-2 flex items-center gap-2.5 text-base font-bold before:size-2 before:shrink-0 before:rounded-sm before:bg-gold before:content-['']">
+    <div className="border-t border-lavender py-5.5">
+      <h3 className="mb-2 flex items-center gap-2.5 text-base font-bold before:size-2 before:shrink-0 before:rounded-sm before:bg-gold before:content-['']">
         {title}
-      </h4>
+      </h3>
       <p className="mb-0 text-[.93rem]">{children}</p>
     </div>
   );
@@ -586,7 +586,7 @@ export function ContactItem({ icon: Icon, label, children }) {
         <Icon className="size-5" strokeWidth={1.8} />
       </div>
       <div className="min-w-0">
-        <h4 className="mb-1 text-[.85rem] font-bold tracking-[.06em] uppercase">{label}</h4>
+        <h3 className="mb-1 text-[.85rem] font-bold tracking-[.06em] uppercase">{label}</h3>
         <div className="text-base font-bold [&_a]:transition-colors [&_a:hover]:text-gold">{children}</div>
       </div>
     </div>
@@ -603,7 +603,7 @@ export function SocialButton({ href, label, external = false, children }) {
       href={href}
       aria-label={label}
       {...(external ? { target: '_blank', rel: 'noopener' } : {})}
-      className={/* unslop-ignore: pill button is documented, see DESIGN.md */ "flex size-9.5 items-center justify-center rounded-full border-[1.5px] border-lavender text-navy transition-colors hover:border-gold hover:bg-gold"}
+      className={/* unslop-ignore: pill button is documented, see DESIGN.md */ "flex size-11 items-center justify-center rounded-full border-[1.5px] border-lavender text-navy transition-colors hover:border-gold hover:bg-gold"}
     >
       {children}
     </a>

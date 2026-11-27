@@ -26,7 +26,6 @@ export default function Contact({ lang }) {
         homeHref={pagePath(lang, 'index')}
         homeLabel={t.home}
         crumb={t.contact}
-        eyebrow={t.yourTrustedPartnerInEngineering}
         title={t.readyToCollaborate}
         lede={t.reachOutWithYourInquiries}
         className="md:pb-15"
@@ -103,7 +102,7 @@ export default function Contact({ lang }) {
 
       {/* MAP */}
       <Section size="sm">
-        <SectionHead eyebrow={t.findUs} title={t.sulaymaniyahKurdistanRegionOfIraq} />
+        <SectionHead title={t.sulaymaniyahKurdistanRegionOfIraq} />
         <MapFrame
           src="https://maps.google.com/maps?q=Bright+Volition,+Sulaymaniyah&z=16&output=embed"
           title="Bright Volition location map"

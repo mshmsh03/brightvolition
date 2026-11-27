@@ -1,5 +1,4 @@
 import { STRINGS } from './services.strings';
-import { Building2Icon, ClipboardCheckIcon, FileSignatureIcon, SettingsIcon, TruckIcon, WrenchIcon } from 'lucide-react';
 import { CONSTRUCTION_TABLE, pagePath } from '../../../lib/site-data';
 import {
   Card,
@@ -9,6 +8,8 @@ import {
   CtaBand,
   CtaButton,
   DataTable,
+  Entries,
+  Entry,
   Grid,
   Lede,
   PageHero,
@@ -18,7 +19,6 @@ import {
   SectionHead,
   Step,
   Steps,
-  Tag,
 } from '../../../components/sections';
 
 export default function Services({ lang }) {
@@ -31,39 +31,38 @@ export default function Services({ lang }) {
         homeHref={pagePath(lang, 'index')}
         homeLabel={t.home}
         crumb={t.services}
-        eyebrow={t.whatWeOffer}
         title={t.engineeringConstructionSupplyUnderOne}
         lede={t.deliveringSpecializedEngineeringServices}
       />
 
       {/* THE SIX PILLARS */}
       <Section>
-        <SectionHead eyebrow={t.whatWeDo} title={t.sixServicePillars} />
-        <Grid cols={6}>
-          <Card icon={SettingsIcon} title={t.designEngineering}>
+        <SectionHead title={t.sixServicePillars} />
+        <Entries>
+          <Entry title={t.designEngineering}>
             <CardText>{t.feasibilityStudiesConceptualDesignAnd}</CardText>
-          </Card>
-          <Card icon={Building2Icon} title={t.constructionInstallation}>
+          </Entry>
+          <Entry title={t.constructionInstallation}>
             <CardText>{t.fullFieldExecutionAcrossElectrical}</CardText>
-          </Card>
-          <Card icon={ClipboardCheckIcon} title={t.systemCommissioningStartUp}>
+          </Entry>
+          <Entry title={t.systemCommissioningStartUp}>
             <CardText>{t.structuredPreCommissioningTestingAnd}</CardText>
-          </Card>
-          <Card icon={TruckIcon} title={t.productSupplySourcing}>
+          </Entry>
+          <Entry title={t.productSupplySourcing}>
             <CardText>{t.electricalInstrumentationMechanicalCompo}</CardText>
-          </Card>
-          <Card icon={WrenchIcon} title={t.operationsSupportTroubleshooting}>
+          </Entry>
+          <Entry title={t.operationsSupportTroubleshooting}>
             <CardText>{t.rootCauseAnalysisAndRapid}</CardText>
-          </Card>
-          <Card icon={FileSignatureIcon} title={t.contractingServices}>
+          </Entry>
+          <Entry title={t.contractingServices}>
             <CardText>{t.contractingServicesSummary}</CardText>
-          </Card>
-        </Grid>
+          </Entry>
+        </Entries>
       </Section>
 
       {/* ENGINEERING DISCIPLINES */}
       <Section id="engineering">
-        <SectionHead eyebrow={t.ourEngineeringServicesInclude} title={t.fiveEngineeringDisciplines} />
+        <SectionHead title={t.fiveEngineeringDisciplines} />
         <ProductNav>
           <ProductNavLink href="#feasibility">{t.feasibilityStudies}</ProductNavLink>
           <ProductNavLink href="#electrical-eng">{t.electricalEngineering}</ProductNavLink>
@@ -73,8 +72,7 @@ export default function Services({ lang }) {
         </ProductNav>
         <Grid cols={2}>
           <Card id="feasibility">
-            <Tag tone="gold">01</Tag>
-            <h3 className="mt-3.5 mb-2.5 text-card-title">{t.feasibilityStudies}</h3>
+            <h3 className="mb-2.5 text-card-title">{t.feasibilityStudies}</h3>
             <CardList>
               <CardListItem>{t.technicalAndEconomicFeasibilityStudies}</CardListItem>
               <CardListItem>{t.conceptualDesignAndProjectScoping}</CardListItem>
@@ -82,8 +80,7 @@ export default function Services({ lang }) {
             </CardList>
           </Card>
           <Card id="electrical-eng">
-            <Tag tone="gold">02</Tag>
-            <h3 className="mt-3.5 mb-2.5 text-card-title">{t.electricalEngineering}</h3>
+            <h3 className="mb-2.5 text-card-title">{t.electricalEngineering}</h3>
             <CardList>
               <CardListItem>{t.detailedElectricalDesignLvMv}</CardListItem>
               <CardListItem>{t.powerManagementSystems}</CardListItem>
@@ -95,8 +92,7 @@ export default function Services({ lang }) {
             </CardList>
           </Card>
           <Card id="mechanical-eng">
-            <Tag tone="gold">03</Tag>
-            <h3 className="mt-3.5 mb-2.5 text-card-title">{t.mechanicalEngineering}</h3>
+            <h3 className="mb-2.5 text-card-title">{t.mechanicalEngineering}</h3>
             <CardList>
               <CardListItem>{t.cableTrayAndCableLadder}</CardListItem>
               <CardListItem>{t.hvacSystemsDuctsDampersVrf}</CardListItem>
@@ -110,8 +106,7 @@ export default function Services({ lang }) {
             </CardList>
           </Card>
           <Card id="instrumentation-eng">
-            <Tag tone="gold">04</Tag>
-            <h3 className="mt-3.5 mb-2.5 text-card-title">{t.instrumentationEngineering}</h3>
+            <h3 className="mb-2.5 text-card-title">{t.instrumentationEngineering}</h3>
             <CardList>
               <CardListItem>
                 {t.fieldInstrumentSpecificationSizingPressu}
@@ -123,8 +118,7 @@ export default function Services({ lang }) {
             </CardList>
           </Card>
           <Card id="automation" className="sm:col-span-full">
-            <Tag tone="gold">05</Tag>
-            <h3 className="mt-3.5 mb-2.5 text-card-title">{t.automationControl}</h3>
+            <h3 className="mb-2.5 text-card-title">{t.automationControl}</h3>
             <CardList columns>
               <CardListItem>{t.dcsPlcScadaArchitectureDesign}</CardListItem>
               <CardListItem>{t.controlPhilosophyAndLogicDevelopment}</CardListItem>
@@ -139,7 +133,7 @@ export default function Services({ lang }) {
 
       {/* CONSTRUCTION CAPABILITY */}
       <Section id="construction">
-        <SectionHead eyebrow={t.fieldExecution} title={t.constructionCapability}>
+        <SectionHead title={t.constructionCapability}>
           {t.aSingleFieldTeamExecuting}
         </SectionHead>
         <DataTable headers={CONSTRUCTION_TABLE.headers} rows={CONSTRUCTION_TABLE.rows} />
@@ -147,7 +141,7 @@ export default function Services({ lang }) {
 
       {/* CONTRACTING SERVICES */}
       <Section id="contracting">
-        <SectionHead eyebrow={t.contractingEyebrow} title={t.comprehensiveEpcContracting}>
+        <SectionHead title={t.comprehensiveEpcContracting}>
           {t.brightVolitionProvidesEndToEnd}
         </SectionHead>
         <Lede className="mx-auto mb-10 text-center">{t.whetherActingAsAPrime}</Lede>
@@ -183,7 +177,6 @@ export default function Services({ lang }) {
       {/* TROUBLESHOOTING */}
       <Section tone="navy" id="troubleshooting">
         <SectionHead
-          eyebrow={t.operationsSupport}
           tone="light"
           title={t.advancedTechnicalTroubleshootingRootCaus}
         >

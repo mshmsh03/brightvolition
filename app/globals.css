@@ -183,6 +183,11 @@
     line-height: 1.15;
     letter-spacing: -0.01em;
   }
+  /* Break a heading into lines of similar length, and keep a paragraph
+     from ending on one stranded word. Both are hints: a browser without
+     them just wraps as before. */
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p, li, dd { text-wrap: pretty; }
   h1 { font-size: clamp(2.1rem, 4.4vw, 3.6rem); }
   h2 { font-size: clamp(1.7rem, 3.2vw, 2.5rem); }
   h3 { font-size: 1.28rem; }

@@ -14,11 +14,13 @@ const TITLE_LINK = 'decoration-gold decoration-2 underline-offset-[.22em] hover:
 // Article body
 // ---------------------------------------------------------------------------
 
-// One reading column. Arabic and Kurdish get more leading than Latin for the
-// same reason the headings do (see DESIGN.md): Somar and Ping run taller.
+// One reading column, about 75 characters wide: at the 760px the section
+// headings use, body text ran to 90 a line and the eye lost its place. Arabic
+// and Kurdish get more leading than Latin for the same reason the headings do
+// (see DESIGN.md): Somar and Ping run taller.
 export function ArticleBody({ children }) {
   return (
-    <Reveal as="article" className="mx-auto max-w-measure text-[1.05rem] leading-[1.75] rtl:leading-[1.95]">
+    <Reveal as="article" className="mx-auto max-w-[39rem] text-[1.05rem] leading-[1.75] rtl:leading-[1.95]">
       {children}
     </Reveal>
   );

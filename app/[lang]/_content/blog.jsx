@@ -43,7 +43,6 @@ export default function Blog({ lang }) {
 
       <Section>
         <CtaBand
-          eyebrow={home.readyToCollaborate}
           title={home.letSBuildSomethingReliable}
           text={home.reachOutWithYourInquiries}
         >

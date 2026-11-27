@@ -28,7 +28,7 @@ function CardHeader({ className, ...props }) {
 
 function CardTitle({ className, ...props }) {
   return (
-    <h3
+    <h2
       data-slot="card-title"
       className={cn("text-card-title font-bold", className)}
       {...props} />

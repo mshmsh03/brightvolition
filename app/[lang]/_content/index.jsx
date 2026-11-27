@@ -1,41 +1,28 @@
 import { STRINGS } from './index.strings';
 import { STRINGS as BLOG } from './blog.strings';
-import {
-  AwardIcon,
-  Building2Icon,
-  ClipboardCheckIcon,
-  FileSignatureIcon,
-  HandshakeIcon,
-  LightbulbIcon,
-  LockIcon,
-  SettingsIcon,
-  TargetIcon,
-  TruckIcon,
-  WrenchIcon,
-  ZapIcon,
-} from 'lucide-react';
 import { CLIENT_LOGOS, EMAIL, PARTNER_LOGOS, pagePath } from '../../../lib/site-data';
 import { getPosts } from '../../../lib/blog.mjs';
 import { postPath } from '../../../lib/paths.mjs';
 import { LatestPost } from '../../../components/blog';
 import {
-  Card,
+  CardList,
+  CardListItem,
   CardText,
   Checklist,
   ChecklistItem,
   CtaBand,
   CtaButton,
+  Entries,
+  Entry,
   Eyebrow,
-  Grid,
   Hero,
   Lede,
   LogoStrip,
   Media,
+  Reveal,
   Section,
   SectionHead,
   Split,
-  Stat,
-  Stats,
 } from '../../../components/sections';
 
 export default function Home({ lang }) {
@@ -65,41 +52,29 @@ export default function Home({ lang }) {
 
       {/* WHAT WE DO */}
       <Section id="what-we-do">
-        <SectionHead eyebrow={t.whatWeDo} title={t.sixWaysWeDeliverEngineering}>
+        <SectionHead title={t.sixWaysWeDeliverEngineering}>
           {t.deliveringSpecializedEngineeringServices}
         </SectionHead>
-        <Grid cols={6}>
-          <Card icon={SettingsIcon} title={t.designEngineering}>
-            <CardText>
-              {t.feasibilityStudiesConceptualDesignAnd}
-            </CardText>
-          </Card>
-          <Card icon={Building2Icon} title={t.constructionInstallation}>
-            <CardText>
-              {t.fullFieldExecutionAcrossElectrical}
-            </CardText>
-          </Card>
-          <Card icon={ClipboardCheckIcon} title={t.systemCommissioningStartUp}>
-            <CardText>
-              {t.structuredPreCommissioningTestingAnd}
-            </CardText>
-          </Card>
-          <Card icon={TruckIcon} title={t.productSupplySourcing}>
-            <CardText>
-              {t.electricalInstrumentationMechanicalCompo}
-            </CardText>
-          </Card>
-          <Card icon={WrenchIcon} title={t.operationsSupportTroubleshooting}>
-            <CardText>
-              {t.rootCauseAnalysisAndRapid}
-            </CardText>
-          </Card>
-          <Card icon={FileSignatureIcon} title={t.contractingServices}>
-            <CardText>
-              {t.contractingServicesSummary}
-            </CardText>
-          </Card>
-        </Grid>
+        <Entries>
+          <Entry title={t.designEngineering}>
+            <CardText>{t.feasibilityStudiesConceptualDesignAnd}</CardText>
+          </Entry>
+          <Entry title={t.constructionInstallation}>
+            <CardText>{t.fullFieldExecutionAcrossElectrical}</CardText>
+          </Entry>
+          <Entry title={t.systemCommissioningStartUp}>
+            <CardText>{t.structuredPreCommissioningTestingAnd}</CardText>
+          </Entry>
+          <Entry title={t.productSupplySourcing}>
+            <CardText>{t.electricalInstrumentationMechanicalCompo}</CardText>
+          </Entry>
+          <Entry title={t.operationsSupportTroubleshooting}>
+            <CardText>{t.rootCauseAnalysisAndRapid}</CardText>
+          </Entry>
+          <Entry title={t.contractingServices}>
+            <CardText>{t.contractingServicesSummary}</CardText>
+          </Entry>
+        </Entries>
       </Section>
 
       {/* ABOUT TEASER */}
@@ -107,7 +82,6 @@ export default function Home({ lang }) {
         <Split>
           <Media src="/assets/img/photos/transformer-building.jpg" alt="Electrical substation infrastructure" />
           <div>
-            <Eyebrow>{t.whoWeAre}</Eyebrow>
             <h2>{t.engineeringLedClientFocusedBuilt}</h2>
             <Lede className="mb-5">
               {t.brightVolitionWasFoundedIn}
@@ -135,11 +109,12 @@ export default function Home({ lang }) {
             <Lede className="mb-6 text-lavender">
               {t.forSinomaDccLine2}
             </Lede>
-            <Stats>
-              <Stat value="50MW">{t.dcSolarPlantStudied}</Stat>
-              <Stat value="3">{t.toolsPssEPscadEtap}</Stat>
-              <Stat value="4">{t.monthsOfEngineeringScope}</Stat>
-            </Stats>
+            {/* Plain facts, not a row of giant numerals: "3" and "4" are not
+                statistics, and the plant's size is already in the heading. */}
+            <CardList className="mt-0">
+              <CardListItem>{t.toolsPssEPscadEtap}</CardListItem>
+              <CardListItem>4 {t.monthsOfEngineeringScope}</CardListItem>
+            </CardList>
             <div className="mt-8">
               <CtaButton href={pagePath(lang, 'projects')} variant="gold" arrow>
                 {t.viewProjectDetails}
@@ -156,33 +131,33 @@ export default function Home({ lang }) {
 
       {/* WHY CHOOSE US */}
       <Section>
-        <SectionHead eyebrow={t.whyBrightVolition} title={t.aPartnerThatServesYou} />
-        <Grid cols={3}>
-          <Card icon={LockIcon} title={t.confidentialityFirst}>
-            <CardText>{t.sensitiveClientAndSupplierInformation}</CardText>
-          </Card>
-          <Card icon={TargetIcon} title={t.tailoredCostEffective}>
-            <CardText>{t.solutionsScopedToYourExact}</CardText>
-          </Card>
-          <Card icon={HandshakeIcon} title={t.collaborativeApproach}>
-            <CardText>
-              {t.weWorkCloselyWithClients}
-            </CardText>
-          </Card>
-          <Card icon={ZapIcon} title={t.streamlinedSupplyChain}>
-            <CardText>{t.efficientLogisticsThatMinimizeDelays}</CardText>
-          </Card>
-          <Card icon={AwardIcon} title={t.uncompromisingQuality}>
-            <CardText>
-              {t.wePartnerOnlyWithReputable}
-            </CardText>
-          </Card>
-          <Card icon={LightbulbIcon} title={t.innovationDriven}>
-            <CardText>
-              {t.investmentInRDKeeps}
-            </CardText>
-          </Card>
-        </Grid>
+        {/* The heading sits beside its list rather than centred above it, so
+            the page is not the same block twice. */}
+        <div className="grid grid-cols-1 gap-x-14 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+          <Reveal as="div">
+            <h2 className="mb-0">{t.aPartnerThatServesYou}</h2>
+          </Reveal>
+          <Entries cols={2}>
+            <Entry title={t.confidentialityFirst}>
+              <CardText>{t.sensitiveClientAndSupplierInformation}</CardText>
+            </Entry>
+            <Entry title={t.tailoredCostEffective}>
+              <CardText>{t.solutionsScopedToYourExact}</CardText>
+            </Entry>
+            <Entry title={t.collaborativeApproach}>
+              <CardText>{t.weWorkCloselyWithClients}</CardText>
+            </Entry>
+            <Entry title={t.streamlinedSupplyChain}>
+              <CardText>{t.efficientLogisticsThatMinimizeDelays}</CardText>
+            </Entry>
+            <Entry title={t.uncompromisingQuality}>
+              <CardText>{t.wePartnerOnlyWithReputable}</CardText>
+            </Entry>
+            <Entry title={t.innovationDriven}>
+              <CardText>{t.investmentInRDKeeps}</CardText>
+            </Entry>
+          </Entries>
+        </div>
       </Section>
 
       {/* FROM THE BLOG */}
@@ -217,7 +192,6 @@ export default function Home({ lang }) {
       {/* CTA */}
       <Section>
         <CtaBand
-          eyebrow={t.readyToCollaborate}
           title={t.letSBuildSomethingReliable}
           text={t.reachOutWithYourInquiries}
         >

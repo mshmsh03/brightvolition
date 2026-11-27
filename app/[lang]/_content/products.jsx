@@ -32,7 +32,6 @@ export default function Products({ lang }) {
         homeHref={pagePath(lang, 'index')}
         homeLabel={t.home}
         crumb={t.products}
-        eyebrow={t.productSupplySourcing}
         title={t.aCompleteRangeOfElectrical}
         lede={t.weSupplyComponentsSystemsAnd}
       />
@@ -48,7 +47,7 @@ export default function Products({ lang }) {
 
       {/* ELECTRICAL */}
       <Section id="electrical">
-        <PillarHead icon={ZapIcon} tone="navy" eyebrow={t.productSupply} title={t.electrical2} />
+        <PillarHead icon={ZapIcon} tone="navy" title={t.electrical2} />
         <Grid cols={2} className="gap-x-7 gap-y-0">
           <ProductBlock title={t.switchgearPanelComponents}>
             {t.mccbMcbRcdContactorsOverload}
@@ -96,7 +95,7 @@ export default function Products({ lang }) {
 
       {/* INSTRUMENT */}
       <Section id="instrument">
-        <PillarHead icon={GaugeIcon} tone="gold" eyebrow={t.productSupply2} title={t.instrument} />
+        <PillarHead icon={GaugeIcon} tone="gold" title={t.instrument} />
         <Reveal as="div" className="mb-8">
           <Lede>
             {t.aCompleteRangeOfPrecision}
@@ -143,7 +142,7 @@ export default function Products({ lang }) {
 
       {/* MECHANICAL */}
       <Section id="mechanical">
-        <PillarHead icon={SettingsIcon} tone="lavender" eyebrow={t.productSupply3} title={t.mechanical2} />
+        <PillarHead icon={SettingsIcon} tone="lavender" title={t.mechanical2} />
         <Grid cols={2} className="gap-x-7 gap-y-0">
           <ProductBlock title={t.pipingValvesFittings}>
             {t.pipesTubesFittingsFlangesElbows}
@@ -173,7 +172,7 @@ export default function Products({ lang }) {
 
       {/* BRANDS */}
       <Section>
-        <SectionHead eyebrow={t.trustedManufacturers} title={t.brandsWeRepresent}>
+        <SectionHead title={t.brandsWeRepresent}>
           {t.weSourceFromGloballyRecognized}
         </SectionHead>
         <LogoStrip logos={PARTNER_LOGOS} large />
@@ -191,7 +190,6 @@ export default function Products({ lang }) {
       <Section tone="navy">
         <Split>
           <div>
-            <Eyebrow tone="light">{t.whySourceFromUs}</Eyebrow>
             <h2>{t.ourSupplyPromise}</h2>
             <Checklist tone="light">
               <ChecklistItem>{t.productsSourcedFromGloballyCertified}</ChecklistItem>

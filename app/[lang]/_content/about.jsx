@@ -1,8 +1,7 @@
 import { STRINGS } from './about.strings';
-import { DownloadIcon, LeafIcon, LightbulbIcon, UsersIcon } from 'lucide-react';
+import { DownloadIcon } from 'lucide-react';
 import { PROFILE_PDF, pagePath } from '../../../lib/site-data';
 import {
-  Card,
   CardList,
   CardListItem,
   CardText,
@@ -10,7 +9,8 @@ import {
   ChecklistItem,
   CtaBand,
   CtaButton,
-  Eyebrow,
+  Entries,
+  Entry,
   Grid,
   Lede,
   NumCard,
@@ -33,7 +33,6 @@ export default function About({ lang }) {
         homeHref={pagePath(lang, 'index')}
         homeLabel={t.home}
         crumb={t.aboutUs}
-        eyebrow={t.whoWeAre}
         title={t.aRegisteredKrgEngineeringCompany}
         lede={t.brightVolitionWasFoundedIn}
       >
@@ -50,7 +49,7 @@ export default function About({ lang }) {
 
       {/* MILESTONES */}
       <Section size="tight">
-        <SectionHead eyebrow={t.companyOverview} title={t.foundingVisionMilestonesFutureOutlook} />
+        <SectionHead title={t.foundingVisionMilestonesFutureOutlook} />
         <Timeline>
           <TimelineItem title={t.foundingVision}>
             <TimelineEntry>{t.leadInInnovativeSustainableAnd}</TimelineEntry>
@@ -79,7 +78,6 @@ export default function About({ lang }) {
       <Section size="tight" className="border-t border-lavender">
         <Split className="items-start">
           <div>
-            <Eyebrow>{t.ourPolicy}</Eyebrow>
             <h2>{t.qualityDeliveredByDesign}</h2>
             <Lede className="mb-4">
               {t.brightVolitionIsCommittedTo}
@@ -108,7 +106,7 @@ export default function About({ lang }) {
 
       {/* HOW WE WORK */}
       <Section className="border-t border-lavender">
-        <SectionHead eyebrow={t.howBvServesItsCustomers} title={t.howWeWork} />
+        <SectionHead title={t.howWeWork} />
         <Grid cols={3} className="pt-5">
           <NumCard num="1" title={t.confidentialityFirst}>
             <CardText>
@@ -142,12 +140,11 @@ export default function About({ lang }) {
       {/* WHY BV IS THE RIGHT CHOICE */}
       <Section tone="navy">
         <SectionHead
-          eyebrow={t.whyBvIsTheRight}
           tone="light"
           title={t.customerFocusInnovationResponsibility}
         />
-        <Grid cols={3}>
-          <Card icon={UsersIcon} tone="dark" title={t.customerFocus}>
+        <Entries>
+          <Entry title={t.customerFocus}>
             <CardList>
               <CardListItem>
                 {t.wePlaceAHighValue}
@@ -156,8 +153,8 @@ export default function About({ lang }) {
                 {t.prioritizingExcellentServiceAndBuilding}
               </CardListItem>
             </CardList>
-          </Card>
-          <Card icon={LightbulbIcon} tone="dark" title={t.innovation}>
+          </Entry>
+          <Entry title={t.innovation}>
             <CardList>
               <CardListItem>
                 {t.weStayAheadOfThe}
@@ -166,8 +163,8 @@ export default function About({ lang }) {
                 {t.investmentInRDEnables}
               </CardListItem>
             </CardList>
-          </Card>
-          <Card icon={LeafIcon} tone="dark" title={t.sustainabilitySocialResponsibility}>
+          </Entry>
+          <Entry title={t.sustainabilitySocialResponsibility}>
             <CardList>
               <CardListItem>{t.offeringEnvironmentallyFriendlyEngineeri}</CardListItem>
               <CardListItem>
@@ -178,8 +175,8 @@ export default function About({ lang }) {
                 {t.csrEngagementSupportingLocalCommunities}
               </CardListItem>
             </CardList>
-          </Card>
-        </Grid>
+          </Entry>
+        </Entries>
       </Section>
 
       {/* CTA */}
