@@ -9,7 +9,6 @@ export const STRINGS = {
   en: {
     home: "Home",
     contact: "Contact",
-    yourTrustedPartnerInEngineering: "Your Trusted Partner in Engineering Solutions",
     readyToCollaborate: "Ready to Collaborate?",
     reachOutWithYourInquiries: "Reach out with your inquiries or RFQs. Include the scope, timeline, and budget, and we’ll respond with the right team.",
     quoteFormTitle: "Request a Quote",
@@ -36,13 +35,11 @@ export const STRINGS = {
     supplyChainTeam: "Supply Chain Team",
     technicalTeam: "Technical Team",
     email3: "Email",
-    findUs: "Find Us",
     sulaymaniyahKurdistanRegionOfIraq: "Sulaymaniyah, Kurdistan Region of Iraq",
   },
   ar: {
     home: "الرئيسية",
     contact: "تواصل معنا",
-    yourTrustedPartnerInEngineering: "شريككم الموثوق في الحلول الهندسية",
     readyToCollaborate: "مستعد للتعاون؟",
     reachOutWithYourInquiries: "تواصل معنا لأي استفسار أو طلب عرض سعر — أخبرنا بالنطاق والجدول الزمني والميزانية، وسنرد عليك بالفريق المناسب.",
     quoteFormTitle: "اطلب عرض سعر",
@@ -69,13 +66,11 @@ export const STRINGS = {
     supplyChainTeam: "فريق سلسلة التوريد",
     technicalTeam: "الفريق الفني",
     email3: "البريد الإلكتروني",
-    findUs: "موقعنا",
     sulaymaniyahKurdistanRegionOfIraq: "السليمانية، إقليم كوردستان العراق",
   },
   ku: {
     home: "سەرەکی",
     contact: "پەیوەندیمان پێوە بکە",
-    yourTrustedPartnerInEngineering: "هاوبەشی متمانەپێکراوتان لە چارەسەری ئەندازیاریدا",
     readyToCollaborate: "ئامادەیت بۆ هاوکاری؟",
     reachOutWithYourInquiries: "پەیوەندیمان پێوە بکە بۆ هەر پرسیارێک یان داواکاری نرخنامە — مەودا، کاتبەندی و بودجەکەت پێمان بڵێ، ئێمەش بە تیمی گونجاو وەڵامت دەدەینەوە.",
     quoteFormTitle: "داوای نرخنامە بکە",
@@ -102,7 +97,6 @@ export const STRINGS = {
     supplyChainTeam: "تیمی زنجیرەی دابینکردن",
     technicalTeam: "تیمی تەکنیکی",
     email3: "ئیمەیل",
-    findUs: "شوێنمان",
     sulaymaniyahKurdistanRegionOfIraq: "سلێمانی، هەرێمی کوردستانی عێراق",
   },
 };
